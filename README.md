@@ -32,7 +32,7 @@
 ・WF  
 https://www.figma.com/file/m3jd0Zru6kFe5mPUgPQF3m/Sasanqua?node-id=0%3A1&t=aTw0hdrvY7OJ0yGX-1  
 ・実装機能リスト  
-https://docs.google.com/spreadsheets/d/1Qa9KbB3Ej2oCd2ZDAbPk9HqNbXcTERm7mmE0HpWboCQ/edit#gid=375590402
+https://docs.google.com/spreadsheets/d/1Qa9KbB3Ej2oCd2ZDAbPk9HqNbXcTERm7mmE0HpWboCQ/edit?usp=sharing
 
 ## 開発環境
 - OS：macOS
