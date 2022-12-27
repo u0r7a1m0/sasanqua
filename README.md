@@ -39,9 +39,9 @@ https://www.figma.com/file/m3jd0Zru6kFe5mPUgPQF3m/Sasanqua?node-id=0%3A1&t=aTw0h
 
 ## 使用素材
 - イラストレーターさんへ依頼予定
-- アイコン素材
-http://flat-icon-design.com/
-https://kage-design.com/
-https://fukidesign.com/
-- プライバシーポリシー雛形
+- アイコン素材  
+http://flat-icon-design.com/  
+https://kage-design.com/  
+https://fukidesign.com/  
+- プライバシーポリシー雛形  
 https://kiyaku.jp/hinagata/privacy.html
