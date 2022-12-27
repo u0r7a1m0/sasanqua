@@ -6,7 +6,8 @@
 「ひたむきさ」「困難に打ち勝つ」という花言葉があります。  
 サザンカのように強く美しく自分の目標に対してひたむきに向き合い  
 目標を達成できるような人になってほしいという思いから作成させていただきました。  
-【オリジナル題材】
+【オリジナル題材】  
+ルーティン管理サイト
 
 ### テーマを選んだ理由
 自分自身が続けるということがあまり得意ではありませんでした。  
@@ -43,5 +44,3 @@ https://www.figma.com/file/m3jd0Zru6kFe5mPUgPQF3m/Sasanqua?node-id=0%3A1&t=aTw0h
 http://flat-icon-design.com/  
 https://kage-design.com/  
 https://fukidesign.com/  
-- プライバシーポリシー雛形  
-https://kiyaku.jp/hinagata/privacy.html
