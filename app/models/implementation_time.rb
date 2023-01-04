@@ -1,0 +1,2 @@
+class ImplementationTime < ApplicationRecord
+end
