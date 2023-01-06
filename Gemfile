@@ -63,3 +63,5 @@ gem "enum_help"
 gem 'rails-i18n'
 # gem 'rails-line-bot'
 gem "net-smtp"
+
+gem 'jquery-turbolinks'
