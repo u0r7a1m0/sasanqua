@@ -1,26 +1,60 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<!--会員用ログインページ-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-11 mx-md-auto">
+      <h5 class="bg-light d-inline px-4">ログイン</h5>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  <div class="row mt-3">
+    <div class="col-md-10 mx-md-auto mt-3">
+      <h6 class="bg-light d-inline px-4">会員の方はこちらからログイン</h6>
+    </div>
+  </div>
 
-<%= render "public/shared/links" %>
+  <%= form_with model: @customer ,url: customer_session_path do |f| %>
+  <div class="row mt-4">
+    <div class="col-md-9 mx-md-auto">
+
+      <!--メールアドレス-->
+      <div class="field d-md-flex my-2">
+        <div class="col-md-3">
+          <%= f.label :メールアドレス %>
+        </div>
+        <div class="col-md-6">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+        </div>
+      </div>
+      <!--パスワード-->
+      <div class="field d-md-flex my-2">
+        <div class="col-md-3">
+        <%= f.label :パスワード %>
+        </div>
+        <div class="col-md-6">
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="actions d-md-flex">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-primary mt-4 px-4">
+          ログイン
+          </button>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="col-md-10 mx-md-auto mt-4">
+      <h6 class="bg-light d-inline px-4">会員登録がお済みでない方</h6>
+
+      <p class="ml-md-5 mt-3">
+        <%= link_to new_customer_registration_path do %>
+        こちら
+        <% end %>
+      <span>から新規登録を行ってください。</span>
+      </p>
+    </div>
+  </div>
+</div>
+

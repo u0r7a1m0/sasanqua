@@ -5,51 +5,85 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/c1c2279c79.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
 
   </head>
 
   <body>
     <div class="container">
-        <!--ハンバーガーメニュー-->
-<header class="header">
-      <!-- ヘッダーロゴ -->
-      <div class="logo">Sasanqua</div>
+      <!--ハンバーガーメニュー-->
+      <header>
+        <!-- ヘッダーロゴ -->
+        <div class="logo">
+          <img src="/logo_dammy.png">
+          <b><%= link_to 'Sasanqua' ,root_path ,class:"under-line-logo" %></b>
+        </div>
+          <!-- ハンバーガーメニュー部分 -->
+        <div class="nav">
+          <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+          <input id="drawer_input" class="drawer_hidden" type="checkbox">
+          <!-- ハンバーガーアイコン -->
+          <label for="drawer_input" class="drawer_open"><span></span></label>
+          <!-- メニュー -->
 
-      <!-- ハンバーガーメニュー部分 -->
-      <div class="nav">
+          <!--カスタマーログイン済み-->
+          <% if customer_signed_in? %>
+          <nav class="nav_content">
+            <ul class="nav_list">
+              <li class="nav_item"><%= link_to 'All routine' ,routines_path ,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'Bookmark' ,bookmark_path(current_customer.id),class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'About' ,about_path ,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'MY' ,my_page_path ,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'Log out' , destroy_customer_session_path, method: :delete, class:"under-line" %></li>
+            </ul>
+          </nav>
+          <!--管理者ログイン済み-->
+          <% elsif admin_signed_in? %>
+          <nav class="nav_content">
+            <ul class="nav_list">
+              <li class="nav_item"><%= link_to 'About' ,about_path ,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'Sign up' ,new_customer_registration_path,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'Log out' ,destroy_admin_session_path, method: :delete,class:"under-line" %></li>
+            </ul>
+          </nav>
 
-        <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
-        <input id="drawer_input" class="drawer_hidden" type="checkbox">
+          <!--未ログインユーザー-->
+          <% else %>
+          <nav class="nav_content">
+            <ul class="nav_list">
+              <li class="nav_item"><%= link_to 'About' ,about_path ,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'Sign up' ,new_customer_registration_path,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'Log in' ,new_customer_session_path,class:"under-line" %></li>
+            </ul>
+          </nav>
 
-        <!-- ハンバーガーアイコン -->
-        <label for="drawer_input" class="drawer_open"><span></span></label>
-
-        <!-- メニュー -->
-        <nav class="nav_content">
-          <ul class="nav_list">
-            <li class="nav_item"><a href="">TOP</a></li>
-            <li class="nav_item"><a href="">ABOUT</a></li>
-            <li class="nav_item"><a href="">SERVICE</a></li>
-          </ul>
-        </nav>
-
-      </div>
-    </header>
-<!--ハンバーガーメニュー-->
-
+          <% end %>
+        </div>
+      </header>
+      <!--ハンバーガーメニューここまで-->
 
       <main>
         <%= yield %>
       </main>
 
       <footer>
-
+        <nav class="nav_content_footer">
+            <ul class="nav_list_footer">
+              <li class="nav_item_footer">
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              </li>
+              <li class="nav_item_footer">
+                <%= link_to privacy_policy_path do %>
+                <i class="fa-solid fa-shield-halved"></i>
+                <% end %>
+              </li>
+              <li class="nav_item_footer">
+                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+              </li>
+            </ul>
+        </nav>
       </footer>
     </div>
   </body>

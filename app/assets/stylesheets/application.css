@@ -13,62 +13,106 @@
  *= require_tree .
  *= require_self
  */
+ /*@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap')*/
+@font-face {
+  font-family: 'Amatic SC';
+  src: url("/Amatic_SC");
+}
+
 *{
   box-sizing: border-box;
   margin:0;
   padding:0;
+  /*font-family: 'Amatic SC';*/
 }
 main{
-  margin:3vw;
+  margin:5vw;
 }
 .container{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
 footer{
   width:100%;
   height: 10vh;
   background-color: #E1E8E4;
   margin-top: auto;
-}
 
+}
 body {
     background: #fafafa;
-    /*text-align: center;*/
     font-size: 20px;
 }
 
-h1 {
-  font-size: 28px;
-  padding-top: 20px;
+header {
+  width: 100%;
+  height: 10vh;
+  background-color: #E1E8E4;
+  display: flex;
+  margin:0 auto;
+  padding: 0 10vw;
+}
+.nav_list {
+  height: 10vh;
+  display: flex;
+  justify-content:flex-end;
+  text-align:center;
+
+}
+.nav_item {
+  list-style: none;
+  text-decoration: none;
+  text-align: center;
+  margin: auto 20px auto 0;
+}
+.nav_item:last-child{
+  margin-right:0;
+}
+.logo {
+  font-size: 24px;
+  height: 10vh;
+  text-align:center;
+  line-height: 10vh;
+  margin-right: auto;
+}
+.logo img{
+  width:40px;
+  position: relative;
+  top:10px;
+  margin-right:10px;
+}
+.under-line{
+  text-decoration: none;
+  color: #1C9149;
+}
+.under-line-logo{
+  text-decoration: none;
+  color: gray;
+}
+#drawer_input {
+  display: none;
 }
 
-  .header {
-    display: flex;
-    /*justify-content: center;*/
-    /*align-items: center;*/
-    /*position: relative;*/
-    width: 100%;
-    height: 10vh;
-    background-color: #E1E8E4;
-  }
-  .nav_list {
-    display: flex;
-    justify-content:flex-end;
-  }
-  .nav_item {
-    list-style: none;
-  }
-
-
+.nav_list_footer{
+  display:flex;
+  justify-content:flex-end;
+  margin-right:50px;
+  line-height: 10vh;
+}
+.nav_item_footer{
+  margin-right:50px;
+  list-style: none;
+  font-size:30px;
+}
+.nav_item_footer a{
+  text-decoration: none;
+  color:gray;
+}
 
 /*ここからハンバーガーメニュー*/
 @media screen and (max-width: 928px) {
-
-  /* CSSコード */
-  .header {
+  header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,15 +121,10 @@ h1 {
     height: 10vh;
     background-color: #E1E8E4;
   }
-
-  .logo {
-    font-size: 24px;
-  }
   /* チェックボックスを非表示にする */
   .drawer_hidden {
     display: none;
   }
-
   /* ハンバーガーアイコンの設置スペース */
   .drawer_open {
     display: flex;
@@ -96,7 +135,6 @@ h1 {
     z-index: 100;/* 重なり順を一番上にする */
     cursor: pointer;
   }
-
   /* ハンバーガーメニューのアイコン */
   .drawer_open span,
   .drawer_open span:before,
@@ -110,22 +148,18 @@ h1 {
     transition: 0.5s;
     position: absolute;
   }
-
   /* 三本線の一番上の棒の位置調整 */
   .drawer_open span:before {
     bottom: 8px;
   }
-
   /* 三本線の一番下の棒の位置調整 */
   .drawer_open span:after {
     top: 8px;
   }
-
   /* アイコンがクリックされたら真ん中の線を透明にする */
   #drawer_input:checked ~ .drawer_open span {
     background: rgba(255, 255, 255, 0);
   }
-
   /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
   #drawer_input:checked ~ .drawer_open span::before {
     bottom: 0;
@@ -136,7 +170,6 @@ h1 {
     top: 0;
     transform: rotate(-45deg);
   }
-
   /* メニューのデザイン*/
   .nav_content {
     width: 100%;
@@ -147,23 +180,27 @@ h1 {
     z-index: 99;
     background: rgb(110, 110, 110);
     transition: .5s;
-    text-align: center;
-    padding-top: 20px;
   }
-
-  /* メニュー黒ポチを消す */
   .nav_list {
     list-style: none;
+    display: block;
   }
-
+  .nav_item{
+    margin: auto 0;
+    margin-bottom: 2vh;
+    margin-top:2vh;
+  }
   .nav_item a {
     color: #fff;
     text-decoration: none;
   }
-
+  .nav_item:first-child{
+    padding-top:75vh;
+  }
   /* アイコンがクリックされたらメニューを表示 */
   #drawer_input:checked ~ .nav_content {
-    bottom: 0;/* メニューを画面に入れる */
-
+    bottom: 70%;/* メニューを画面に入れる */
   }
 }
+
+

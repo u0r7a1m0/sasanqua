@@ -1,3 +1,37 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.top-wraper{
+  margin:100px 80px;
+}
+.top-wraper a{
+  text-decoration:none;
+  color:gray;
+}
+.top-wrapper h1{
+  font-size: 20px;
+}
+.btn-new{
+  border:1px solid gray;
+  padding:15px;
+  border-radius: 7px;
+}
+.sub-title{
+  margin-bottom:5vw;
+}
+.txt{
+  margin-top:2vw;
+  font-size:15px;
+}
+.txt a{
+  border-bottom:dotted;/*下線を点線にする*/
+  border-color:#1C9149;
+  border-width:4px;
+
+}
+
+@media screen and (max-width:768px){
+  .top-wraper{
+  margin:100px 30px;
+}
+}
