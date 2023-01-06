@@ -1,119 +1,60 @@
   <!--会員用　新規会員登録ページ-->
 
-<div class="container">
 
-  <h5 class="bg-light d-inline px-2 ml-3">新規会員登録</h5>
+  <h3>■Sign up</h3>
 
-  <div class="row mt-5">
-    <div class="col-md-12 m-auto">
       <%= form_with model: @customer ,url: customer_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
-      <div class="field d-md-flex">
-          <!--名前-->
-        <div class="col-md-3">
-          <%= f.label :'名前' %>
-        </div>
-        <div class="col-md-0.5 text-md-right mr-md-3">
-          <%= f.label :'(姓)' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "令和", class: "form-control " %>
-        </div>
-        <div class="col-md-0.5 text-md-right mr-md-3">
-          <%= f.label :'(名)' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "道子", class: "form-control " %>
-        </div>
-      </div>
-    <!--</div>-->
-          <!--フリガナ-->
-      <div class="field d-md-flex my-2">
-        <div class="col-md-3">
-          <%= f.label :'フリガナ' %>
-        </div>
-        <div class="col-md-0.5 text-md-right">
-          <%= f.label :'(セイ)' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", placeholder: "レイワ", class: "form-control" %>
-        </div>
-        <div class="col-md-0.5 text-md-right">
-          <%= f.label :'(メイ)' %>
-        </div>
-        <div class="col-md-3">
-          <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", placeholder: "ミチコ", class: "form-control" %>
-        </div>
-      </div>
+
+          <!--ニックネーム-->
+
+          <div>
+            <%= f.label :'ニックネーム' %>
+          </div>
+          <div>
+            <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ジョン・タイター" %>
+          </div>
+
+          <!--プロフィール画像-->
+          <div>
+            <label for="inputImage">プロフィール画像</label>
+          </div>
+          <div>
+            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
+          </div>
+
           <!--メールアドレス-->
-      <div class="field d-md-flex my-2">
-        <div class="col-md-3">
-          <%= f.label :メールアドレス %>
-        </div>
-        <div class="col-md-3 ml-md-5">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
-        </div>
-      </div>
-          <!--郵便番号-->
-      <div class="field d-md-flex my-2">
-        <div class="col-md-3">
-          <%= f.label :'郵便番号(ハイフンなし)'%>
-        </div>
-        <div class="col-md-3 ml-md-5">
-          <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", placeholder: "0000000", class: "form-control " %>
-        </div>
-      </div>
-          <!--住所-->
-      <div class="field d-md-flex my-2">
-        <div class="col-md-3">
-          <%= f.label :'住所'%>
-        </div>
-        <div class="col-md-6 ml-md-5">
-          <%= f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control " %>
-        </div>
-      </div>
-          <!--電話番号-->
-      <div class="field d-md-flex my-2">
-        <div class="col-md-3">
-          <%= f.label :'電話番号(ハイフンなし)'%>
-        </div>
-        <div class="col-md-3 ml-md-5">
-          <%= f.telephone_field :telephone_number, autofocus: true, autocomplete: "telephone_number", placeholder: "00000000000", class: "form-control " %>
-        </div>
-      </div>
-        <!--パスワード-->
-      <div class="field d-md-flex my-2">
-        <div class="col-md-3">
-          <%= f.label :'パスワード' %>
-          <% if @minimum_password_length %><em>(<%= @minimum_password_length %> 文字以上)</em>
-          <% end %>
-        </div>
-        <div class="col-md-3 ml-md-5">
-          <%= f.password_field :password, autocomplete: "new_password", class: "form-control" %>
-        </div>
-      </div>
-        <!--確認用パスワード-->
-      <div class="field d-md-flex my-2">
-        <div class="col-md-3">
-          <%= f.label :'パスワード(確認用)' %>
-        </div>
-        <div class="col-md-3 ml-md-5">
-          <%= f.password_field :encrypted_password, autocomplete: "encrypted_password", class: "form-control" %>
-        </div>
-      </div>
-      <div class="actions">
-        <div class="col-md-5 mx-auto">
-          <button type="submit" class="btn btn-success my-4 mx-auto p-auto">
-            新規登録
-          </button>
-        </div>
-      </div>
+          <div>
+            <%= f.label :メールアドレス %>
+          </div>
+          <div>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+          </div>
+
+          <!--パスワード-->
+
+          <div>
+            <%= f.label :'パスワード' %>
+            <% if @minimum_password_length %><em>(<%= @minimum_password_length %> 文字以上)</em>
+            <% end %>
+          </div>
+
+          <div>
+            <%= f.password_field :password, autocomplete: "new_password" %>
+          </div>
+
+          <!--確認用パスワード-->
+          <div>
+            <%= f.label :'パスワード(確認用)' %>
+          </div>
+          <div>
+            <%= f.password_field :encrypted_password, autocomplete: "encrypted_password" %>
+          </div>
+
+
+            <%= f.submit '登録' %>
+
       <% end %>
-      <h5 class="bg-light d-inline ml-3 px-2">既に登録がお済みの方</h5>
-        <p class="col-md-12 my-4 ml-md-5">
+      <h5>既に登録がお済みの方</h5>
         <%= link_to 'こちら', new_customer_session_path %>からログインしてください。
-        </p>
-    </div>
-  </div>
-</div>
