@@ -41,8 +41,8 @@
           <% elsif admin_signed_in? %>
           <nav class="nav_content">
             <ul class="nav_list">
-              <li class="nav_item"><%= link_to 'About' ,about_path ,class:"under-line" %></li>
-              <li class="nav_item"><%= link_to 'Sign up' ,new_customer_registration_path,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to '会員一覧' ,admin_root_path ,class:"under-line" %></li>
+              <li class="nav_item"><%= link_to 'ルーティン一覧' ,admin_routines_path,class:"under-line" %></li>
               <li class="nav_item"><%= link_to 'Log out' ,destroy_admin_session_path, method: :delete,class:"under-line" %></li>
             </ul>
           </nav>
@@ -53,7 +53,16 @@
             <ul class="nav_list">
               <li class="nav_item"><%= link_to 'About' ,about_path ,class:"under-line" %></li>
               <li class="nav_item"><%= link_to 'Sign up' ,new_customer_registration_path,class:"under-line" %></li>
-              <li class="nav_item"><%= link_to 'Log in' ,new_customer_session_path,class:"under-line" %></li>
+              <li class="nav_item">
+                <% if request.fullpath.include? "/admin" %>
+                  <!--admin側のheaderを返す-->
+                  <%= link_to 'Log in', new_admin_session_path, class:"under-line" %>
+                <% else %>
+                  <!--user側のheaderを返す-->
+                  <%= link_to 'Log in', new_customer_session_path, class:"under-line" %>
+                <% end %>
+              </li>
+              <!--</div>-->
             </ul>
           </nav>
 

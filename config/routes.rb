@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'homes/top'
+  end
     # 顧客用
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",

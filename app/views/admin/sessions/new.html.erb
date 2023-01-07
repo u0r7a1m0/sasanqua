@@ -1,26 +1,29 @@
 <!--管理者用ログインページ-->
+<div class="new-customer-contents">
+  <h3>■Admin_Log in</h3>
 
-
-  <h5 class="bg-light d-inline px-4">管理者ログイン</h5>
-
-  <div>
-    <div>
+  <div class="form-wrapper">
       <%= form_with model: @admin ,url: admin_session_path do |f| %>
-      <div>
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control " %>
-
-          <%= f.label :パスワード %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="actions">
-          <%= f.submit %>ログイン
-
-      </div>
-    <% end %>
+    <!--メールアドレス-->
+    <div>
+      <%= f.label :メールアドレス %>
     </div>
+    <div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
+    </div>
+
+    <!--パスワード-->
+    <div>
+      <%= f.label :パスワード %>
+    </div>
+    <div>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+    </div>
+    <div class="submit-btn">
+      <%= f.submit "ログイン" ,:class=>"image_input_btn" %>
+    </div>
+    <% end %>
   </div>
+
 </div>
 
