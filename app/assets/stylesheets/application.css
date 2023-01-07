@@ -192,8 +192,6 @@ header {
   left: 0%; /* メニューを画面の外に飛ばす */
   z-index: 99;
   background: rgba(110, 110, 110, 0.8);
-  /*background-image: url(/header_01.jpg);*/
-  /*background-position: bottom;*/
   transition: .5s;
   }
   .nav_list {
@@ -205,6 +203,7 @@ header {
   margin-bottom: 2vh;
   margin-top:2vh;
   }
+
   .nav_item a {
   color: #fff;
   text-decoration: none;
@@ -214,13 +213,10 @@ header {
   }
   /* アイコンがクリックされたらメニューを表示 */
   #drawer_input:checked ~ .nav_content {
-  bottom: 70%;/* メニューを画面に入れる */
+  bottom: 75%;/* メニューを画面に入れる */
   }
 }
-
-
 /*新規登録画面*/
-
 .form-control{
   height: 2.4em;
   width: 100%;
@@ -279,7 +275,6 @@ header {
 .bottom-text{
   margin-top:20px;
   font-size:13px;
-  /*border:none;*/
 }
 .bottom-text a{
   text-decoration: none;
@@ -294,7 +289,4 @@ header {
   margin: 0 auto;
   }
 }
-
-
-
 

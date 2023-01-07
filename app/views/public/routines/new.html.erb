@@ -1,2 +1,34 @@
-<h1>Public::Routines#new</h1>
-<p>Find me in app/views/public/routines/new.html.erb</p>
+<div class="routine-contents">
+  <h3>■What is your goal?</h3>
+  <p>目標はなんですか？</p>
+
+  <%= form_with model: @customer ,url: customer_session_path do |f| %>
+  <%= f.text_field :target, autofocus: true, placeholder: "ナイスバディになって彼氏を見返す！", class: "new-form-control" %>
+
+  <p>こういう人になりたい！ここに行きたい！など参考画像があればアップしてみてください！<br />毎日、目にしてモチベーションを上げましょう！</p>
+
+    <!--<label for="upload" class="image_input_btn">画像をアップロード</label>-->
+    <!--<input id="upload" type="file" name="upload" class="image_form">-->
+    <%= f.file_field :routine_image, placeholder: "", accept: "image/*", class: "routine_image_form" %>
+
+
+    <%#= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "商品名", class: "form-control " %>
+
+    <%#= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい"  %>
+    <%#= f.label :'販売ステータス'%>
+
+            <!--<label>-->
+              <%#= f.radio_button :is_active, true, checked: true %>販売中
+            <!--</label>-->
+            <!--<label>-->
+              <%#= f.radio_button :is_active, false %>販売停止
+            <!--</label>-->
+
+
+      <button type="submit" class="btn">
+        新規登録
+      </button>
+
+    <% end %>
+
+</div>

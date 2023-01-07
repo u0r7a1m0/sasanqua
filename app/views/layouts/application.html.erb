@@ -31,7 +31,6 @@
           <nav class="nav_content">
             <ul class="nav_list">
               <li class="nav_item"><%= link_to 'All routine' ,routines_path ,class:"under-line" %></li>
-              <li class="nav_item"><%= link_to 'Bookmark' ,bookmark_path(current_customer.id),class:"under-line" %></li>
               <li class="nav_item"><%= link_to 'About' ,about_path ,class:"under-line" %></li>
               <li class="nav_item"><%= link_to 'MY' ,my_page_path ,class:"under-line" %></li>
               <li class="nav_item"><%= link_to 'Log out' , destroy_customer_session_path, method: :delete, class:"under-line" %></li>

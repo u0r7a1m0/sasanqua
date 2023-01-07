@@ -1,3 +1,51 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.my-page-top{
+  // margin: 0 auto;
+    text-align: center;
+  img{
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    filter: drop-shadow(5px 5px 5px #aaa);
+  }
+}
+.my-routine-contents{
+  width: 90%;
+  margin: 2vh auto;
+  border-top: 1px solid #E1E3E1;
+  h5{
+    margin-top:2vh;
+  }
+  table{
+    margin-top:2vh;
+  }
+  img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    filter: drop-shadow(5px 5px 5px #aaa);
+  }
+}
+
+.back-number-contents{
+  width: 90%;
+  margin: 2vh auto;
+  border-top: 1px solid #E1E3E1;
+  h5{
+    margin-top:2vh;
+  }
+  table{
+    margin-top:2vh;
+  }
+  img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    filter: drop-shadow(5px 5px 5px #aaa);
+  }
+}
