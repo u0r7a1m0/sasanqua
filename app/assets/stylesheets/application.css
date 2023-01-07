@@ -36,19 +36,24 @@ main{
 footer{
   width:100%;
   height: 10vh;
-  background-color: #E1E8E4;
   margin-top: auto;
-
+  /*background-image: url(/header_01.jpg);*/
+  /*background-image: url(/header_02.jpg);*/
+  background-image: url(/header_03.jpg);
+  /*background-position: bottom;*/
 }
 body {
-    background: #fafafa;
-    font-size: 20px;
+  background: #fafafa;
+  font-size: 20px;
 }
 
 header {
   width: 100%;
   height: 10vh;
-  background-color: #E1E8E4;
+  /*background-image: url(/header_01.jpg);*/
+  /*background-image: url(/header_02.jpg);*/
+  background-image: url(/header_03.jpg);
+  background-position: bottom;
   display: flex;
   margin:0 auto;
   padding: 0 10vw;
@@ -66,6 +71,14 @@ header {
   text-align: center;
   margin: auto 20px auto 0;
 }
+.nav_item a{
+  text-decoration: none;
+  color:gray;
+}
+.nav_item a:hover{
+  color:#79B39E;
+}
+
 .nav_item:last-child{
   margin-right:0;
 }
@@ -113,94 +126,175 @@ header {
 /*ここからハンバーガーメニュー*/
 @media screen and (max-width: 928px) {
   header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    height: 10vh;
-    background-color: #E1E8E4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 10vh;
+  background-color: #E1E8E4;
   }
   /* チェックボックスを非表示にする */
   .drawer_hidden {
-    display: none;
+  display: none;
   }
   /* ハンバーガーアイコンの設置スペース */
   .drawer_open {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 20px;
-    z-index: 100;/* 重なり順を一番上にする */
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 20px;
+  z-index: 100;/* 重なり順を一番上にする */
+  cursor: pointer;
   }
   /* ハンバーガーメニューのアイコン */
   .drawer_open span,
   .drawer_open span:before,
   .drawer_open span:after {
-    content: '';
-    display: block;
-    height: 3px;
-    width: 25px;
-    border-radius: 3px;
-    background: #333;
-    transition: 0.5s;
-    position: absolute;
+  content: '';
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 3px;
+  background: #333;
+  transition: 0.5s;
+  position: absolute;
   }
   /* 三本線の一番上の棒の位置調整 */
   .drawer_open span:before {
-    bottom: 8px;
+  bottom: 8px;
   }
   /* 三本線の一番下の棒の位置調整 */
   .drawer_open span:after {
-    top: 8px;
+  top: 8px;
   }
   /* アイコンがクリックされたら真ん中の線を透明にする */
   #drawer_input:checked ~ .drawer_open span {
-    background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0);
   }
   /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
   #drawer_input:checked ~ .drawer_open span::before {
-    bottom: 0;
-    transform: rotate(45deg);
+  bottom: 0;
+  transform: rotate(45deg);
   }
 
   #drawer_input:checked ~ .drawer_open span::after {
-    top: 0;
-    transform: rotate(-45deg);
+  top: 0;
+  transform: rotate(-45deg);
   }
   /* メニューのデザイン*/
   .nav_content {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    bottom: 100%;
-    left: 0%; /* メニューを画面の外に飛ばす */
-    z-index: 99;
-    background: rgb(110, 110, 110);
-    transition: .5s;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  bottom: 100%;
+  left: 0%; /* メニューを画面の外に飛ばす */
+  z-index: 99;
+  background: rgba(110, 110, 110, 0.8);
+  /*background-image: url(/header_01.jpg);*/
+  /*background-position: bottom;*/
+  transition: .5s;
   }
   .nav_list {
-    list-style: none;
-    display: block;
+  list-style: none;
+  display: block;
   }
   .nav_item{
-    margin: auto 0;
-    margin-bottom: 2vh;
-    margin-top:2vh;
+  margin: auto 0;
+  margin-bottom: 2vh;
+  margin-top:2vh;
   }
   .nav_item a {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
   }
   .nav_item:first-child{
-    padding-top:75vh;
+  padding-top:75vh;
   }
   /* アイコンがクリックされたらメニューを表示 */
   #drawer_input:checked ~ .nav_content {
-    bottom: 70%;/* メニューを画面に入れる */
+  bottom: 70%;/* メニューを画面に入れる */
   }
 }
+
+
+/*新規登録画面*/
+
+.form-control{
+  height: 2.4em;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #ccc inset;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom:10px;
+}
+.form-control:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+.new-customer-contents{
+  width:60%;
+  margin: 0 auto;
+}
+.new-customer-contents h3{
+  margin-bottom:20px;
+}
+.form-wrapper{
+  font-size:15px;
+  width:100%;
+}
+
+.image_form {
+  width: 1px;
+  height: 1px;
+  display: none;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+.image_input_btn{
+  background-color: #79B39E;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border: solid 1px #79B39E;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 11px;
+  color: #fff;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+}
+.image_btn{
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+.image_input_btn:hover {
+  background-color: #97DEC4;
+  border: solid 1px #97DEC4;
+}
+.bottom-text{
+  margin-top:20px;
+  font-size:13px;
+  /*border:none;*/
+}
+.bottom-text a{
+  text-decoration: none;
+  color:gray;
+}
+.bottom-text a:hover{
+  color:#79B39E;
+}
+@media screen and (max-width: 768px) {
+  .new-customer-contents{
+  width:90%;
+  margin: 0 auto;
+  }
+}
+
+
 
 

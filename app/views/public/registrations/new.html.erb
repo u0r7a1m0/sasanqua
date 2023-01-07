@@ -1,60 +1,64 @@
   <!--会員用　新規会員登録ページ-->
-
-
+<div class="new-customer-contents">
   <h3>■Sign up</h3>
 
+
+  <div class="form-wrapper">
       <%= form_with model: @customer ,url: customer_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
 
+    <!--ニックネーム-->
+    <div>
+      <%= f.label :'ニックネーム' %>
+    </div>
+    <div>
+      <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ジョン・タイター",class:'form-control' %>
+    </div>
 
-          <!--ニックネーム-->
+    <!--プロフィール画像-->
+    <div class="image_btn">
+      <label for="upload" class="image_input_btn">プロフィール画像をアップロード</label>
+      <input id="upload" type="file" name="upload" class="image_form">
+      <%#= f.file_field :profile_image, accept: "image/*", class: "image_form" %>
+    </div>
 
-          <div>
-            <%= f.label :'ニックネーム' %>
-          </div>
-          <div>
-            <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ジョン・タイター" %>
-          </div>
+    <!--メールアドレス-->
+    <div>
+      <%= f.label :メールアドレス %>
+    </div>
+    <div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,class:'form-control' %>
+    </div>
 
-          <!--プロフィール画像-->
-          <div>
-            <label for="inputImage">プロフィール画像</label>
-          </div>
-          <div>
-            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>
-          </div>
+    <!--パスワード-->
 
-          <!--メールアドレス-->
-          <div>
-            <%= f.label :メールアドレス %>
-          </div>
-          <div>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
-          </div>
+    <div>
+      <%= f.label :'パスワード' %>
+      <% if @minimum_password_length %><em>(<%= @minimum_password_length %> 文字以上)</em>
+      <% end %>
+    </div>
 
-          <!--パスワード-->
+    <div>
+      <%= f.password_field :password, autocomplete: "new_password" ,class:'form-control' %>
+    </div>
 
-          <div>
-            <%= f.label :'パスワード' %>
-            <% if @minimum_password_length %><em>(<%= @minimum_password_length %> 文字以上)</em>
-            <% end %>
-          </div>
+    <!--確認用パスワード-->
+    <div>
+      <%= f.label :'パスワード(確認用)' %>
+    </div>
+    <div>
+      <%= f.password_field :encrypted_password, autocomplete: "encrypted_password" ,class:'form-control' %>
+    </div>
 
-          <div>
-            <%= f.password_field :password, autocomplete: "new_password" %>
-          </div>
+    <div class="submit-btn">
 
-          <!--確認用パスワード-->
-          <div>
-            <%= f.label :'パスワード(確認用)' %>
-          </div>
-          <div>
-            <%= f.password_field :encrypted_password, autocomplete: "encrypted_password" %>
-          </div>
-
-
-            <%= f.submit '登録' %>
+      <%= f.submit "会員登録する" ,:class=>"image_input_btn btn" %>
+    </div>
 
       <% end %>
-      <h5>既に登録がお済みの方</h5>
-        <%= link_to 'こちら', new_customer_session_path %>からログインしてください。
+  </div>
+  <div class="bottom-text">
+    <p>既に登録がお済みの方</p>
+    <p><%= link_to 'こちら', new_customer_session_path %>からログインしてください。</p>
+  </div>
+</div>
