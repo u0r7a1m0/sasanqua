@@ -3,7 +3,6 @@ class Public::RoutinesController < ApplicationController
 
   def new
     @routine = Routine.new
-
   end
 
   def create
@@ -58,5 +57,7 @@ class Public::RoutinesController < ApplicationController
   def routine_params
     params.require(:frequencie).permit(:routine_id, :frequencie)
   end
-
+  def customer_params
+    params.require(:customer).permit(:customer_id, :nickname, :is_deleted, :created_at, :updated_at)
+  end
 end

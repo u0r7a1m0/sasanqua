@@ -7,12 +7,23 @@
   p{
     font-size:12px;
   }
+  h3{
+    font-size:20px;
+    border-top: 1px solid #E2E8E1;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+}
+.routine-contents>h3:first-child{
+  border-top:none;
+  padding-top: 0;
+  margin-top:0;
 }
 
 .new-form-control{
-  height: 2.4em;
-  width: 70%;
-  padding: 0 16px;
+  height: 2em;
+  width: 500px;
+  padding: 0 12px;
   border-radius: 4px;
   border: none;
   box-shadow: 0 0 0 1px #ccc inset;
@@ -23,4 +34,42 @@
 }
 .routine_image_form{
   margin-top:20px;
+}
+
+.short-text{
+  height: 1.8em;
+  width: 200px;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #ccc inset;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom:10px;
+}
+.short-text:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+.after-btn{
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border: solid 1px gray;
+  font-weight: bold;
+  font-size: 11px;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+  border-radius: 100px;
+  color: gray;
+  text-decoration: none;
+  margin-left: 30px;
+}
+.after-btn:hover {
+  border: solid 1px #E2E8E1;
+  color: #E2E8E1;
+}
+
+.routine-btns{
+  margin-top: 20px;
 }

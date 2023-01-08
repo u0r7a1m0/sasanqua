@@ -49,3 +49,24 @@
     filter: drop-shadow(5px 5px 5px #aaa);
   }
 }
+
+.my-routine{
+  display:flex;
+}
+.my-routine>div{
+  margin-left: auto;
+  font-size:35px;
+}
+.edit-btn{
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border: solid 1px gray;
+  font-weight: bold;
+  font-size: 11px;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+  border-radius: 100px;
+  color: gray;
+  text-decoration: none;
+
+}

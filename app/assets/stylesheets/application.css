@@ -38,8 +38,10 @@ footer{
   height: 10vh;
   margin-top: auto;
   /*background-image: url(/header_01.jpg);*/
-  background-image: url(/header_02.jpg);
+  /*background-image: url(/header_02.jpg);*/
   /*background-image: url(/header_03.jpg);*/
+  background-image: url(/header_04.jpg);
+  /*background-image: url(/header_05.jpg);*/
   /*background-position: bottom;*/
 }
 body {
@@ -51,8 +53,10 @@ header {
   width: 100%;
   height: 10vh;
   /*background-image: url(/header_01.jpg);*/
-  background-image: url(/header_02.jpg);
+  /*background-image: url(/header_02.jpg);*/
   /*background-image: url(/header_03.jpg);*/
+  background-image: url(/header_04.jpg);
+  /*background-image: url(/header_05.jpg);*/
   background-position: bottom;
   display: flex;
   margin:0 auto;

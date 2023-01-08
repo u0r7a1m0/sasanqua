@@ -1,14 +1,23 @@
 <div class="customer-contents">
   <div class="my-page-top">
-    <p><img src="/header_01.jpg"></p>
-    <p>xxさん</p>
-    <p>編集</p>
+    <!--<p><img src="/header_01.jpg"></p>-->
+    <%= image_tag current_customer.get_profile_image(100,100) %>
+    <p><%= current_customer.nickname %> さん</p>
+    <p><%= link_to "編集" ,customers_edit_path(current_customer.id), class:"edit-btn" %></p>
   </div>
 
   <!--<span class="borderline"></span>-->
 
   <div class="my-routine-contents">
-    <h5>■My Routine</h5>
+    <div class="my-routine">
+      <h5>■My Routine</h5>
+    <div>
+
+        <%= link_to new_routine_path do %>
+        <i class="fa-regular fa-square-plus"></i>
+        <% end %>
+    </div>
+    </div>
 
     <table class="table">
       <%# @routines.each do |routine| %>
@@ -20,6 +29,7 @@
       </tr>
       <%# end %>
     </table>
+
   </div>
 
   <!--<span class="borderline"></span>-->
