@@ -2,7 +2,6 @@
 <div class="new-customer-contents">
   <h3>■Sign up</h3>
 
-
   <div class="form-wrapper">
       <%= form_with model: @customer ,url: customer_registration_path do |f| %>
       <%= render "public/shared/error_messages", resource: resource %>
@@ -31,13 +30,11 @@
     </div>
 
     <!--パスワード-->
-
     <div>
       <%= f.label :'パスワード' %>
       <% if @minimum_password_length %><em>(<%= @minimum_password_length %> 文字以上)</em>
       <% end %>
     </div>
-
     <div>
       <%= f.password_field :password, autocomplete: "new_password" ,class:'form-control' %>
     </div>
@@ -47,14 +44,12 @@
       <%= f.label :'パスワード(確認用)' %>
     </div>
     <div>
-      <%= f.password_field :encrypted_password, autocomplete: "encrypted_password" ,class:'form-control' %>
+      <%= f.password_field :password_confirmation, autocomplete: "encrypted_password" ,class:'form-control' %>
     </div>
 
     <div class="submit-btn">
-
       <%= f.submit "会員登録する" ,:class=>"image_input_btn" %>
     </div>
-
       <% end %>
   </div>
   <div class="bottom-text">
