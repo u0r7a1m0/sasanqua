@@ -3,7 +3,7 @@
     <!--<p><img src="/header_01.jpg"></p>-->
     <%= image_tag current_customer.get_profile_image(100,100) %>
     <p><%= current_customer.nickname %> さん</p>
-    <p><%= link_to "編集" ,customers_edit_path(current_customer.id), class:"edit-btn" %></p>
+    <p><%= link_to "編集" ,customers_edit_path, class:"edit-btn" %></p>
   </div>
 
   <!--<span class="borderline"></span>-->

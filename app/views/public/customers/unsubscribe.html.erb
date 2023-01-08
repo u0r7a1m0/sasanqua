@@ -1,0 +1,13 @@
+<div class="withdraw-contents">
+    <h6><b>本当に退会しますか？</b></h6>
+
+      <p>退会すると、会員登録情報や<br />
+      これまでの登録履歴が閲覧できなくなります。<br />
+      退会する場合は、「退会する」をクリックしてください。</p>
+      <div class="btns">
+
+      <%= link_to "マイページへ戻る", my_page_path,class: "my-page-btn" %>
+      <%= link_to "退会する", withdraw_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？", class: "withdraw-btn" %>
+      </div>
+
+</div>

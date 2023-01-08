@@ -70,3 +70,48 @@
   text-decoration: none;
 
 }
+
+
+// editページ
+.customer-edit-contents{
+  width: 50%;
+  margin: 0 auto;
+}
+.edit-btns {
+  display: flex;
+}
+
+
+// 退会ページ
+.withdraw-contents{
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  h6{
+    font-size: 23px;
+    margin-bottom: 2vh;
+
+  }
+  p{
+    font-size: 18px;
+  }
+  .btns{
+    margin-top: 4vh;
+    font-size: 15px;
+  }
+  .btns a{
+    text-decoration: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+    border-radius: 50px;
+    border: 1px solid gray;
+    color: gray;
+  }
+  .btns a:hover{
+    color: white;
+    background-color: #73736C;
+  }
+  .my-page-btn{
+    margin-right: 50px;
+  }
+}

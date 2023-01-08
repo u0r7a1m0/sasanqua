@@ -1,8 +1,20 @@
 class Public::CustomersController < ApplicationController
   def show
+    @customer = current_customer
+    @routines = current_customer.routines
   end
 
   def edit
+
+  end
+  def withdraw
+    @customer = current_customer
+		#is_deletedカラムにフラグを立てる(defaultはfalse)
+    @customer.update(is_deleted: true)
+    #ログアウトさせる
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
   end
   private
   def customer_params
