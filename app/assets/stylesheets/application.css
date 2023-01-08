@@ -126,62 +126,62 @@ header {
 /*ここからハンバーガーメニュー*/
 @media screen and (max-width: 928px) {
   header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: 10vh;
-  background-color: #E1E8E4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    background-color: #E1E8E4;
   }
   /* チェックボックスを非表示にする */
   .drawer_hidden {
-  display: none;
+    display: none;
   }
   /* ハンバーガーアイコンの設置スペース */
   .drawer_open {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 20px;
-  z-index: 100;/* 重なり順を一番上にする */
-  cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 40px;
+    z-index: 100;/* 重なり順を一番上にする */
+    cursor: pointer;
   }
   /* ハンバーガーメニューのアイコン */
   .drawer_open span,
   .drawer_open span:before,
   .drawer_open span:after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 25px;
-  border-radius: 3px;
-  background: #333;
-  transition: 0.5s;
-  position: absolute;
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background: #333;
+    transition: 0.5s;
+    position: absolute;
   }
   /* 三本線の一番上の棒の位置調整 */
   .drawer_open span:before {
-  bottom: 8px;
+    bottom: 8px;
   }
   /* 三本線の一番下の棒の位置調整 */
   .drawer_open span:after {
-  top: 8px;
+    top: 8px;
   }
   /* アイコンがクリックされたら真ん中の線を透明にする */
   #drawer_input:checked ~ .drawer_open span {
-  background: rgba(255, 255, 255, 0);
+    background: rgba(255, 255, 255, 0);
   }
   /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
   #drawer_input:checked ~ .drawer_open span::before {
-  bottom: 0;
-  transform: rotate(45deg);
+    bottom: 0;
+    transform: rotate(45deg);
   }
 
   #drawer_input:checked ~ .drawer_open span::after {
-  top: 0;
-  transform: rotate(-45deg);
+    top: 0;
+    transform: rotate(-45deg);
   }
   /* メニューのデザイン*/
   .nav_content {
