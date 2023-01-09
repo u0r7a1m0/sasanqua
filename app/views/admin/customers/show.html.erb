@@ -1,2 +1,27 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<div class="customer-edit-contents">
+
+  <h5>■会員詳細画面</h5>
+
+  <div class="customer-edit-form">
+    <div>
+      <%= image_tag @customer.get_profile_image(100,100) %>
+        <%#= @customer.profile_image %>
+
+      <!--氏名-->
+      <div>
+        <p>ニックネーム</p>
+        <div>
+          <%= @customer.nickname %>
+        </div>
+      </div>
+      <!--メールアドレス-->
+      <div>
+        <p>メールアドレス</p>
+        <div>
+          <%= @customer.email %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

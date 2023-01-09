@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2023_01_08_065452) do
     t.string "nickname", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "is_deleted", default: "", null: false
+    t.boolean "is_deleted", default: false, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2023_01_08_065452) do
   end
 
   create_table "frequencies", force: :cascade do |t|
+    t.integer "frequencie"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

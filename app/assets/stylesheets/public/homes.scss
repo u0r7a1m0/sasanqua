@@ -21,17 +21,21 @@
 .sub-title{
   margin-bottom: 5vw;
 }
-.txt{
+.top-txt{
   margin-top: 2vw;
   font-size: 15px;
 }
-.txt a{
+.top-txt a{
   border-bottom: dotted;
   border-color:#1C9149;
   border-width: 3px;
 }
-.txt a:hover{
+.top-txt a:hover{
   color:#79B39E;
+}
+.top-wraper>div a:hover{
+    color: white;
+    background-color: #73736C;
 }
 
 // プライバシーポリシーページ

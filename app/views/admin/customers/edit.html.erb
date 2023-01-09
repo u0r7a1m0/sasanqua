@@ -1,2 +1,36 @@
-<h1>Customers#edit</h1>
-<p>Find me in app/views/customers/edit.html.erb</p>
+<div class="customer-edit-contents">
+
+  <h5>■会員情報編集</h5>
+
+  <div class="customer-edit-form">
+    <div>
+      <%= form_with model: @customer ,url: information_path(current_customer.id) do |f| %>
+        <p><%= f.label :'プロフィール画像' %></p>
+        <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"profile_image_icon" %></p>
+
+      <!--氏名-->
+      <div>
+        <p><%= f.label :'ニックネーム' %></p>
+        <div>
+          <%= f.text_field :nickname, autofocus: true, autocomplete: "last_name", placeholder: "ジョン・タイター", class: "form-control " %>
+        </div>
+      </div>
+      <!--メールアドレス-->
+      <div>
+        <p><%= f.label :メールアドレス %></p>
+        <div>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="btns">
+          <button type="submit" class="update-btn">
+            変更
+          </button>
+
+          <%= link_to '退会する', unsubscribe_path, class:"withdraw-btn" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

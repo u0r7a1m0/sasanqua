@@ -5,8 +5,20 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-
+    @customer = current_customer
   end
+
+  def update
+    @customer = current_customer
+    if @customer.update(customer_params)
+    # 更新に成功したときの処理
+      flash[:notice]="更新完了しました！"
+      redirect_to my_page_path
+    else
+      render 'edit'
+    end
+  end
+
   def withdraw
     @customer = current_customer
 		#is_deletedカラムにフラグを立てる(defaultはfalse)
@@ -16,6 +28,7 @@ class Public::CustomersController < ApplicationController
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
+
   private
   def customer_params
     params.require(:customer).permit(:customer_id, :profile_image, :nickname, :is_deleted, :created_at, :updated_at)

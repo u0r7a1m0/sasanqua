@@ -57,7 +57,7 @@
   margin-left: auto;
   font-size:35px;
 }
-.edit-btn{
+.edit-btn, .update-btn, .withdraw-btn{
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
   border: solid 1px gray;
@@ -68,17 +68,34 @@
   border-radius: 100px;
   color: gray;
   text-decoration: none;
+}
+.edit-btn:hover, .update-btn:hover, .withdraw-btn:hover{
+    color: white;
+    background-color: #73736C;
 
 }
-
 
 // editページ
 .customer-edit-contents{
   width: 50%;
   margin: 0 auto;
+  h5{
+    margin-bottom: 30px;
+  }
+
 }
 .edit-btns {
   display: flex;
+}
+.customer-edit-form p{
+  font-size: 12px;
+}
+.profile_image_icon{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  filter: drop-shadow(5px 5px 5px #aaa);
 }
 
 
