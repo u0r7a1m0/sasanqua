@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2023_01_08_065452) do
   end
 
   create_table "frequencies", force: :cascade do |t|
-    t.integer "frequencie"
+    t.integer "frequency"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -3,6 +3,10 @@ class Public::RoutinesController < ApplicationController
 
   def new
     @routine = Routine.new
+    # @task = @routine.tasks.new
+    # @implementation_time = @routine.implementation_times.new
+    # @frequency = @routine.frequencies.new
+    # @period = @routine.periods.new
   end
 
   def create
@@ -54,8 +58,11 @@ class Public::RoutinesController < ApplicationController
   def implementation_time_params
     params.require(:implementation_time).permit(:accurate_time, :approximate_time, :routine_id)
   end
-  def routine_params
+  def frequencie_params
     params.require(:frequencie).permit(:routine_id, :frequencie)
+  end
+  def priod
+    params.require(:frequencie).permit(:routine_id, :period)
   end
   def customer_params
     params.require(:customer).permit(:customer_id, :nickname, :is_deleted, :created_at, :updated_at)

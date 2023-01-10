@@ -8,6 +8,12 @@ class Routine < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   belongs_to :customer
+  accepts_nested_attributes_for :tasks, allow_destroy: true  # fields_for（後述）に必要
+  accepts_nested_attributes_for :implementation_times, allow_destroy: true
+  accepts_nested_attributes_for :frequencies, allow_destroy: true
+  accepts_nested_attributes_for :periods, allow_destroy: true
+
+
 
 
   # def get_routine_image(width, height)

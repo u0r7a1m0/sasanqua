@@ -2,7 +2,7 @@ class CreateFrequencies < ActiveRecord::Migration[6.1]
   def change
     create_table :frequencies do |t|
 
-      t.integer :frequencie
+      t.integer :frequency
 
       t.timestamps
     end
