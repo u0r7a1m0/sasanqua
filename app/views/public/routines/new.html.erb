@@ -2,7 +2,7 @@
   <h3>■What is your goal?</h3>
   <p>目標はなんですか？</p>
 
-  <%= form_with model: @customer ,url: customer_session_path do |f| %>
+  <%= form_with model: @routine ,url: new_routine_path do |f| %>
   <%= f.text_field :target, autofocus: true, placeholder: "ナイスバディになって彼氏を見返す！", class: "new-form-control" %>
 
   <p><i class="fa-solid fa-camera-retro"></i>こういう人になりたい！ここに行きたい！など参考画像があればアップしてみてください！<br />毎日、目にしてモチベーションを上げましょう！</p>
@@ -14,18 +14,14 @@
 
     <h3>■What do you routineize?</h3>
       <p>何をルーティン化しますか？</p>
-      <div>
-          <p>
-            <%= f.radio_button :main_task, true, checked: true %>
-            <%= f.text_field :main_task, autofocus: true, placeholder: "日記を書く", class: "short-text" %>
-          </p>
-      </div>
+
       <div>
         <p>
           <%= f.radio_button :main_task, true %>
           <%= f.text_field :main_task, autofocus: true, placeholder: "筋トレする", class: "short-text" %>
         </p>
         <div>
+          <p>※任意※</p>
           <p>
             01.<%= f.text_field :sub_task, autofocus: true, placeholder: "腹筋", class: "short-text" %>
           </p>
@@ -44,25 +40,28 @@
       <div>
           <p>
             <%= f.radio_button :accurate_time, true, checked: true %>
-            <%= f.label :"時刻を設定" %>
+            <%= f.label :accurate_time, "時刻を設定", for: 'routine_accurate_time_true' %>
+            <div><%= f.text_field :approximate_time_after, id: 'hoge', placeholder: "何時でもOK、食事後など", class: "short-text display-block" %></div>
           </p>
       </div>
       <div>
         <p>
           <%= f.radio_button :approximate_time, true %>
-          <%= f.label :"何時でもOK" %>
+          <%= f.label :approximate_time, "ざっくり時間", for: 'routine_approximate_time_true' %>
+          <div><%= f.text_field :approximate_time_after, autofocus: true, placeholder: "何時でもOK、食事後など", class: "short-text display-none" %></div>
+        </p>
+      </div>
+
+      <div>
+        <p>
+          <%#= f.radio_button :approximate_time, true %>
+          <%#= f.text_field :approximate_time_after, autofocus: true, placeholder: "食事", class: "short-text" %>
         </p>
       </div>
       <div>
         <p>
-          <%= f.radio_button :approximate_time, true %>
-          <%= f.text_field :approximate_time_after, autofocus: true, placeholder: "食事", class: "short-text" %>後
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= f.radio_button :approximate_time, true %>
-          <%= f.text_field :approximate_time_after, autofocus: true, placeholder: "寝る", class: "short-text" %>前
+          <%#= f.radio_button :approximate_time, true %>
+          <%#= f.text_field :approximate_time_after, autofocus: true, placeholder: "寝る", class: "short-text" %>
         </p>
 
       </div>
@@ -145,7 +144,7 @@
       </div>
       <div>
         <p>
-          <%= f.radio_button :frequencie, true %>
+          <%= f.radio_button :period, true %>
           <%= f.label :"3日に1回" %>
         </p>
       </div>
@@ -170,3 +169,19 @@
     <% end %>
 
 </div>
+
+<script>
+  // 時刻を設定をクリック(選択)したとき
+  $('[name="routine[accurate_time]"]').click(function() {
+    $('input[name="routine[approximate_time]"]').prop('checked', false); // routine[approximate_time]のラジオボタンをoffにする
+    $('#hoge').removeClass('display-none').addClass('display-block'); // id: hogeを表示する
+    $('#routine_approximate_time_after').removeClass('display-block').addClass('display-none'); // id: routine_approximate_time_afterを非表示にする
+  });
+
+  // ざっくり時間をクリック(選択)したとき
+  $('[name="routine[approximate_time]"]').click(function() {
+    $('input[name="routine[accurate_time]"]').prop('checked', false); // routine[accurate_time]のラジオボタンをoffにする
+    $('#hoge').removeClass('display-block').addClass('display-none'); // id: hogeを非表示にする
+    $('#routine_approximate_time_after').removeClass('display-none').addClass('display-block'); // id: routine_approximate_time_afterを表示する
+  });
+</script>

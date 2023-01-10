@@ -16,9 +16,9 @@
 
     <!--プロフィール画像-->
     <div class="image_btn">
-      <label for="upload" class="image_input_btn">プロフィール画像をアップロード</label>
-      <input id="upload" type="file" name="upload" class="image_form">
-      <%#= f.file_field :profile_image, accept: "image/*", class: "image_form" %>
+      <!--<label for="upload" class="image_input_btn">プロフィール画像をアップロード</label>-->
+      <!--<input id="upload" type="file" name="upload" class="image_form">-->
+      <%= f.file_field :profile_image, placeholder: "", accept: "image/*" %>
     </div>
 
     <!--メールアドレス-->
