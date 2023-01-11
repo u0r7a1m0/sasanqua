@@ -1,179 +1,169 @@
 <div class="routine-contents">
   <h3>■What is your goal?</h3>
-  <p>目標はなんですか？</p>
+  <p><span>目標はなんですか？</span></p>
 
   <%= form_with model: @routine,url: new_routine_path do |f| %>
-  <%= f.text_field :target, autofocus: true, placeholder: "ナイスバディになって彼氏を見返す！", class: "new-form-control" %>
+    <%= f.text_field :target, autofocus: true, placeholder: "ナイスバディになって彼氏を見返す！", class: "new-form-control" %>
 
-  <p><i class="fa-solid fa-camera-retro"></i>こういう人になりたい！ここに行きたい！など参考画像があればアップしてみてください！<br />毎日、目にしてモチベーションを上げましょう！</p>
+    <p><i class="fa-solid fa-camera-retro"></i><span>こういう人になりたい！ここに行きたい！</span>など参考画像があればアップしてみてください！<br/>毎日、目にしてモチベーションを上げましょう！</p>
 
-    <!--<label for="upload" class="image_input_btn">画像をアップロード</label>-->
-    <!--<input id="upload" type="file" name="upload" class="image_form">-->
+      <!--<label for="upload" class="image_input_btn">画像をアップロード</label>-->
+      <!--<input id="upload" type="file" name="upload" class="image_form">-->
     <%= f.file_field :routine_image, placeholder: "", accept: "image/*", class: "routine_image_form" %>
 
 
     <h3>■What do you routineize?</h3>
-      <p>何をルーティン化しますか？</p>
+    <p><span>何をルーティン化しますか？</span></p>
 
-      <div>
-        <p>
-          <%= fields_for :tasks do |task| %>
-          <%= task.text_field :main_task, autofocus: true, placeholder: "日記を書く、筋トレするetc...", class: "short-text" %>
-        </p>
+    <div>
+      <p>
+        <%= f.fields_for :tasks do |task| %>
+          <%= task.text_field :main_task, placeholder: "日記を書く、筋トレするetc...", class: "short-text" %>
+          <div>
+            <p>サブタスク※任意※</p>
+            <span>
+              01.<%= task.text_field :sub_task, placeholder: "腹筋", class: "short-text" %>
+            </span>
+          </div>
+          <div>
+            <span>
+              02.<%= task.text_field :sub_task, placeholder: "腕立て伏せ", class: "short-text" %>
+
+              <i class="fa-regular fa-square-plus"></i>
+            </span>
+          </div>
+
+        <% end %>
+      </p>
+    </div>
+
+        <h3>■When?</h3>
+        <p><span>いつしますか？</span></p>
+              <%= f.fields_for :implementation_times do |implementation_time| %>
         <div>
-          <p>サブタスク※任意※</p>
-          <p>
-            01.<%= task.text_field :sub_task, autofocus: true, placeholder: "腹筋", class: "short-text" %>
-          </p>
+            <p>
+              <%= implementation_time.radio_button :accurate_time, true, checked: true %>
+              <%= implementation_time.label :accurate_time, "時刻を設定", for: 'routine_accurate_time_true' %>
+              <%= implementation_time.time_field :accurate_time, id: 'hoge', class: 'short-text display-block'%>
+              <div><%#= f.text_field :approximate_time_after, id: 'hoge', placeholder: "何時でもOK、食事後など", class: "short-text display-block" %></div>
+            </p>
         </div>
         <div>
           <p>
-            02.<%= task.text_field :sub_task, autofocus: true, placeholder: "腕立て伏せ", class: "short-text" %>
-
-            <i class="fa-regular fa-square-plus"></i>
+            <%= implementation_time.radio_button :approximate_time, true %>
+            <%= implementation_time.label :approximate_time, "ざっくり時間", for: 'routine_approximate_time_true' %>
+            <div><%= implementation_time.text_field :approximate_time, placeholder: "何時でもOK、食事後など", class: "short-text display-none" %></div>
           </p>
         </div>
         <% end %>
-      </div>
-
-      <h3>■When?</h3>
-      <p>いつしますか？</p>
-            <%= fields_for :implementation_times do |implementation_time| %>
-      <div>
-          <p>
-            <%= implementation_time.radio_button :accurate_time, true, checked: true %>
-            <%= implementation_time.label :accurate_time, "時刻を設定", for: 'routine_accurate_time_true' %>
-            <%= implementation_time.time_field :accurate_time, id: 'hoge', class: 'short-text display-block'%>
-            <div><%#= f.text_field :approximate_time_after, id: 'hoge', placeholder: "何時でもOK、食事後など", class: "short-text display-block" %></div>
-          </p>
-      </div>
-      <div>
-        <p>
-          <%= implementation_time.radio_button :approximate_time, true %>
-          <%= implementation_time.label :approximate_time, "ざっくり時間", for: 'routine_approximate_time_true' %>
-          <div><%= implementation_time.text_field :approximate_time, autofocus: true, placeholder: "何時でもOK、食事後など", class: "short-text display-none" %></div>
-        </p>
-      </div>
-      <% end %>
-
-      <div>
-        <p>
-          <%#= f.radio_button :approximate_time, true %>
-          <%#= f.text_field :approximate_time_after, autofocus: true, placeholder: "食事", class: "short-text" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%#= f.radio_button :approximate_time, true %>
-          <%#= f.text_field :approximate_time_after, autofocus: true, placeholder: "寝る", class: "short-text" %>
-        </p>
-
-      </div>
-      <h3>■How often?</h3>
-      <p>頻度は？</p>
-      <%= fields_for :frequencies do |frequency| %>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequencie, true %>
-          <%= frequency.label :"毎日 1日に1回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequencie, true %>
-          <%= frequency.label :"毎日 1日に2回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequencie, true %>
-          <%= f.label :"毎日 1日に3回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequencie, true %>
-          <%= frequency.label :"2日に1回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequencie, true %>
-          <%= frequency.label :"3日に1回" %>
-        </p>
-      </div>
-      <% end %>
-      <!--頻度ここから-->
-      <h3>■How long is the period?</h3>
-      <p>期間は？</p>
-      <%= fields_for :periods do |period| %>
-        <div>
-        <p>
-
-          <%= period.radio_button :period, true %>
-          <%= period.label :"ずっと続ける" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"1週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"2週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"3週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"4週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"1ヶ月" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"1年間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"3日に1回" %>
-        </p>
-      </div>
-      <% end %>
 
 
-      <h3>■公開設定</h3>
+        </div>
+        <h3>■How often?</h3>
+        <p><span>頻度は？</span></p>
+        <%= f.fields_for :frequencies do |frequency| %>
         <div>
           <p>
-          <%= f.radio_button :public_status, true, checked: true %>
-          <%= f.label :"公開" %>
-          <%= f.radio_button :public_status, false %>
-          <%= f.label :"非公開" %>
-
+            <%= frequency.radio_button :frequency, true %>
+            <%= frequency.label :"毎日 1日に1回" %>
           </p>
         </div>
+        <div>
+          <p>
+            <%= frequency.radio_button :frequency, true %>
+            <%= frequency.label :"毎日 1日に2回" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= frequency.radio_button :frequency, true %>
+            <%= f.label :"毎日 1日に3回" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= frequency.radio_button :frequency, true %>
+            <%= frequency.label :"2日に1回" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= frequency.radio_button :frequency, true %>
+            <%= frequency.label :"3日に1回" %>
+          </p>
+        </div>
+        <% end %>
+        <!--頻度ここから-->
+        <h3>■How long is the period?</h3>
+        <p><span>期間は？</span></p>
+        <%= f.fields_for :periods do |period| %>
+          <div>
+          <p>
 
-      <div class="routine-btns">
-         <%= f.submit "ルーティンを登録" ,:class=>"image_input_btn" %>
-         <%= link_to "後で設定" ,my_page_path ,class:"after-btn" %>
-      </div>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"ずっと続ける" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"1週間" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"2週間" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"3週間" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"4週間" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"1ヶ月" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"1年間" %>
+          </p>
+        </div>
+        <div>
+          <p>
+            <%= period.radio_button :period, true %>
+            <%= period.label :"3日に1回" %>
+          </p>
+        </div>
+        <% end %>
+
+
+        <h3>■公開設定</h3>
+          <div>
+            <p>
+            <%= f.radio_button :public_status, true, checked: true %>
+            <%= f.label :"公開" %>
+            <%= f.radio_button :public_status, false %>
+            <%= f.label :"非公開" %>
+
+            </p>
+          </div>
+
+        <div class="routine-btns">
+           <%= f.submit "ルーティンを登録" ,:class=>"image_input_btn" %>
+           <%= link_to "後で設定" ,my_page_path ,class:"after-btn" %>
+        </div>
 
     <% end %>
 

@@ -3,10 +3,11 @@ class Public::RoutinesController < ApplicationController
 
   def new
     @routine = Routine.new
-    # @task = @routine.tasks.new
-    # @implementation_time = @routine.implementation_times.new
-    # @frequency = @routine.frequencies.new
-    # @period = @routine.periods.new
+    @routine.tasks.build
+    @routine.implementation_times.build
+    @routine.frequencies.build
+    @routine.periods.build
+
   end
 
   def create
@@ -30,7 +31,6 @@ class Public::RoutinesController < ApplicationController
 
   def show
     @routine = Routine.find(params[:id])
-
   end
 
   def edit
