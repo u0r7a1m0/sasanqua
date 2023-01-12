@@ -1,4 +1,4 @@
 class Frequency < ApplicationRecord
   belongs_to :routine
-  validates :frequencie, presence: true
+  validates :frequency, presence: true
 end

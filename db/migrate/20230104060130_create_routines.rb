@@ -4,7 +4,7 @@ class CreateRoutines < ActiveRecord::Migration[6.1]
 
       t.string :target,            null: false, default: ""
       t.boolean :public_status,    null: false, default: true
-
+      t.integer :customer_id,       null: false
       t.timestamps
     end
   end

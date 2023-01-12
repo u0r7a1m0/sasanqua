@@ -12,15 +12,16 @@ class Public::RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
-      # binding.pry
+    @routine.customer_id = current_customer.id
+    # binding.pry
     if @routine.save
     # 投稿成功した場合
     flash[:notice]="登録完了しました！"
     redirect_to my_page_path
     else
     # 投稿が失敗した場合
-    @routine = Routine.new
-    render :new
+    # @routine = Routine.new
+    redirect_to new_routine_path
     end
   end
 
@@ -49,21 +50,32 @@ class Public::RoutinesController < ApplicationController
   end
 
   private
+  # def routine_params
+  #   params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id)
+  # end
+  # def task_params
+  #   params.require(:task).permit(:routine_id, :main_task, :sub_task)
+  # end
+  # def implementation_time_params
+  #   params.require(:implementation_time).permit(:accurate_time, :approximate_time, :routine_id)
+  # end
+  # def frequencie_params
+  #   params.require(:frequencie).permit(:routine_id, :frequency)
+  # end
+  # def priod
+  #   params.require(:frequencie).permit(:routine_id, :period)
+  # end
+  # 複数モデル紐付けのパラムス
   def routine_params
-    params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id)
+    params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
+                                    tasks_attributes: [:routine_id, :main_task, :sub_task],
+                                    implementation_times_attributes: [:accurate_time, :approximate_time, :routine_id],
+                                    frequencies_attributes: [:routine_id, :frequency],
+                                    periods_attributes: [:routine_id, :period]
+                                    )
   end
-  def task_params
-    params.require(:task).permit(:routine_id, :main_task, :sub_task)
-  end
-  def implementation_time_params
-    params.require(:implementation_time).permit(:accurate_time, :approximate_time, :routine_id)
-  end
-  def frequencie_params
-    params.require(:frequencie).permit(:routine_id, :frequencie)
-  end
-  def priod
-    params.require(:frequencie).permit(:routine_id, :period)
-  end
+
+
   def customer_params
     params.require(:customer).permit(:customer_id, :nickname, :is_deleted, :created_at, :updated_at)
   end

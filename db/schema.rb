@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2023_01_08_065452) do
   create_table "routines", force: :cascade do |t|
     t.string "target", default: "", null: false
     t.boolean "public_status", default: true, null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
