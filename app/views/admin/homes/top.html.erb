@@ -6,7 +6,7 @@
     <table cellpadding="20">
       <thead>
       <tr>
-        <th>会員ID</th>
+        <th>登録日</th>
         <th>ニックネーム</th>
         <th>メールアドレス</th>
         <th>ステータス</th>
@@ -15,7 +15,7 @@
       </thead>
       <% @customers.each do |customer| %>
       <tr>
-        <td><%= customer.id %></td>
+        <td><%= customer.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= customer.nickname %></td>
         <td><%= customer.email %></td>
         <%if customer.is_deleted %>

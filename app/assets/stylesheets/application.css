@@ -14,16 +14,12 @@
  *= require_self
  */
  /*@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap')*/
-@font-face {
-  font-family: 'Amatic SC';
-  src: url("/Amatic_SC");
-}
+
 
 *{
   box-sizing: border-box;
   margin:0;
   padding:0;
-  /*font-family: 'Amatic SC';*/
 }
 main{
   margin:5vw;
@@ -47,6 +43,9 @@ footer{
 body {
   background: #fafafa;
   font-size: 20px;
+  /*font-family: monospace;*/
+  font-family: 'Andale Mono', sans-serif;
+  font-weight: 100;
 }
 
 header {
@@ -89,23 +88,26 @@ header {
 .logo {
   font-size: 24px;
   height: 10vh;
-  text-align:center;
-  line-height: 10vh;
   margin-right: auto;
 }
 .logo img{
-  width:40px;
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 60px;  /* 縦横を同じ値にする */
+  height: 60px;  /* 縦横を同じ値にする */
   position: relative;
-  top:10px;
-  margin-right:10px;
+  top:10%;
+}
+.under-line-logo{
+  height: 10vh;
+  text-decoration: none;
+  color: gray;
+  position: relative;
+  bottom:20%;
+
 }
 .under-line{
   text-decoration: none;
   color: #1C9149;
-}
-.under-line-logo{
-  text-decoration: none;
-  color: gray;
 }
 #drawer_input {
   display: none;
