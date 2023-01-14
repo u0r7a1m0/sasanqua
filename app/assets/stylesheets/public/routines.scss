@@ -85,3 +85,14 @@
 .routine-contents>span {
   background:linear-gradient(transparent 60%, #ff6 60%);
 }
+// index
+.routine-contents>table img{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  filter: drop-shadow(5px 5px 5px #aaa);
+}
+.routine_target{
+  text-align: left;
+}

@@ -1,2 +1,21 @@
-<h1>Public::Routines#index</h1>
-<p>Find me in app/views/public/routines/index.html.erb</p>
+<div class="routine-contents">
+  <h3>■All Routine</h3>
+
+  <table>
+    <% @routines.each do |routine| %>
+    <tr>
+      <td><img src="/level_10.jpg"></td>
+      <td style="width:30%">
+        <div class="routine_target"><h4><b><%= routine.target %></b></h4></div>
+        <!--メインタスク-->
+        <div>&emsp;	<%= routine.tasks.build %></div>
+      </td>
+      <td>by&emsp;<%= routine.customer.nickname %></td>
+      <td>
+        <button class="btn-show">☆</button>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+</div>

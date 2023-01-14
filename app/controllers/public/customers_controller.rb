@@ -2,6 +2,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @routines = current_customer.routines
+    # @routine = Routine.find(params[:id])
   end
 
   def edit

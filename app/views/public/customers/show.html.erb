@@ -1,7 +1,7 @@
 <div class="customer-contents">
   <div class="my-page-top">
     <!--<p><img src="/header_01.jpg"></p>-->
-    <%= image_tag current_customer.profile_image,size: '100x100', url: my_page_path %>
+    <%= image_tag @customer.profile_image,size: '100x100', url: my_page_path %>
     <p><%= current_customer.nickname %> さん</p>
     <p><%= link_to "編集" ,customers_edit_path, class:"edit-btn" %></p>
   </div>
@@ -20,14 +20,17 @@
     </div>
 
     <table class="table">
-      <%# @routines.each do |routine| %>
+      <% @routines.each do |routine| %>
       <tr>
         <td style="width:20%"><img src="/level_01.jpg"></td>
-        <td>2023/xx/xx</td>
-        <td>メインタスク</td>
+        <td><%= l routine.created_at %></td>
+        <td>
+          <h4><i class="fa-solid fa-flag"></i><%= routine.target %></h4>
+          <div>メインタスク</div>
+        </td>
         <td><%= link_to 'show', my_page_path, class:"show-btn" %></td>
       </tr>
-      <%# end %>
+      <% end %>
     </table>
 
   </div>

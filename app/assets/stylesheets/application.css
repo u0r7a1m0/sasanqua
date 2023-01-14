@@ -305,28 +305,28 @@ header {
   font-size: 12px;
   /*padding:10px;*/
   opacity: 0.5;
-  color: white;
+  /*color: red;*/
   visibility: hidden;
 }
-.flash-notice {
-  background-color: #3FD63D;
-}
-.flash-error {
-  background-color: #CB0A00;
-}
+/*.flash-notice {*/
+/*  background-color: green;*/
+/*}*/
+/*.flash-error {*/
+/*  background-color: red;*/
+/*}*/
 
-エラー
+/*エラー*/
 #error_explanation{
-  background-color: #CB0A00;
+  /*background-color: #CB0A00;*/
   padding:10px;
-  opacity: 0.5;
+  /*opacity: 0.5;*/
 }
 #error_explanation h2{
-  color: white;
+  color: red;
   font-size:15px;
 }
 #error_explanation ul{
-  color: white;
+  color: red;
   font-size: 12px;
   list-style: none;
 }
