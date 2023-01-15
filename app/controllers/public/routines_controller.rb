@@ -3,10 +3,11 @@ class Public::RoutinesController < ApplicationController
 
   def new
     @routine = Routine.new
-    @routine.tasks.build
-    @routine.implementation_times.build
-    @routine.frequencies.build
-    @routine.periods.build
+    task = @routine.build_task
+    task.sub_tasks.build
+    @routine.build_implementation_time
+    @routine.build_frequency
+    @routine.build_period
 
   end
 
@@ -65,16 +66,18 @@ class Public::RoutinesController < ApplicationController
   # def priod
   #   params.require(:frequencie).permit(:routine_id, :period)
   # end
+
   # 複数モデル紐付けのパラムス
   def routine_params
     params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
-                                    tasks_attributes: [:routine_id, :main_task, :sub_task],
-                                    implementation_times_attributes: [:accurate_time, :approximate_time, :routine_id],
-                                    frequencies_attributes: [:routine_id, :frequency],
-                                    periods_attributes: [:routine_id, :period]
+                                    task_attributes: [:routine_id, :name, sub_tasks_attributes: %i(name) ],
+                                    implementation_time_attributes: [:accurate_time, :approximate_time, :routine_id],
+                                    frequency_attributes: [:routine_id, :frequency],
+                                    period_attributes: [:routine_id, :period]
                                     )
   end
 
+   # params.require(:menu).permit(:menu_name, foods_attributes: [:food_name, :_destroy, materials_attributes: %i(material_name, _destroy) ] )
 
   def customer_params
     params.require(:customer).permit(:customer_id, :nickname, :is_deleted, :created_at, :updated_at)

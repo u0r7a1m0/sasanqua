@@ -4,13 +4,12 @@
 
     <% if customer_signed_in? %>
     <div><%= link_to '登録を始める >' ,new_routine_path, class:"btn-new" %></div>
-    <p class="top-txt">登録済みの方は<a href="/my_page">こちら</a>からログイン</p>
+    <p class="top-txt">登録済みの方は<%= link_to 'こちら', my_page_path %>からログイン</p>
 
     <% else %>
     <div><%= link_to '登録を始める >' ,new_customer_registration_path, class:"btn-new" %></div>
     <p class="top-txt">登録済みの方は<a href="/customers/sign_in">こちら</a>からログイン</p>
 
     <% end %>
-
 
 </div>

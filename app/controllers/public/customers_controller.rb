@@ -43,7 +43,7 @@ class Public::CustomersController < ApplicationController
   def implementation_time_params
     params.require(:implementation_time).permit(:accurate_time, :approximate_time, :routine_id)
   end
-  def frequencie_params
-    params.require(:frequencie).permit(:routine_id, :frequencie)
+  def frequency_params
+    params.require(:frequency).permit(:routine_id, :frequency)
   end
 end

@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
   belongs_to :routine
-  validates :main_task, presence: true
+  has_many :sub_tasks
+  validates :name, presence: true
 end
