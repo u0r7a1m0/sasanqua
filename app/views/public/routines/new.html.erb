@@ -1,4 +1,4 @@
-<%= form_with model: @routine,url: routines_path do |f| %>
+<%= form_with model: @routine,url: routines_path, html:{name:"routine"} do |f| %>
 <div class="routine-contents">
   <!--目標ここから-->
   <div class="routine-content">
@@ -38,6 +38,7 @@
           <%= implementation_time.radio_button :accurate_time, true, checked: true, id: 'accurate_time_radio_button' %>
           <%= implementation_time.label :accurate_time, "時刻を設定", for: 'accurate_time_radio_button' %>
           <%= implementation_time.time_field :accurate_time, id: 'accurate_time_select', class: 'short-text display-block'%>
+          <div id="error_message_accurate_time"></div>
         </p>
       </div>
       <div>
@@ -79,32 +80,9 @@
       <%= f.fields_for :frequency do |frequency| %>
       <div>
         <p>
-          <%= frequency.radio_button :frequency, true %>
-          <%= frequency.label :"毎日 1日に1回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequency, true %>
-          <%= frequency.label :"毎日 1日に2回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequency, true %>
-          <%= f.label :"毎日 1日に3回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequency, true %>
-          <%= frequency.label :"2日に1回" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= frequency.radio_button :frequency, true %>
-          <%= frequency.label :"3日に1回" %>
+          <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
+            <div><p><%= b.radio_button + b.label %></p></div>
+          <% end %>
         </p>
       </div>
       <% end %>
@@ -118,44 +96,10 @@
       <%= f.fields_for :period do |period| %>
       <div>
         <p>
-          <%= period.collection_radio_buttons :period, Period.everyday_i18n, true %>
-          <%= period.label :"ずっと続ける" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.collection_radio_buttons :period, true %>
-          <%= period.label :"1週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.collection_radio_buttonsn :period, true %>
-          <%= period.label :"2週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.collection_radio_buttons :period, true %>
-          <%= period.label :"3週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.collection_radio_buttons :period, true %>
-          <%= period.label :"4週間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.collection_radio_buttons :period, true %>
-          <%= period.label :"1ヶ月" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.collection_radio_buttons :period, true %>
-          <%= period.label :"1年間" %>
+          <%= period.collection_radio_buttons :period, Period.priods.map{|k, v| [k, I18n.t("enums.period.period.#{k}")] }, :first , :last do |b|  %>
+            <div><p><%= b.radio_button + b.label %></p></div>
+          <% end %>
+
         </p>
       </div>
       <% end %>
@@ -175,9 +119,29 @@
   </div>
 
   <div class="routine-btns">
-    <%= f.submit "ルーティンを登録" ,:class=>"image_input_btn" %>
+    <%= button_tag "ルーティンを登録",type:"button", onclick:"check_submit();",:class=>"image_input_btn" %>
+    <%#= f.submit "ルーティンを登録" ,:class=>"image_input_btn" %>
     <%= link_to "後で設定" ,my_page_path ,class:"after-btn" %>
   </div>
 </div>
 <% end %>
 
+  <script>
+    function check_submit()
+    {
+      if ($("#accurate_time_radio_button").prop('checked')) {
+        var time = document.getElementById("accurate_time_select");
+        if (time.value != "") {
+          document.routine.submit();
+        } else {
+          $("#error_message_accurate_time").html("時刻を入力してください。")
+        }
+      }
+      if ($("#approximate_time_radio_button").prop('checked')) {
+        var time = document.getElementById("routine_approximate_time");
+        if (time.value != "") {
+          document.routine.submit();
+        }
+      }
+    }
+  </script>

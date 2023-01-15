@@ -6,6 +6,23 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  enums:
+    period:
+      period:
+        everyday: "ずっと続ける"
+        one_week: "1週間"
+        two_week: "2週間"
+        three_week: "3週間"
+        four_week: "4週間"
+        one_month: "1ヶ月"
+        one_year: "1年間"
+    frequency:
+      frequency:
+        oneday_once: "1日に1回"
+        oneday_twice: "1日に2回"
+        oneday_third: "1日に3回"
+        twoday_once: '2日に1回'
+        threeday_once: "3日に1回"
   date:
     abbr_day_names:
     - 日
@@ -202,20 +219,3 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M"
     pm: 午後
-  enums:
-    frequency:
-      frequency:
-        oneday_once: "1日に1回"
-        oneday_twice: "1日に2回"
-        oneday_third: "1日に3回"
-        twoday_once: '2日に1回'
-        threeday_once: "3日に1回"
-    period:
-      period:
-        everyday: "ずっと続ける"
-        one_week: "1週間"
-        two_week: "2週間"
-        three_week: "3週間"
-        four_week: "4週間"
-        one_month: "1ヶ月"
-        one_year: "1年間"
