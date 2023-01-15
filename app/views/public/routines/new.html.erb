@@ -56,7 +56,6 @@
   // 時刻を設定をクリック(選択)したとき
   //$('[name="routine[accurate_time]"]').click(function() {
   $('#accurate_time_radio_button').click(function() {
-    //$('input[name="routine[approximate_time]"]').prop('checked', false); // routine[approximate_time]のラジオボタンをoffにする
     $('#approximate_time_radio_button').prop('checked', false); // routine[approximate_time]のラジオボタンをoffにする
     $('#accurate_time_select').removeClass('display-none').addClass('display-block'); // id: accurate_time_selectを表示する
     $('#routine_approximate_time').removeClass('display-block').addClass('display-none'); // id: routine_approximate_timeを非表示にする
@@ -65,7 +64,6 @@
   // ざっくり時間をクリック(選択)したとき
   //$('[name="routine[approximate_time]"]').click(function() {
   $('#approximate_time_radio_button').click(function() {
-    //$('input[name="routine[accurate_time]"]').prop('checked', false); // routine[accurate_time]のラジオボタンをoffにする
     $('#accurate_time_radio_button').prop('checked', false); // routine[accurate_time]のラジオボタンをoffにする
     $('#accurate_time_select').removeClass('display-block').addClass('display-none'); // id: accurate_time_selectを非表示にする
     $('#routine_approximate_time').removeClass('display-none').addClass('display-block'); // id: routine_approximate_timeを表示する

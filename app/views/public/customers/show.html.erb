@@ -26,9 +26,9 @@
         <td><%= l routine.created_at %></td>
         <td>
           <h4><i class="fa-solid fa-flag"></i><%= routine.target %></h4>
-          <div>メインタスク</div>
+          <div><%#= routine.task.name %>メインタスク</div>
         </td>
-        <td><%= link_to 'show', my_page_path, class:"show-btn" %></td>
+        <td><%= link_to 'show', routine_path(routine.id), class:"show-btn" %></td>
       </tr>
       <% end %>
     </table>
@@ -38,12 +38,17 @@
   <div class="back-number-contents">
     <h5>■Back number</h5>
     <table class="table">
+      <% @routines.each do |routine| %>
       <tr>
         <td style="width:20%"><img src="/level_06.jpg"></td>
-        <td>2023/xx/xx</td>
-        <td>メインタスク</td>
-        <td><%= link_to 'show', my_page_path, class:"show-btn" %></td>
+        <td><%= l routine.created_at %></td>
+        <td>
+          <h4><i class="fa-solid fa-flag"></i><%= routine.target %></h4>
+          <div><%#= routine.task.name %>メインタスク</div>
+        </td>
+        <td><%= link_to 'show', routine_path(routine.id), class:"show-btn" %></td>
       </tr>
+      <% end %>
     </table>
   </div>
 

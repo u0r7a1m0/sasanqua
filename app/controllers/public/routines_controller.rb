@@ -21,14 +21,12 @@ class Public::RoutinesController < ApplicationController
     redirect_to my_page_path
     else
     # 投稿が失敗した場合
-    # @routine = Routine.new
     redirect_to new_routine_path
     end
   end
 
   def index
-    @routines = Routine.all
-    # @routines = Routine.all.page(params[:page]).per(10)
+    @routines = Routine.all.order("created_at DESC")
   end
 
   def show

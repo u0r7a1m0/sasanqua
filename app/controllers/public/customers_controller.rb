@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
-    @routines = current_customer.routines
+    @routines = current_customer.routines.order("created_at DESC")
     # @routine = Routine.find(params[:id])
   end
 
@@ -35,15 +35,11 @@ class Public::CustomersController < ApplicationController
     params.require(:customer).permit(:customer_id, :profile_image, :nickname, :is_deleted, :created_at, :updated_at)
   end
   def routine_params
-    params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id)
-  end
-  def task_params
-    params.require(:task).permit(:routine_id, :main_task, :sub_task)
-  end
-  def implementation_time_params
-    params.require(:implementation_time).permit(:accurate_time, :approximate_time, :routine_id)
-  end
-  def frequency_params
-    params.require(:frequency).permit(:routine_id, :frequency)
+    params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
+                                    task_attributes: [:routine_id, :name, sub_tasks_attributes: %i(name) ],
+                                    implementation_time_attributes: [:accurate_time, :approximate_time, :routine_id],
+                                    frequency_attributes: [:routine_id, :frequency],
+                                    period_attributes: [:routine_id, :period]
+                                    )
   end
 end
