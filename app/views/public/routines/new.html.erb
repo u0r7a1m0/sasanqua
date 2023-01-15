@@ -118,50 +118,44 @@
       <%= f.fields_for :period do |period| %>
       <div>
         <p>
-          <%= period.radio_button :period, true %>
+          <%= period.collection_radio_buttons :period, Period.everyday_i18n, true %>
           <%= period.label :"ずっと続ける" %>
         </p>
       </div>
       <div>
         <p>
-          <%= period.radio_button :period, true %>
+          <%= period.collection_radio_buttons :period, true %>
           <%= period.label :"1週間" %>
         </p>
       </div>
       <div>
         <p>
-          <%= period.radio_button :period, true %>
+          <%= period.collection_radio_buttonsn :period, true %>
           <%= period.label :"2週間" %>
         </p>
       </div>
       <div>
         <p>
-          <%= period.radio_button :period, true %>
+          <%= period.collection_radio_buttons :period, true %>
           <%= period.label :"3週間" %>
         </p>
       </div>
       <div>
         <p>
-          <%= period.radio_button :period, true %>
+          <%= period.collection_radio_buttons :period, true %>
           <%= period.label :"4週間" %>
         </p>
       </div>
       <div>
         <p>
-          <%= period.radio_button :period, true %>
+          <%= period.collection_radio_buttons :period, true %>
           <%= period.label :"1ヶ月" %>
         </p>
       </div>
       <div>
         <p>
-          <%= period.radio_button :period, true %>
+          <%= period.collection_radio_buttons :period, true %>
           <%= period.label :"1年間" %>
-        </p>
-      </div>
-      <div>
-        <p>
-          <%= period.radio_button :period, true %>
-          <%= period.label :"3日に1回" %>
         </p>
       </div>
       <% end %>
