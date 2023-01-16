@@ -4,6 +4,9 @@
 .customer-admin-contents{
   width: 80%;
   margin: 0 auto;
+  h5{
+    margin-bottom: 2vh;
+  }
 }
 .customer-top-content{
   display:flex;
@@ -31,26 +34,29 @@
       text-align: center;
     }
     img{
-      margin-bottom: 3vh;
-    }
+      border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+      width: 80px;  /* 縦横を同じ値にする */
+      height: 80px;  /* 縦横を同じ値にする */
+      }
   }
 
 }
 
 // ここからテスト
 .item-contents{
-  width: 200px;
+  width: 250px;
   height: 250px;
   // border: 1px solid gray;
   background-image: url("/header_05.jpg");
   background-position:bottom;
   position: relative;
   margin-right: 2vw;
+  margin-left: 2vw;
   margin-bottom: 2vh;
     display: flex;
     justify-content: space-around;
   .item-content{
-    width: 198px;
+    width: 249px;
     height: 180px;
     background-color: white;
     position:absolute;
@@ -62,14 +68,13 @@
     img{
       position:absolute;
       bottom:90%;
-      right:30%;
+      right:35%;
       border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
       width: 80px;  /* 縦横を同じ値にする */
       height: 80px;  /* 縦横を同じ値にする */
       }
     ul{
       width: 200px;
-      margin-top:20%;
     }
     ul>li{
       list-style: none;
@@ -78,7 +83,20 @@
     }
   }
 }
-.test{
+.item-contents_all{
   display: flex;
   flex-wrap: wrap;
+}
+.status_tag{
+  z-index: 100;
+  position:relative;
+  left: 40%;
+  top: 30%;
+  .item-check{
+    color: #19D834;
+  }
+  .item-lock{
+    color: gray;
+  }
+
 }
