@@ -1,14 +1,13 @@
 <div class="customer-admin-contents">
 
   <h5>■会員詳細画面</h5>
-
   <div class="customer-top-content">
-    <div class="customer-left-side">
+    <div class="customer-info-left">
       <%= image_tag @customer.get_profile_image(100,100) %>
-      <p><%= link_to "編集" ,edit_admin_customer_path(@customer.id), class:"show-btn" %></p>
+      <p><%= link_to "編集" ,edit_admin_customer_path(@customer.id), class:"edit-btn" %></p>
     </div>
 
-    <div>
+    <div class="customer-info-right">
       <!--氏名-->
       <div>
         <p>ニックネーム</p>
