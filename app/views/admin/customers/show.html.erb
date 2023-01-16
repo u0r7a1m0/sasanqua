@@ -1,28 +1,112 @@
-<div class="customer-edit-contents">
+<div class="customer-admin-contents">
 
   <h5>■会員詳細画面</h5>
 
-  <div class="customer-edit-form">
-    <div>
+  <div class="customer-top-content">
+    <div class="customer-left-side">
       <%= image_tag @customer.get_profile_image(100,100) %>
-        <%#= @customer.profile_image %>
+      <p><%= link_to "編集" ,edit_admin_customer_path(@customer.id), class:"show-btn" %></p>
+    </div>
 
+    <div>
       <!--氏名-->
       <div>
         <p>ニックネーム</p>
-        <div>
-          <%= @customer.nickname %>
-
-        </div>
+        <div><%= @customer.nickname %></div>
       </div>
       <!--メールアドレス-->
       <div>
         <p>メールアドレス</p>
-        <div>
-          <%= @customer.email %>
-        </div>
+        <div><%= @customer.email %></div>
       </div>
-
+      <!--会員ステータス-->
+      <p>会員ステータス
+        <%if @customer.is_deleted %>
+        <spna>退会</spna>
+        <% else %>
+        <span>有効</spna>
+        <% end %>
+      </p>
     </div>
   </div>
+
+  <div class="customer-bottom-content">
+      <div class="my-routine-contents">
+    <div class="my-routine">
+      <h5>■My Routine</h5>
+    <div>
+
+    </div>
+    </div>
+
+    <!--<table class="table">-->
+    <!--  <%# @routines.each do |routine| %>-->
+    <!--  <tr>-->
+    <!--    <td style="width:20%"><img src="/level_01.jpg"></td>-->
+    <!--    <td><%#= l routine.created_at %></td>-->
+    <!--    <td>-->
+    <!--      <h4><i class="fa-solid fa-flag"></i><%#= routine.target %></h4>-->
+          <%#= routine.task.name %>
+    <!--    </td>-->
+    <!--    <td></td>-->
+    <!--  </tr>-->
+    <!--  <%# end %>-->
+    <!--</table>-->
+
+    <!--テスト-->
+    <div class="test">
+    <% @routines.each do |routine| %>
+    <div class="item-contents">
+      <div class="item-content">
+        <ul>
+          <li><b>目標</b><br><%= routine.target %></li>
+          <li><b>ルーティン</b><br><%= routine.task.name %></li>
+          <li><% routine.task.sub_tasks.each do | sub_task| %>
+              <%= sub_task.name %><br>
+              <% end %>
+          </li>
+          <li>
+            <% if routine.implementation_time.accurate_time.present? %>
+            <b>時刻</b><br>
+            <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
+            <% else %>
+            <b>ざっくり時間</b><br>
+            <%= routine.implementation_time.approximate_time %>
+            <% end %>
+          </li>
+          <li><%= routine.frequency.frequency_i18n %></li>
+          <li><%= routine.period.period_i18n %></li>
+          <li><%if routine.public_status %>
+        <spna>公開</spna>
+        <% else %>
+        <span>非公開</spna>
+        <% end %></li>
+        </ul>
+        <img src="/level_01.jpg">
+
+      </div>
+    </div>
+    <% end %>
+    </div>
+    <!--テストここまで-->
+
+  </div>
+
+  <div class="back-number-contents">
+    <h5>■Back number</h5>
+    <table class="table">
+      <% @routines.each do |routine| %>
+      <tr>
+        <td style="width:20%"><img src="/level_06.jpg"></td>
+        <td><%= l routine.created_at %></td>
+        <td>
+          <h4><i class="fa-solid fa-flag"></i><%= routine.target %></h4>
+          <div><%#= routine.task.name %>メインタスク</div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  </div>
+
 </div>

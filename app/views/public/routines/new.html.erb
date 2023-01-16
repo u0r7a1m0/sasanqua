@@ -8,7 +8,6 @@
     <p><i class="fa-solid fa-camera-retro"></i><span>こういう人になりたい！ここに行きたい！</span>など参考画像があればアップしてみてください！<br/>毎日、目にしてモチベーションを上げましょう！</p>
     <%= f.file_field :routine_image, placeholder: "", accept: "image/*", class: "routine_image_form" %>
   </div>
-
   <!--ルーティンここから-->
   <div class="routine-content">
     <h3>■What do you routineize?</h3>
@@ -19,7 +18,7 @@
       <div>
         <p>サブタスク※任意※</p>
           <%= task.fields_for :sub_tasks do |sub_task| %>
-              <%= sub_task.text_field :name %>
+              <%= sub_task.text_field :name, class: "short-text" %>
           <% end %>
       </div>
 
@@ -94,7 +93,7 @@
       <%= f.fields_for :period do |period| %>
       <div>
         <p>
-          <%= period.collection_radio_buttons :period, Period.priods.map{|k, v| [k, I18n.t("enums.period.period.#{k}")] }, :first , :last do |b|  %>
+          <%= period.collection_radio_buttons :period, Period.periods.map{|k, v| [k, I18n.t("enums.period.period.#{k}")] }, :first , :last do |b|  %>
             <div><p><%= b.radio_button + b.label %></p></div>
           <% end %>
 
@@ -139,6 +138,8 @@
         var time = document.getElementById("routine_approximate_time");
         if (time.value != "") {
           document.routine.submit();
+        } else {
+          $("#error_message_accurate_time").html("「ざっくり時間」のフォームを入力してください。")
         }
       }
     }

@@ -1,3 +1,84 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.customer-admin-contents{
+  width: 80%;
+  margin: 0 auto;
+}
+.customer-top-content{
+  display:flex;
+  width: 60%;
+  margin: 0 auto;
+  p{
+    font-size:16px;
+  }
+  .show-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+    border-radius: 50px;
+    border: 1px solid gray;
+    color: gray;
+    font-size: 12px;
+  }
+  .show-btn:hover {
+    color: white;
+    background-color: #73736C;
+  }
+  .customer-left-side{
+    margin-right: 3vw;
+    p{
+      text-align: center;
+    }
+    img{
+      margin-bottom: 3vh;
+    }
+  }
+
+}
+
+// ここからテスト
+.item-contents{
+  width: 200px;
+  height: 250px;
+  // border: 1px solid gray;
+  background-image: url("/header_05.jpg");
+  background-position:bottom;
+  position: relative;
+  margin-right: 2vw;
+  margin-bottom: 2vh;
+    display: flex;
+    justify-content: space-around;
+  .item-content{
+    width: 198px;
+    height: 180px;
+    background-color: white;
+    position:absolute;
+    bottom: 0;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+    padding:1vw;
+
+    img{
+      position:absolute;
+      bottom:90%;
+      right:30%;
+      border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+      width: 80px;  /* 縦横を同じ値にする */
+      height: 80px;  /* 縦横を同じ値にする */
+      }
+    ul{
+      width: 200px;
+      margin-top:20%;
+    }
+    ul>li{
+      list-style: none;
+      font-size: 12px;
+      text-align: left;
+    }
+  }
+}
+.test{
+  display: flex;
+  flex-wrap: wrap;
+}
