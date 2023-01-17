@@ -2,14 +2,14 @@
 <div class="nested-fields">
   <div class="field">
     <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
-    <%= sub_task.label :name, 'サブタスク名' %>
+    <%#= sub_task.label :name, 'サブタスク名' %>
 
-    <%= sub_task.text_field :name %>
-  </div>
-  <div class="field">
+    <%= sub_task.text_field :name, class: "short-text" %>
+  <!--</div>-->
+  <!--<div class="field">-->
     <%= link_to_remove_association sub_task do %>
     <i class="fa-solid fa-trash"></i>
     <% end %>
   </div>
-  <hr>
+  <!--<hr>-->
 </div>
