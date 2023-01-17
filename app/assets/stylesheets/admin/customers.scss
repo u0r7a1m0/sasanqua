@@ -1,11 +1,23 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.customer-admin-contents{
+.customer-contents{
   width: 80%;
   margin: 0 auto;
   h5{
     margin-bottom: 2vh;
+  }
+}
+.customer-contents> .status_tag{
+  z-index: 100;
+  position:relative;
+  left: 70%;
+  top: 30%;
+  .item-check{
+    color: #19D834;
+  }
+  .item-lock{
+    color: gray;
   }
 }
 .customer-top-content{
@@ -37,13 +49,23 @@
       border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
       width: 80px;  /* 縦横を同じ値にする */
       height: 80px;  /* 縦横を同じ値にする */
-      margin-bottom: 2vh;
+      margin-bottom: 1vh;
       }
   }
-
+}
+.customer-info-right{
+  p{
+    margin-bottom:2vh;
+  }
+  .active{
+    color: #19D834;
+  }
+  .inactive{
+    color: gray;
+  }
 }
 
-// ここからテスト
+
 .item-contents{
   width: 250px;
   height: 250px;

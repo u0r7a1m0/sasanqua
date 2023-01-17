@@ -1,5 +1,6 @@
 class Admin::RoutinesController < ApplicationController
   def index
+    @routines = Routine.all
   end
 
   def new
@@ -10,4 +11,5 @@ class Admin::RoutinesController < ApplicationController
 
   def edit
   end
+
 end

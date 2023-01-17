@@ -17,9 +17,25 @@
       <%= task.text_field :name, placeholder: "日記を書く、筋トレするetc...", class: "short-text" %>
       <div>
         <p>サブタスク※任意※</p>
-          <%= task.fields_for :sub_tasks do |sub_task| %>
-              <%= sub_task.text_field :name, class: "short-text" %>
+        <%= link_to_add_association task, :sub_tasks,
+                              form_name: 'sub_task',
+                              data: {
+                                association_insertion_node: '#sub_task-forms',
+                                association_insertion_method: 'after',
+                                partial: "sub_task_fields",
+                              } do %>
+                              <button class="btn btn-success text-center" id="add_order">
+                              <i class="fa-regular fa-square-plus"></i>
+                              </button>
+                              <%end%>
+          <div id="sub_task-forms">
+            <%= task.fields_for :sub_tasks do |sub_task| %>
+          <% render 'sub_task_fields', sub_task: sub_task %>
+              <%#= sub_task.text_field :name, class: "short-text" %>
+              <%#= sub_task.text_field :name, class: "short-text" %>
+              <%#= sub_task.text_field :name, class: "short-text" %>
           <% end %>
+          </div>
       </div>
 
 

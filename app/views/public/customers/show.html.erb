@@ -5,51 +5,97 @@
     <p><%= current_customer.nickname %> さん</p>
     <p><%= link_to "編集" ,customers_edit_path, class:"edit-btn" %></p>
   </div>
-
-  <!--<span class="borderline"></span>-->
-
-  <div class="my-routine-contents">
-    <div class="my-routine">
-      <h5>■My Routine</h5>
-    <div>
-
-        <%= link_to new_routine_path do %>
+<div class="customer-contents">
+<%= link_to new_routine_path do %>
         <i class="fa-regular fa-square-plus"></i>
         <% end %>
+
+
+  <div class="customer-bottom-content">
+    <div class="my-routine-contents">
+      <div>
+        <h5>■<%= @customer.nickname %>さんのRoutine</h5>
+      </div>
+      <!--実施中ルーティン一覧-->
+      <div class="item-contents_all">
+        <% @routines.each do |routine| %>
+        <div class="item-contents">
+          <div class="status_tag">
+            <%if routine.public_status %>
+            <span class="item-check"><i class="fa-solid fa-check"></i></span>
+            <% else %>
+            <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
+            <% end %>
+          </div>
+          <div class="item-content">
+            <ul>
+              <li><b>目標</b><br><span class="item-name"><%= routine.target %></span></li>
+              <li><b>ルーティン</b><br><span class="item-name"><%= routine.task.name %></span></li>
+              <li>
+                <% routine.task.sub_tasks.each do | sub_task| %>
+                <span class="subtask_line"><%= sub_task.name %></span>
+                <% end %>
+              </li>
+              <li class="time-list">
+                <b>時間</b>
+                <% if routine.implementation_time.accurate_time.present? %>
+                <span class="item-name"><%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %></span>
+                <% else %>
+                <br>
+                <span class="item-name"><%= routine.implementation_time.approximate_time %></span>
+                <% end %>
+              </li>
+              <li><b>頻度</b>:<%= routine.frequency.frequency_i18n %></li>
+              <li><b>期間</b>:<%= routine.period.period_i18n %></li>
+            </ul>
+            <img src="/level_01.jpg">
+          </div>
+        </div>
+        <% end %>
+      </div>
     </div>
-    </div>
 
-    <table class="table">
-      <% @routines.each do |routine| %>
-      <tr>
-        <td style="width:20%"><img src="/level_01.jpg"></td>
-        <td><%= l routine.created_at %></td>
-        <td>
-          <h4><i class="fa-solid fa-flag"></i><%= routine.target %></h4>
-          <div><%#= routine.task.name %>メインタスク</div>
-        </td>
-        <td><%= link_to 'show', routine_path(routine.id), class:"show-btn" %></td>
-      </tr>
-      <% end %>
-    </table>
+    <!--バックナンバーのルーティン一覧-->
+    <div class="my-routine-contents">
+        <div>
+          <h5>■<%= @customer.nickname %>さんのRoutine（バックナンバー）</h5>
+        </div>
+        <div class="item-contents_all">
+          <% @routines.each do |routine| %>
+          <div class="item-contents">
+            <div class="status_tag">
+              <%if routine.public_status %>
+              <span class="item-check"><i class="fa-solid fa-check"></i></span>
+              <% else %>
+              <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
+              <% end %>
+            </div>
+            <div class="item-content">
+              <ul>
+                <li><b>目標</b><br><p><%= routine.target %></p></li>
+                <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
+                <li>
+                  <% routine.task.sub_tasks.each do | sub_task| %>
+                  <span class="subtask_line"><p><%= sub_task.name %></p></span>
+                  <% end %>
+                </li>
+                <li class="time-list">
+                  <% if routine.implementation_time.accurate_time.present? %>
+                  <b>時間</b>
+                  <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
+                  <% else %>
 
+                  <%= routine.implementation_time.approximate_time %>
+                  <% end %>
+                </li>
+                <li><b>頻度</b>:<%= routine.frequency.frequency_i18n %></li>
+                <li><b>期間</b>:<%= routine.period.period_i18n %></li>
+              </ul>
+              <img src="/level_01.jpg">
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
   </div>
-
-  <div class="back-number-contents">
-    <h5>■Back number</h5>
-    <table class="table">
-      <% @routines.each do |routine| %>
-      <tr>
-        <td style="width:20%"><img src="/level_06.jpg"></td>
-        <td><%= l routine.created_at %></td>
-        <td>
-          <h4><i class="fa-solid fa-flag"></i><%= routine.target %></h4>
-          <div><%#= routine.task.name %>メインタスク</div>
-        </td>
-        <td><%= link_to 'show', routine_path(routine.id), class:"show-btn" %></td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-
 </div>

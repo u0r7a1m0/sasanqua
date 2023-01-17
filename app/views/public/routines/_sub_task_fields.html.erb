@@ -1,0 +1,15 @@
+<%# 以下の.nested-fieldsは、必須です。 %>
+<div class="nested-fields">
+  <div class="field">
+    <%# link_to_add_associationのform_nameで指定した名前。(初期値 : f)  %>
+    <%= sub_task.label :name, 'サブタスク名' %>
+
+    <%= sub_task.text_field :name %>
+  </div>
+  <div class="field">
+    <%= link_to_remove_association sub_task do %>
+    <i class="fa-solid fa-trash"></i>
+    <% end %>
+  </div>
+  <hr>
+</div>

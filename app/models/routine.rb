@@ -23,4 +23,7 @@ class Routine < ApplicationRecord
   #   end
   #   routine_image.variant(resize_to_limit: [width, height]).processed
   # end
+  def short_description
+    description[0, 9] + '...'
+  end
 end

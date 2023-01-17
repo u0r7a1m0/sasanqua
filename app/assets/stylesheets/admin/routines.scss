@@ -1,3 +1,125 @@
 // Place all the styles related to the routines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.profile_name{
+  font-size: 12px;
+  margin-top: 1vh;
+  margin-left: 2vw;
+}
+
+.customer-contents, .routine-contents{
+  width: 80%;
+  margin: 0 auto;
+  h5{
+    margin-bottom: 2vh;
+  }
+}
+.customer-top-content{
+  display:flex;
+  width: 60%;
+  margin: 0 auto;
+  p{
+    font-size:16px;
+  }
+  .edit-btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+    border-radius: 50px;
+    border: 1px solid gray;
+    color: gray;
+    font-size: 12px;
+  }
+  .edit-btn:hover {
+    color: white;
+    background-color: #73736C;
+  }
+  .customer-info-left{
+    margin-right: 3vw;
+    p{
+      text-align: center;
+    }
+    img{
+      border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+      width: 80px;  /* 縦横を同じ値にする */
+      height: 80px;  /* 縦横を同じ値にする */
+      margin-bottom: 1vh;
+      }
+  }
+}
+.customer-info-right{
+  p{
+    margin-bottom:2vh;
+  }
+  .active{
+    color: #19D834;
+  }
+  .inactive{
+    color: gray;
+  }
+}
+
+.item-contents{
+  width: 250px;
+  height: 250px;
+  // border: 1px solid gray;
+  background-image: url("/header_05.jpg");
+  background-position:bottom;
+  position: relative;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  margin-bottom: 2vh;
+    display: flex;
+    justify-content: space-around;
+  .item-content{
+    width: 249px;
+    height: 180px;
+    background-color: white;
+    position:absolute;
+    bottom: 0;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+    padding: 1vw;
+
+    img{
+      position:absolute;
+      bottom: 90%;
+      right: 35%;
+      border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+      width: 80px;  /* 縦横を同じ値にする */
+      height: 80px;  /* 縦横を同じ値にする */
+      }
+    ul{
+      width: 200px;
+    }
+    ul>li{
+      list-style: none;
+      font-size: 12px;
+      text-align: left;
+    }
+    p{
+      font-size:10px;
+    }
+    .time-list{
+      border-top: 1px solid #E6DADF;
+      padding-top:5px;
+    }
+  }
+}
+.item-contents_all{
+  display: flex;
+  flex-wrap: wrap;
+}
+.status_tag_routine{
+  z-index: 100;
+  position:relative;
+  left: 70%;
+  // right: 10%;
+  top: 30%;
+  .item-check{
+    color: #19D834;
+  }
+  .item-lock{
+    color: gray;
+  }
+}

@@ -1,6 +1,6 @@
-<div class="customer-admin-contents">
+<div class="customer-contents">
 
-  <h5>■会員詳細画面</h5>
+  <h5>■<%= @customer.nickname %>さんの詳細画面</h5>
   <div class="customer-top-content">
     <div class="customer-info-left">
       <%= image_tag @customer.get_profile_image(100,100) %>
@@ -9,23 +9,15 @@
 
     <div class="customer-info-right">
       <!--氏名-->
-      <div>
-        <p>ニックネーム</p>
-        <div><%= @customer.nickname %></div>
-      </div>
-      <!--メールアドレス-->
-      <div>
-        <p>メールアドレス</p>
-        <div><%= @customer.email %></div>
-      </div>
-      <!--会員ステータス-->
-      <p>会員ステータス
-        <%if @customer.is_deleted %>
-        <spna>退会</spna>
-        <% else %>
-        <span>有効</spna>
-        <% end %>
-      </p>
+      <p><b>ニックネーム</b>&emsp;&emsp;&nbsp;<%= @customer.nickname %></p>
+      <p><b>メールアドレス</b>&emsp;&nbsp;<%= @customer.email %></p>
+      <p><b>会員ステータス</b>&emsp;
+
+      <%if @customer.is_deleted %>
+      <span class="inactive">退会</span>
+      <% else %>
+      <span class="active">有効</span>
+      <% end %></p>
     </div>
   </div>
 
@@ -47,20 +39,20 @@
           </div>
           <div class="item-content">
             <ul>
-              <li><b>目標</b><br><%= routine.target %></li>
-              <li><b>ルーティン</b><br><%= routine.task.name %></li>
+              <li><b>目標</b><br><span class="item-name"><%= routine.target %></span></li>
+              <li><b>ルーティン</b><br><span class="item-name"><%= routine.task.name %></span></li>
               <li>
                 <% routine.task.sub_tasks.each do | sub_task| %>
                 <span class="subtask_line"><%= sub_task.name %></span>
                 <% end %>
               </li>
-              <li>
+              <li class="time-list">
+                <b>時間</b>
                 <% if routine.implementation_time.accurate_time.present? %>
-                <b>時刻</b><br>
-                <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
+                <span class="item-name"><%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %></span>
                 <% else %>
-                <b>ざっくり時間</b><br>
-                <%= routine.implementation_time.approximate_time %>
+                <br>
+                <span class="item-name"><%= routine.implementation_time.approximate_time %></span>
                 <% end %>
               </li>
               <li><b>頻度</b>:<%= routine.frequency.frequency_i18n %></li>
@@ -90,19 +82,19 @@
             </div>
             <div class="item-content">
               <ul>
-                <li><b>目標</b><br><%= routine.target %></li>
-                <li><b>ルーティン</b><br><%= routine.task.name %></li>
+                <li><b>目標</b><br><p><%= routine.target %></p></li>
+                <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
                 <li>
                   <% routine.task.sub_tasks.each do | sub_task| %>
-                  <span class="subtask_line"><%= sub_task.name %></span>
+                  <span class="subtask_line"><p><%= sub_task.name %></p></span>
                   <% end %>
                 </li>
-                <li>
+                <li class="time-list">
                   <% if routine.implementation_time.accurate_time.present? %>
-                  <b>時刻</b><br>
+                  <b>時間</b>
                   <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
                   <% else %>
-                  <b>ざっくり時間</b><br>
+
                   <%= routine.implementation_time.approximate_time %>
                   <% end %>
                 </li>

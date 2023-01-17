@@ -1,2 +1,44 @@
-<h1>Routines#index</h1>
-<p>Find me in app/views/routines/index.html.erb</p>
+<div class="routine-contents">
+  <div class="my-routine-contents">
+      <h5>■ルーティン一覧</h5>
+    <div>
+    </div>
+    <div class="item-contents_all">
+      <% @routines.each do |routine| %>
+      <div class="item-contents">
+        <div class="status_tag_routine">
+          <%if routine.public_status %>
+          <span class="item-check"><i class="fa-solid fa-check"></i></span>
+          <% else %>
+          <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
+          <% end %>
+        </div>
+        <p class="profile_name">by <%= routine.customer.nickname%></p>
+
+        <div class="item-content">
+          <ul>
+            <li><b>目標</b><br><p><%= routine.target %></p></li>
+            <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
+            <li>
+              <% routine.task.sub_tasks.each do | sub_task| %>
+              <span class="subtask_line"><p><%= sub_task.name %></p></span>
+              <% end %>
+            </li>
+            <li class="time-list">
+              <b>時間</b>
+              <% if routine.implementation_time.accurate_time.present? %>
+              <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
+              <% else %>
+              <%= routine.implementation_time.approximate_time %>
+              <% end %>
+            </li>
+            <li><b>頻度</b>:<%= routine.frequency.frequency_i18n %></li>
+            <li><b>期間</b>:<%= routine.period.period_i18n %></li>
+          </ul>
+          <img src="/level_01.jpg">
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
