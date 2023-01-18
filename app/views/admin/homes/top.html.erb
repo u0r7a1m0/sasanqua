@@ -1,34 +1,44 @@
-<div class="customer-index-contents">
-
-  <h5>■会員情報一覧</h5>
-
-  <div>
-    <table cellpadding="20">
-      <thead>
-      <tr>
-        <th>登録日時</th>
-        <th>ニックネーム</th>
-        <th>ステータス</th>
-        <th></th>
-      </tr>
-      </thead>
-      <% @customers.each do |customer| %>
-      <tr>
-        <td><%= l customer.created_at %></td>
-        <td><%= customer.nickname %></td>
-        <%if customer.is_deleted %>
-          <td class="text-secondary">
-            退会
-          </td>
+<div class="routine-contents">
+  <div class="my-routine-contents">
+      <h5>■ルーティン一覧</h5>
+    <div>
+    </div>
+    <div class="item-contents_all">
+      <% @routines.each do |routine| %>
+      <div class="item-contents">
+        <div class="status_tag_routine">
+          <%if routine.public_status %>
+          <span class="item-check"><i class="fa-solid fa-check"></i></span>
           <% else %>
-          <td class="text-success">
-            有効
-          </td>
+          <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
           <% end %>
-        <td><%= link_to "Show",admin_customer_path(customer.id), class:"show-btn" %></td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+        </div>
+        <p class="profile_name">by <%= routine.customer.nickname%></p>
 
+        <div class="item-content">
+          <ul>
+            <li><b>目標</b><br><p><%= routine.target %></p></li>
+            <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
+            <li>
+              <% routine.task.sub_tasks.each do | sub_task| %>
+              <span class="subtask_line"><p><%= sub_task.name %></p></span>
+              <% end %>
+            </li>
+            <li class="time-list">
+              <b>時間</b>
+              <% if routine.implementation_time.accurate_time.present? %>
+              <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
+              <% else %>
+              <%= routine.implementation_time.approximate_time %>
+              <% end %>
+            </li>
+            <li><b>頻度</b>:<%= routine.frequency.frequency_i18n %></li>
+            <li><b>期間</b>:<%= routine.period.period_i18n %></li>
+          </ul>
+          <img src="/level_01.jpg">
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,34 +1,37 @@
-<div class="customer-edit-contents">
-
-  <h5>■会員情報編集</h5>
-
-  <div class="customer-edit-form">
-    <div>
-      <%= form_with model: @customer ,url: information_path(current_customer.id) do |f| %>
-        <p><%= f.label :'プロフィール画像' %></p>
-        <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class:"profile_image_icon" %></p>
-
+<div class="admin-customer-wrapper">
+  <div class="admin-customer-edit-contents">
+    <h5>■会員情報編集</h5>
+    <div class="customer-edit-form">
+      <div>
+      <%= form_with model: @customer ,url: admin_customer_path(@customer.id),method: :patch do |f| %>
+        <p class="edit-label"><b><%= f.label :'プロフィール画像' %></b></p>
+        <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
+      </div>
       <!--氏名-->
       <div>
-        <p><%= f.label :'ニックネーム' %></p>
+        <p class="edit-label"><b><%= f.label :'ニックネーム' %></b></p>
         <div>
           <%= f.text_field :nickname, autofocus: true, autocomplete: "last_name", placeholder: "ジョン・タイター", class: "form-control " %>
         </div>
       </div>
       <!--メールアドレス-->
       <div>
-        <p><%= f.label :メールアドレス %></p>
+        <p class="edit-label"><b><%= f.label :メールアドレス %></b></p>
         <div>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
         </div>
       </div>
-
+      <!--ステータス-->
+      <div>
+        <p class="edit-label"><b><%= f.label :'会員ステータス'%></b></p>
+        <p>
+          <label><%= f.radio_button :is_deleted, false %>有効</label>
+          <label class="radio_button_content"><%= f.radio_button :is_deleted, true %>退会</label>
+        </p>
+      </div>
+      <!--ボタン-->
       <div class="btns">
-          <button type="submit" class="update-btn">
-            変更
-          </button>
-
-          <%= link_to '退会する', unsubscribe_path, class:"withdraw-btn" %>
+        <button type="submit" class="update-btn">変更</button>
       </div>
       <% end %>
     </div>

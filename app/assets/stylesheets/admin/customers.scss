@@ -1,6 +1,21 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.admin-customer-wrapper{
+  width: 80%;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+//
 .customer-contents{
   width: 80%;
   margin: 0 auto;
@@ -68,7 +83,7 @@
 
 .item-contents{
   width: 250px;
-  height: 250px;
+  height: 200px;
   // border: 1px solid gray;
   background-image: url("/header_05.jpg");
   background-position:bottom;
@@ -87,6 +102,9 @@
     margin: 0 auto;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
     padding:1vw;
+    .subtask_line{
+      // border-right: 1px solid gray;
+    }
 
     img{
       position:absolute;
@@ -120,6 +138,22 @@
   }
   .item-lock{
     color: gray;
+  }
+
+}
+// 編集画面
+.admin-customer-edit-contents{
+  width: 50%;
+  margin: 0 auto;
+  .edit-label{
+    margin-bottom: 0.5vh;
+    margin-top: 0.5vh;
+  }
+  .radio_button_content{
+    margin-left: 2vw;
+  }
+  .btns{
+    margin-top:3vh;
   }
 
 }

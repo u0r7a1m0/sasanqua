@@ -1,0 +1,33 @@
+<div class="admin-customer-wrapper">
+  <h5>■会員情報一覧</h5>
+
+  <div>
+    <table cellpadding="20">
+      <thead>
+      <tr>
+        <th>登録日時</th>
+        <th>ニックネーム</th>
+        <th>ステータス</th>
+        <th></th>
+      </tr>
+      </thead>
+      <% @customers.each do |customer| %>
+      <tr>
+        <td><%= l customer.created_at %></td>
+        <td><%= customer.nickname %></td>
+        <%if customer.is_deleted %>
+          <td class="text-secondary">
+            退会
+          </td>
+          <% else %>
+          <td class="text-success">
+            有効
+          </td>
+          <% end %>
+        <td><%= link_to "Show",admin_customer_path(customer.id), class:"show-btn" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>

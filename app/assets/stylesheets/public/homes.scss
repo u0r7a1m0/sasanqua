@@ -3,61 +3,65 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 //トップページ
-.top-wraper{
-  margin:100px 80px;
+.top-wrapper{
+  width: 80%;
+  margin: 2% auto;
 }
-.top-wraper a{
+.top-contents{
+  margin-top: 10vh;
+}
+.bottom-contents>div, .bottom-contents>p{
+  margin-top: 4vh;
+}
+.bottom-contents>div>a{
   text-decoration:none;
   color: gray;
-}
-.top-wrapper h1{
-  font-size: 20px;
-}
-.btn-new{
-  border:1px solid gray;
-  padding:15px;
+  border: 1px solid gray;
+  padding: 15px;
   border-radius: 7px;
 }
-.sub-title{
-  margin-bottom: 5vw;
+.bottom-contents>div a:hover{
+    color: white;
+    background-color: #73736C;
 }
-.top-txt{
+.bottom-contents>p{
+  font-size: 14px;
+}
+.bottom-contents>p> a{
   margin-top: 2vw;
-  font-size: 15px;
-}
-.top-txt a{
+  text-decoration:none;
+  color: gray;
   border-bottom: dotted;
   border-color:#1C9149;
   border-width: 3px;
 }
-.top-txt a:hover{
+.bottom-contents>p a:hover{
   color:#79B39E;
-}
-.top-wraper>div a:hover{
-    color: white;
-    background-color: #73736C;
 }
 
 // プライバシーポリシーページ
+.privacy-wrapper{
+  width: 60%;
+  margin: 0 auto;
+}
 .privacy-text{
   font-size:12px;
+  margin-top:3vh;
 }
 
 @media screen and (max-width:768px){
-  .top-wraper{
-  margin: 100px 30px;
+  .privacy-wrapper{
+    width: 80%;
   }
 }
 
 // アバウトページ
-.about-contents{
-  width:55%;
+.about-wrapper{
+  width: 55%;
   margin: 0 auto;
 }
-.about-contents h3{
-  margin-bottom:20px;
-}
 .about-text{
+  margin-top: 3vh;
   font-size:15px;
 }
 .level-icon-contents {
@@ -71,10 +75,10 @@
     margin:15px;
   }
   img{
-  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-  width: 90px;  /* 縦横を同じ値にする */
-  height: 90px;  /* 縦横を同じ値にする */
-  object-fit: cover; /* 縦横比固定したまま上2つの縦横の範囲内に収まるように配置する */
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
   filter: drop-shadow(5px 5px 5px #aaa);
   }
   p{

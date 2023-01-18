@@ -1,113 +1,58 @@
 // Place all the styles related to the public/customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.my-page-top{
-  // margin: 0 auto;
+
+// マイページ
+.my-page-wrapper{
+  width: 90%;
+  margin: 0 auto;
+}
+.profile-contents{
+  width: 40%;
+  margin: 0 auto;
+  p{
     text-align: center;
-  img{
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    object-fit: cover;
-    filter: drop-shadow(5px 5px 5px #aaa);
   }
 }
-.my-routine-contents{
-  width: 90%;
-  margin: 2vh auto;
-  // border-top: 1px solid #E1E3E1;
-  h5{
-    margin-top:2vh;
-  }
-  table{
-    margin-top:2vh;
-  }
-  img{
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    filter: drop-shadow(5px 5px 5px #aaa);
-  }
-}
-
-.back-number-contents{
-  width: 90%;
-  margin: 2vh auto;
-  border-top: 1px solid #E1E3E1;
-  h5{
-    margin-top:2vh;
-  }
-  table{
-    margin-top:2vh;
-  }
-  img{
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    filter: drop-shadow(5px 5px 5px #aaa);
-  }
-}
-
-.my-routine{
-  display:flex;
-}
-.my-routine>div{
-  margin-left: auto;
-  font-size:35px;
-}
-.edit-btn, .update-btn, .withdraw-btn{
-  padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
-  border: solid 1px gray;
-  font-weight: bold;
-  font-size: 11px;
-  transition: all ease-in-out 0.1s;
-  cursor: pointer;
-  border-radius: 100px;
-  color: gray;
-  text-decoration: none;
-}
-.edit-btn:hover, .update-btn:hover, .withdraw-btn:hover{
-    color: white;
-    background-color: #73736C;
-
+.profile-contents img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 80px;  /* 縦横を同じ値にする */
+  height: 80px;  /* 縦横を同じ値にする */
 }
 
 // editページ
-.customer-edit-contents{
+.public-customer-edit-wrapper{
   width: 50%;
   margin: 0 auto;
   h5{
-    margin-bottom: 30px;
+    margin-bottom: 3vh;
   }
-
-}
-.edit-btns {
+  .btns {
   display: flex;
-}
-.customer-edit-form p{
+  }
+  p{
   font-size: 12px;
+  }
 }
-.profile_image_icon{
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  filter: drop-shadow(5px 5px 5px #aaa);
+.customer-edit-form div{
+  margin-bottom: 2vh;
 }
-
+@media screen and (max-width: 768px) {
+  .public-customer-edit-wrapper{
+    width: 80%;
+    margin: 0 auto;
+  }
+}
 
 // 退会ページ
-.withdraw-contents{
+.withdraw-wrapper{
   width: 70%;
   margin: 0 auto;
   text-align: center;
   h6{
     font-size: 23px;
     margin-bottom: 2vh;
-
+    margin-top: 5vh;
   }
   p{
     font-size: 18px;
@@ -128,7 +73,7 @@
     color: white;
     background-color: #73736C;
   }
-  .my-page-btn{
-    margin-right: 50px;
-  }
+}
+.withdraw-btn{
+  margin-left: 5vw;
 }
