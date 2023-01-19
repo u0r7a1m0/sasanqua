@@ -1,6 +1,5 @@
 class Public::RoutinesController < ApplicationController
 
-
   def new
     @routine = Routine.new
     task = @routine.build_task
@@ -26,7 +25,7 @@ class Public::RoutinesController < ApplicationController
   end
 
   def index
-    @routines = Routine.all.order("created_at DESC")
+    @routines = Routine.where(public_status:true).all.order("created_at DESC")
   end
 
   def show

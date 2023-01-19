@@ -300,6 +300,17 @@ header {
   color: gray;
   text-decoration: none;
 }
+.prof-edit-btn{
+  text-decoration: none;
+  padding: 10px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border-radius: 50px;
+  border: 1px solid gray;
+  color: gray;
+  font-size: 12px;
+  margin-right: 1vw;
+  margin-left: 1vw;
+}
 .edit-btn {
   text-decoration: none;
   padding: 10px 20px;
@@ -332,11 +343,15 @@ header {
 }
 
 /*ルーティンアイテムボックス共通*/
+.item-contents_all{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 3vh;
+}
 .item-contents{
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
 }
 .status_tag_routine{
   z-index: 100;
@@ -350,7 +365,6 @@ header {
 .status_tag_routine .item-lock{
   color: gray;
 }
-
 .item-contents{
   width: 250px;
   height: 250px;
@@ -360,6 +374,8 @@ header {
   margin-right: 1vw;
   margin-left: 1vw;
   margin-bottom: 2vh;
+  display: flex;
+  justify-content: space-around;
 }
 .item-content{
   width: 249px;
@@ -393,4 +409,27 @@ header {
   border-top: 1px solid #E6DADF;
   padding-top:5px;
   margin-top:5px;
+}
+.item-contents_all a{
+  text-decoration: none;
+  color: black;
+}
+.profile_name{
+  font-size: 10px;
+  position:relative;
+  left: 10%;
+  top: 2%;
+}
+.profile_name_2{
+  font-size: 10px;
+  position:relative;
+  left: 28%;
+  top: 2%;
+}
+.create_at_tag{
+  font-size: 10px;
+  position:relative;
+  left: 10%;
+  top: 2%;
+
 }

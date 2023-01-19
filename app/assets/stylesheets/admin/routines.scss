@@ -2,19 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-
-.admin-customer-contents, .admin-routine-contents{
+.my-routine-contents{
+  width: 100%;
+  margin: 0 auto;
+}
+.admin-routine-contents{
   width: 80%;
   margin: 0 auto;
   h5{
     margin-bottom: 3vh;
   }
-  .profile_name{
-  font-size: 12px;
-  margin-top: 1vh;
-  margin-left: 2vw;
-  }
 }
+
 .customer-top-content{
   display:flex;
   width: 60%;

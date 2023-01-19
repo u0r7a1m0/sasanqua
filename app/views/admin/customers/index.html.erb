@@ -1,33 +1,30 @@
 <div class="admin-customer-wrapper">
   <h5>■会員情報一覧</h5>
 
-  <div>
-    <table cellpadding="20">
-      <thead>
-      <tr>
-        <th>登録日時</th>
-        <th>ニックネーム</th>
-        <th>ステータス</th>
-        <th></th>
-      </tr>
-      </thead>
-      <% @customers.each do |customer| %>
-      <tr>
-        <td><%= l customer.created_at %></td>
-        <td><%= customer.nickname %></td>
-        <%if customer.is_deleted %>
-          <td class="text-secondary">
-            退会
-          </td>
-          <% else %>
-          <td class="text-success">
-            有効
-          </td>
-          <% end %>
-        <td><%= link_to "Show",admin_customer_path(customer.id), class:"show-btn" %></td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
+  <table class="admin-customer-contents">
 
+    <tr>
+      <td style="width: 40%" class="created_at_time"><p>登録日時</p></td>
+      <td style="width: 30%"><p>ニックネーム</p></td>
+      <td><p>ステータス</p></td>
+    </tr>
+
+
+    <% @customers.each do |customer| %>
+    <tr>
+      <td class="created_at_time"><p><%= l customer.created_at %></p></td>
+      <td>
+        <%= link_to admin_customer_path(customer.id) do %>
+        <p><%= customer.nickname %></p>
+        <% end %>
+      </td>
+      <%if customer.is_deleted %>
+      <!--退会している場合-->
+      <td class="text-secondary"><p>退会</p></td>
+      <% else %>
+      <td class="text-success"><p>有効</p></td>
+      <% end %>
+    </tr>
+    <% end %>
+  </table>
 </div>

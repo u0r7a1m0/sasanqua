@@ -4,20 +4,81 @@
 
 // マイページ
 .my-page-wrapper{
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
+.my-page-contents{
+  display: flex;
+  // margin-top: 2vh;
+  border-top: 1px solid #E0DADA;
+}
 .profile-contents{
-  width: 40%;
-  margin: 0 auto;
+  img{
+    margin-top: 5vh;
+    align-items: center;
+  }
   p{
     text-align: center;
+    font-size: 12px;
+    margin-top: 2vh;
+  }
+  a{
+    text-decoration: none;
+  }
+}
+.my-page-right{
+  border-left: 1px solid #E0DADA;
+  padding-left: 1vw;
+  margin-left: 1vw;
+  margin-top: 2vw;
+  h5{
+    margin-bottom: 3vh;
+  }
+}
+.my-page-left{
+  width: 200px;
+}
+.my-page-right-txt{
+  display: flex;
+  p{
+    font-size: 13px;
+    margin-left: auto;
+  }
+  a{
+    text-decoration: none;
   }
 }
 .profile-contents img{
   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
   width: 80px;  /* 縦横を同じ値にする */
   height: 80px;  /* 縦横を同じ値にする */
+}
+@media screen and (max-width: 992px) {
+  .my-page-left{
+  width: 100%;
+  }
+  .my-page-contents{
+    display: block;
+    border-top: none;
+  }
+  .my-page-right{
+    border: none;
+  }
+  .my-page-wrapper{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .my-page-right{
+    margin-right:0;
+    margin-left:0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .my-page-right-txt{
+    border-top: 1px solid #E0DADA;
+    margin-top: 2vh;
+    padding-top: 2vh;
+  }
 }
 
 // editページ
@@ -77,3 +138,4 @@
 .withdraw-btn{
   margin-left: 5vw;
 }
+

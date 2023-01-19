@@ -1,40 +1,33 @@
 // Place all the styles related to the customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// アドミン・会員一覧＆会員詳細画面共通
 .admin-customer-wrapper{
   width: 80%;
   margin: 0 auto;
 }
 
-
-
-
-
-
-
-
-
-
-//
-.customer-contents{
-  width: 80%;
+// アドミン・会員一覧画面
+.admin-customer-contents{
+  width: 100%;
   margin: 0 auto;
-  h5{
-    margin-bottom: 2vh;
+  p{
+    font-size: 15px;
+    text-align: center;
+  }
+  td{
+    padding:1vw;
   }
 }
-.customer-contents> .status_tag{
-  z-index: 100;
-  position:relative;
-  left: 70%;
-  top: 30%;
-  .item-check{
-    color: #19D834;
-  }
-  .item-lock{
-    color: gray;
+@media screen and (max-width: 768px) {
+  .admin-customer-contents{
+  width: 100%;
+  margin: 0 auto;
   }
 }
+
+//アドミン・会員詳細画面
 .customer-top-content{
   display:flex;
   width: 60%;
@@ -80,67 +73,6 @@
   }
 }
 
-
-.item-contents{
-  width: 250px;
-  height: 200px;
-  // border: 1px solid gray;
-  background-image: url("/header_05.jpg");
-  background-position:bottom;
-  position: relative;
-  margin-right: 2vw;
-  margin-left: 2vw;
-  margin-bottom: 2vh;
-    display: flex;
-    justify-content: space-around;
-  .item-content{
-    width: 249px;
-    height: 180px;
-    background-color: white;
-    position:absolute;
-    bottom: 0;
-    margin: 0 auto;
-    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
-    padding:1vw;
-    .subtask_line{
-      // border-right: 1px solid gray;
-    }
-
-    img{
-      position:absolute;
-      bottom:90%;
-      right:35%;
-      border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-      width: 80px;  /* 縦横を同じ値にする */
-      height: 80px;  /* 縦横を同じ値にする */
-      }
-    ul{
-      width: 200px;
-    }
-    ul>li{
-      list-style: none;
-      font-size: 12px;
-      text-align: left;
-    }
-  }
-}
-.item-contents_all{
-  display: flex;
-  flex-wrap: wrap;
-}
-.status_tag{
-  z-index: 100;
-  position:relative;
-  left: 40%;
-  top: 30%;
-  .item-check{
-    color: #19D834;
-  }
-  .item-lock{
-    color: gray;
-  }
-
-}
 // 編集画面
 .admin-customer-edit-contents{
   width: 50%;

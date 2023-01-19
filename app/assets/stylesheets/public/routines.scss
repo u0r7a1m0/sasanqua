@@ -1,0 +1,125 @@
+// ルーティン登録画面
+
+.routine-new-wrapper{
+  width: 90%;
+  margin: 0 auto;
+}
+.routine-content{
+  margin-bottom: 3vh;
+  h3{
+    font-size: 20px;
+  }
+  span{
+    background:linear-gradient(transparent 60%, #ff6 60%);
+  }
+  p{
+    font-size: 15px;
+  }
+  .sub-text{
+    font-size: 12px;
+  }
+  .sub_task_title{
+    font-size: 10px;
+  }
+}
+
+.routine-content button{
+  border: 2px solid #3BB82F;
+  width: 25px;
+  padding: 0px 4px;
+  color: #3BB82F;
+  margin-left: 1vw;
+  background-color: white;
+  border-radius: 20%;
+}
+.routine-content button:hover{
+  border: 2px solid #43D136;
+  color:#43D136;
+}
+
+.new-form-control{
+  height: 2em;
+  width: 500px;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #ccc inset;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom:10px;
+}
+.routine_image_form{
+  margin-top:20px;
+}
+
+.short-text{
+  height: 1.8em;
+  width: 200px;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #ccc inset;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin-bottom:10px;
+}
+.short-text:focus {
+  outline: 0;
+  box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+.after-btn{
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border: solid 1px gray;
+  font-weight: bold;
+  font-size: 11px;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+  border-radius: 100px;
+  color: gray;
+  text-decoration: none;
+  margin-left: 30px;
+}
+.after-btn:hover {
+  border: solid 1px #E2E8E1;
+  color: #E2E8E1;
+}
+
+.routine-btns{
+  margin-top: 20px;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
+}
+.input_btn{
+  background-color: #79B39E;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border: solid 1px #79B39E;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 11px;
+  color: #fff;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+}
+.input_btn:hover {
+  background-color: #97DEC4;
+  border: solid 1px #97DEC4;
+}
+
+  // 部分テンプレート
+.nested-fields i{
+  width: 100px;
+  border: 0;
+  color: #4676d7;
+  padding: 8px 8px;
+  font-size: 1rem;
+}

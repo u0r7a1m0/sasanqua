@@ -1,67 +1,80 @@
-  <div class="my-page-wrapper">
-    <h5>■<%= current_customer.nickname %> さんのマイページ</h5>
-    <div class="profile-contents">
-      <%= image_tag @customer.profile_image,size: '100x100', url: my_page_path %>
-      <%= link_to "プロフィールを編集" ,customers_edit_path, class:"edit-btn" %>
-    </div>
+<div class="my-page-wrapper">
+  <h5>■<%= current_customer.nickname %>&ensp;さんのマイページ</h5>
 
-    <div>
-      <h5>
-        ■<%= @customer.nickname %>さんのRoutine
-        <%= link_to new_routine_path do %>
-          <i class="fa-solid fa-circle-plus"></i>
-        <% end %>
-      </h5>
-    </div>
-
-    <div class="item-contents_all">
-      <!--実施中ルーティン一覧-->
-      <% @routines.each do |routine| %>
-      <div class="item-contents">
-        <!--会員ステータス-->
-        <div class="status_tag_routine">
-          <%if routine.public_status %>
-          <span class="item-check"><i class="fa-solid fa-check"></i></span>
-          <% else %>
-          <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
+  <div class="my-page-contents">
+    <!--プロフィー部分-->
+    <div class="my-page-left">
+      <div class="profile-contents">
+        <div style="text-align: center;"><%= image_tag @customer.profile_image,size: '100x100', url: my_page_path %></div>
+        <p><%= link_to "プロフィールを編集" ,customers_edit_path, class:"prof-edit-btn" %></p>
+        <p>
+          <%= link_to bookmarks_path do %>
+          <i class="fa-regular fa-bookmark"></i>ブックマーク一覧
           <% end %>
-        </div>
-        <!--会員ニックネーム-->
-        <p class="profile_name"></p>
-
-        <!--ルーティン情報-->
-        <div class="item-content">
-          <ul>
-            <li><b><span class="item-content-title">目標</span></b><br><p><%= routine.target %></p></li>
-            <li><b><span class="item-content-title">ルーティン</span></b><br><p><i class="fa-solid fa-flag"></i>&nbsp;<%= routine.task.name %></p></li>
-            <li class="sub_task_list"><p>
-              <% routine.task.sub_tasks.each do | sub_task| %>
-              <span class="subtask_line"><%= sub_task.name %></span>
-              <% end %>
-            </p></li>
-            <li class="time-list">
-              <p>
-              <b><span class="item-content-title">時間</span></b>
-              <% if routine.implementation_time.accurate_time.present? %>
-              <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
-              <% else %>
-              <%= routine.implementation_time.approximate_time %>
-              <% end %>
-              </p>
-            </li>
-            <li><p><b><span class="item-content-title">頻度</span></b>:<%= routine.frequency.frequency_i18n %></p></li>
-            <li><p><b><span class="item-content-title">期間</span></b>:<%= routine.period.period_i18n %></p></li>
-            <li class="time-list"><p><b><span class="item-content-title"></span></b><%= l routine.created_at %></p></li>
-          </ul>
-          <!--ルーティンのレベルアイコン-->
-          <img src="/level_10.jpg">
-        </div>
+        </p>
       </div>
-      <% end %>
     </div>
-  </div>
+    <!--ルーティン一覧部分-->
+    <div class="my-page-right">
+      <div class="my-page-right-txt">
+        <h5>
+          ■Routine一覧
+        </h5>
+        <p>
+          <%= link_to new_routine_path do %>
+            ルーティンを追加<i class="fa-solid fa-circle-plus"></i>
+          <% end %>
+        </p>
+      </div>
 
-    <!--バックナンバーのルーティン一覧-->
 
+      <div class="item-contents_all">
+        <% @routines.each do |routine| %>
+        <%= link_to routine_path(routine.id) do %>
+        <div class="item-contents">
+          <div class="status_tag_routine">
+            <%if routine.public_status %>
+              <span class="item-check"><i class="fa-solid fa-lock-open"></i></span>
+            <% else %>
+              <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
+            <% end %>
+          </div>
+
+          <p class="create_at_tag"><%= l routine.created_at %></p>
+
+          <div class="item-content">
+            <ul>
+              <li><b>目標</b><br><p><%= routine.target %></p></li>
+              <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
+
+              <li class="sub_task_list">
+                <p>
+                <% routine.task.sub_tasks.each do | sub_task| %>
+                  <span class="subtask_line"><%= sub_task.name %></span>
+                <% end %>
+                </p>
+              </li>
+              <li class="time-list">
+                <span class="item-content-title"><b>時間</b>:
+                <% if routine.implementation_time.accurate_time.present? %>
+                  <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
+                <% else %>
+                  <%= routine.implementation_time.approximate_time %>
+                <% end %>
+                </span>
+              </li>
+              <li>
+                <span class="item-content-title"><b>頻度</b>:<%= routine.frequency.frequency_i18n %></span>&emsp;
+                <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
+              </li>
+            </ul>
+
+            <img src="/level_10.jpg">
+          </div>
+        </div>
+        <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
