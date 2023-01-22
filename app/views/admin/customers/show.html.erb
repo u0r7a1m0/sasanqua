@@ -1,66 +1,120 @@
 <div class="admin-customer-wrapper">
-  <h5>■<%= @customer.nickname %>さんの詳細画面</h5>
+  <div class="my-page-wrapper">
+    <h5>■<%= @customer.nickname %>&ensp;さんのマイページ</h5>
+
+    <div class="my-page-contents">
+      <!--プロフィー部分-->
+      <div class="my-page-left">
+        <div class="profile-contents">
+          <div style="text-align: center;"><%= image_tag @customer.profile_image,size: '100x100', url: my_page_path %></div>
+            <p><%= link_to "プロフィールを編集" ,edit_admin_customer_path, class:"prof-edit-btn" %></p>
+        </div>
+      </div>
+      <!--ルーティン一覧部分-->
+      <div class="my-page-right">
+        <div class="my-page-right-txt">
+          <h5>■Routine一覧</h5>
+        </div>
 
 
-      <%= image_tag @customer.get_profile_image(100,100) %>
-      <p><%= link_to "編集" ,edit_admin_customer_path(@customer.id), class:"edit-btn" %></p>
-
-
-      <!--氏名-->
-      <p><b>ニックネーム</b>&emsp;&emsp;&nbsp;<%= @customer.nickname %></p>
-      <p><b>メールアドレス</b>&emsp;&nbsp;<%= @customer.email %></p>
-      <p><b>会員ステータス</b>&emsp;
-
-      <%if @customer.is_deleted %>
-      <span class="inactive">退会</span>
-      <% else %>
-      <span class="active">有効</span>
-      <% end %></p>
-
-      <div class="routine-contents">
-        <div class="my-routine-contents">
-          <h5>■ルーティン一覧</h5>
-          <div class="item-contents_all">
-            <% @routines.each do |routine| %>
-            <div class="item-contents">
-              <div class="status_tag_routine">
-                <%if routine.public_status %>
+        <div class="item-contents_all">
+          <% @routines.each do |routine| %>
+          <div class="a-item-contents">
+            <div class="status_tag_routine">
+              <%if routine.public_status %>
                 <span class="item-check"><i class="fa-solid fa-lock-open"></i></span>
-                <% else %>
+              <% else %>
                 <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
-                <% end %>
-              </div>
-              <p class="create_at_tag"><%= l routine.created_at %></p>
+              <% end %>
+            </div>
 
-              <div class="item-content">
-                <ul>
-                  <li><b>目標</b><br><p><%= routine.target %></p></li>
-                  <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
+            <p class="create_at_tag"><%= l routine.created_at %></p>
 
-                  <li class="sub_task_list"><p>
-                    <% routine.task.sub_tasks.each do | sub_task| %>
+            <div class="item-content">
+              <ul>
+                <li><b>目標</b><br><p><%= routine.target %></p></li>
+                <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
+                <li class="sub_task_list">
+                  <p>
+                  <% routine.task.sub_tasks.each do | sub_task| %>
                     <span class="subtask_line"><%= sub_task.name %></span>
-                    <% end %>
-                  </p></li>
-                  <li class="time-list">
-                    <span class="item-content-title"><b>時間</b>:
-                    <% if routine.implementation_time.accurate_time.present? %>
+                  <% end %>
+                  </p>
+                </li>
+                <li class="time-list">
+                  <span class="item-content-title"><b>時間</b>:
+                  <% if routine.implementation_time.accurate_time.present? %>
                     <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
                     <% else %>
                     <%= routine.implementation_time.approximate_time %>
-                    <% end %>
-                    </span>
-                  </li>
-                  <li>
-                    <span class="item-content-title"><b>頻度</b>:<%= routine.frequency.frequency_i18n %></span>&emsp;
-                    <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
-                  </li>
+                  <% end %>
+                  </span>
+                </li>
+                <li>
+                  <span class="item-content-title"><b>頻度</b>:<%= routine.frequency.frequency_i18n %></span>&emsp;
+                  <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
+                </li>
+              </ul>
 
-                </ul>
-                <img src="/level_10.jpg">
-              </div>
+              <img src="/level_10.jpg">
             </div>
-            <% end %>
           </div>
+          <% end %>
+        </div>
+
+
+
+        <!--バックナンバー-->
+        <div class="my-page-right-txt">
+          <h5>■バックナンバー一覧</h5>
+        </div>
+
+
+        <div class="item-contents_all">
+          <% @routines.each do |routine| %>
+          <div class="item-contents">
+            <div class="status_tag_routine">
+              <%if routine.public_status %>
+                <span class="item-check"><i class="fa-solid fa-lock-open"></i></span>
+              <% else %>
+                <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
+              <% end %>
+            </div>
+
+            <p class="create_at_tag"><%= l routine.created_at %></p>
+
+            <div class="item-content">
+              <ul>
+                <li><b>目標</b><br><p><%= routine.target %></p></li>
+                <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
+                <li class="sub_task_list">
+                  <p>
+                  <% routine.task.sub_tasks.each do | sub_task| %>
+                    <span class="subtask_line"><%= sub_task.name %></span>
+                  <% end %>
+                  </p>
+                </li>
+                <li class="time-list">
+                  <span class="item-content-title"><b>時間</b>:
+                  <% if routine.implementation_time.accurate_time.present? %>
+                    <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
+                    <% else %>
+                    <%= routine.implementation_time.approximate_time %>
+                  <% end %>
+                  </span>
+                </li>
+                <li>
+                  <span class="item-content-title"><b>頻度</b>:<%= routine.frequency.frequency_i18n %></span>&emsp;
+                  <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
+                </li>
+              </ul>
+
+              <img src="/level_10.jpg">
+            </div>
+          </div>
+          <% end %>
         </div>
       </div>
+    </div>
+  </div>
+</div>

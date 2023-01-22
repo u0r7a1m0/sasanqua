@@ -1,4 +1,6 @@
 class Frequency < ApplicationRecord
+  before_save :set_default_time
+
   belongs_to :routine
   validates :frequency, presence: true
   enum frequency:{
@@ -8,4 +10,11 @@ class Frequency < ApplicationRecord
     twoday_once: 3, #2日に1回
     threeday_once: 4 #3日に1回
   }
+
+  private
+
+  def set_default_time
+    # self.reset_time ||= Time.zone.now.beginning_of_day.since(5.hours)
+    self.reset_time ||= '5:00'
+  end
 end

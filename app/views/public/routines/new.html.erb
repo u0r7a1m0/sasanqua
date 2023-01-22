@@ -93,6 +93,8 @@
           <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
             <div><p><%= b.radio_button + b.label %></p></div>
           <% end %>
+          
+          <%= frequency.time_field :reset_time %>
         </p>
       </div>
       <% end %>

@@ -69,7 +69,7 @@ class Public::RoutinesController < ApplicationController
     params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
                                     task_attributes: [:routine_id, :name, sub_tasks_attributes: %i(name) ],
                                     implementation_time_attributes: [:accurate_time, :approximate_time, :routine_id],
-                                    frequency_attributes: [:routine_id, :frequency],
+                                    frequency_attributes: [:routine_id, :frequency, :reset_time],
                                     period_attributes: [:routine_id, :period]
                                     )
   end

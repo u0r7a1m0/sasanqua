@@ -1,9 +1,9 @@
 <div class="admin-customer-wrapper">
   <div class="admin-customer-edit-contents">
     <h5>■会員情報編集</h5>
+      <%= form_with model: @customer ,url: admin_customer_path(@customer.id),method: :patch do |f| %>
     <div class="customer-edit-form">
       <div>
-      <%= form_with model: @customer ,url: admin_customer_path(@customer.id),method: :patch do |f| %>
         <p class="edit-label"><b><%= f.label :'プロフィール画像' %></b></p>
         <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
       </div>
@@ -31,8 +31,11 @@
       </div>
       <!--ボタン-->
       <div class="btns">
-        <button type="submit" class="update-btn">変更</button>
+        <%= link_to '戻る' , admin_customer_path(@customer.id), class: "update-btn" %>
+        <%= f.submit'変更', class: "update-btn" %>
+        <!--<button type="submit" class="update-btn">変更</button>-->
       </div>
+
       <% end %>
     </div>
   </div>

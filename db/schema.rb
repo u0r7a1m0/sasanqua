@@ -72,8 +72,9 @@ ActiveRecord::Schema.define(version: 2023_01_15_064543) do
   end
 
   create_table "frequencies", force: :cascade do |t|
-    t.integer "routine_id"
-    t.integer "frequency"
+    t.integer "routine_id", null: false
+    t.integer "frequency", null: false
+    t.time "reset_time", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -109,8 +110,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_064543) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer "routine_id"
-    t.string "name", default: "", null: false
+    t.integer "routine_id", null: false
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
