@@ -1,7 +1,7 @@
 class Public::BookmarksController < ApplicationController
-  def index
+  def show
+    # @customer = current_customer
+    # @favorite_routines = @customer.bookemark_routines
   end
 
-  def show
-  end
 end

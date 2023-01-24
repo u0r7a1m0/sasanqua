@@ -23,7 +23,11 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
 
-    resources :routines, :bookmarks
+    resources :routines do
+      resources :sub_task_commits
+      resources :task_commits
+    end
+    resources :bookmarks
   end
   #####################
   # 管理者側のルーティング設定

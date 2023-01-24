@@ -26,4 +26,5 @@ class Routine < ApplicationRecord
   def short_description
     description[0, 9] + '...'
   end
+
 end

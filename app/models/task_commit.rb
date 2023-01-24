@@ -1,0 +1,2 @@
+class TaskCommit < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class SubTaskCommit < ApplicationRecord
+end

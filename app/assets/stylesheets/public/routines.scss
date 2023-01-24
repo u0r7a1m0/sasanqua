@@ -123,3 +123,94 @@
   padding: 8px 8px;
   font-size: 1rem;
 }
+
+
+// ルーティン詳細画面
+
+
+.routine-show-wrapper{
+  width: 100%;
+  margin: 0 auto;
+}
+.routine-show-contents{
+  display: flex;
+  // margin-top: 2vh;
+  // border-top: 1px solid #E0DADA;
+}
+.profile-contents{
+  img{
+    margin-top: 5vh;
+    align-items: center;
+  }
+  p{
+    text-align: center;
+    font-size: 12px;
+    margin-top: 2vh;
+  }
+  a{
+    text-decoration: none;
+  }
+}
+.routine-show-right{
+  border-left: 1px solid #E0DADA;
+  padding-left: 1vw;
+  margin-left: 1vw;
+  margin-top: 2vw;
+  h5{
+    margin-bottom: 3vh;
+  }
+  p{
+    font-size: 15px;
+  }
+}
+.routine-show-left{
+  width: 400px;
+}
+.routine-show-right-txt{
+  display: flex;
+  p{
+    font-size: 13px;
+    margin-left: auto;
+
+  }
+  a{
+    text-decoration: none;
+  }
+}
+.period-content{
+  border-top: 1px solid #E0DADA;
+  padding-top: 3vh;
+  margin-top: 3vh;
+}
+.profile-contents img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 80px;  /* 縦横を同じ値にする */
+  height: 80px;  /* 縦横を同じ値にする */
+}
+@media screen and (max-width: 992px) {
+  .routine-show-left{
+  width: 100%;
+  }
+  .routine-show-contents{
+    display: block;
+    border-top: none;
+  }
+  .routine-show-right{
+    border: none;
+  }
+  .routine-show-wrapper{
+    width: 90%;
+    margin: 0 auto;
+  }
+  .routine-show-right{
+    margin-right:0;
+    margin-left:0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .routine-show-right-txt{
+    border-top: 1px solid #E0DADA;
+    margin-top: 2vh;
+    padding-top: 2vh;
+  }
+}

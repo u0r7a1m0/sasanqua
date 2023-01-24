@@ -12,6 +12,10 @@ class Public::RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
+#    if @routin.task.sub_tasks.length > 5
+#      flash[:error] = "サブタスクあは5個までです。"
+#      redirect_to new_routine_path
+#    end
     @routine.customer_id = current_customer.id
     # binding.pry
     if @routine.save
@@ -26,10 +30,12 @@ class Public::RoutinesController < ApplicationController
 
   def index
     @routines = Routine.where(public_status:true).all.order("created_at DESC")
+    # @routine = Routine.find(params[:id])
   end
 
   def show
     @routine = Routine.find(params[:id])
+
   end
 
   def edit
@@ -38,13 +44,25 @@ class Public::RoutinesController < ApplicationController
 
   def update
     @routine = Routine.find(params[:id])
-    if @routine.update(item_params)
-    # 更新に成功したときの処理
-      flash[:notice]="更新完了しました！"
+    # if @routine.update(item_params)
+    # # 更新に成功したときの処理
+    #   flash[:notice]="更新完了しました！"
+    #   redirect_to routine_path(@routine.id)
+    # else
+    #   render :edit
+    # end
+    if params[:sub_tasks]
+      #サブタスクの処理
+      @routine.sub_tasks.update
+
       redirect_to routine_path(@routine.id)
-    else
-      render :edit
+    else params[:task]
+      #メインタスクの処理
+      @routine.task.update
+
+      redirect_to routine_path(@routine.id)
     end
+
   end
 
   private

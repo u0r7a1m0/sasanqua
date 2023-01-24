@@ -8,6 +8,7 @@ class Customer < ApplicationRecord
 
   has_many :routines, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_routines, through: :bookmarks, source: :routine
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -16,7 +17,5 @@ class Customer < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-  def short_description
-    description[0, 9] + '...'
-  end
+
 end

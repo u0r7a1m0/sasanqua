@@ -1,12 +1,64 @@
-<div class="routine-contents">
+<div class="routine-show-wrapper">
+  <div class="routine-show-contents">
+    <!--プロフィー部分-->
+    <div class="routine-show-left">
+      <div class="profile-contents">
+        <div style="text-align: center;">
+          <%#= image_tag current_customer.profile_image,size: '100x100' %>
+          <img src="/level_10.jpg">
+          <p>level.10</p>
+        </div>
 
-  <img src="/level_01.jpg">
-  <p>level.1</p>
-  <%= @routine.target %>
+        </p>
+      </div>
+    </div>
+    <!--ルーティン一覧部分-->
+    <div class="routine-show-right">
+      <div class="routine-show-right-txt">
+        <h5>
+          ■Routine
+          <%= link_to '編集', edit_routine_path(@routine.id), class:'edit-btn' %>
+        </h5>
+
+      </div>
+
+      <div>
+        <p><b>目標</b>：<%= @routine.target %></p>
+        <!--サブタスクがある場合-->
+        <% if @routine.task.sub_tasks.present? %>
+
+          <p><b>ルーティン</b>：<%= @routine.task.name %></p>
+
+          <% loop_count = 1 %>
+          <%# if @routine.frequency.frequency == Frequency.frequency.oneday_once %>
+            <% loop_count = 3 %>
+          <%# end %>
+
+          <%= form_tag routine_sub_task_commits_path(@routine.id) do %>
+            <% for n in 1..loop_count do %>
+              <%= collection_check_boxes :sub_task, SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
+                <% if b.object.sub_task_commits.where(created_at: Time.zone.now.all_day).exists? %>
+                  <%= b.label {b.check_box(checked: false) + b.text} %> <br> <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していればすでに達成済み-->
+                <% else %>
+                  <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していなければ未達成-->
+                  <%= b.label {b.check_box(checked: true) + b.text} %> <br>
+                <% end %>
+              <% end %>
+              <%= submit_tag "更新", :class=>"update_btn" %>
+            <% end %>
+          <% end %>
+
+          <p class="period-content"><b>期間</b></p>
+          <p><%= @routine.period.period_i18n %></p>
+
+      <!--サブタスクがない場合-->
+      <% else %>
+        <p><b>ルーティンだよ</b></p>
+        <p><%= @routine.task.name %></p>
 
 
-
-
-
-
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>

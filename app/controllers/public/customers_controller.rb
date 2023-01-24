@@ -2,7 +2,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @routines = current_customer.routines.order("created_at DESC")
-    # @routine = Routine.find(params[:id])
+    @bookmark = current_customer.bookmarks
+
   end
 
   def edit
@@ -41,5 +42,8 @@ class Public::CustomersController < ApplicationController
                                     frequency_attributes: [:routine_id, :frequency],
                                     period_attributes: [:routine_id, :period]
                                     )
+  end
+  def bookmark_params
+    params.require(:bookmark).permit(:routine_id, :customer_id)
   end
 end

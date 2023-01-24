@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_15_064543) do
+ActiveRecord::Schema.define(version: 2023_01_24_121617) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2023_01_15_064543) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "routine_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -102,9 +104,23 @@ ActiveRecord::Schema.define(version: 2023_01_15_064543) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sub_task_commits", force: :cascade do |t|
+    t.integer "sub_task_id"
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "sub_tasks", force: :cascade do |t|
     t.integer "task_id"
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "task_commits", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

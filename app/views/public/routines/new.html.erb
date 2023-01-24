@@ -23,7 +23,7 @@
                               data: {
                                 association_insertion_node: '#sub_task-forms',
                                 association_insertion_method: 'after',
-                                partial: "sub_task_fields",
+                                partial: "sub_task_fields"
                               } do %>
                               <button class="btn-plus" id="add_order">
                                 <i class="fa-solid fa-plus"></i>
@@ -31,8 +31,8 @@
                               <%end%>
           <div id="sub_task-forms">
             <%= task.fields_for :sub_tasks do |sub_task| %>
-          <% render 'sub_task_fields', sub_task: sub_task %>
-          <% end %>
+              <% render 'sub_task_fields', sub_task: sub_task %>
+            <% end %>
           </p>
           </div>
       </div>
@@ -93,7 +93,7 @@
           <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
             <div><p><%= b.radio_button + b.label %></p></div>
           <% end %>
-          
+          <p><span>ルーティンリセット時間</span></p>
           <%= frequency.time_field :reset_time %>
         </p>
       </div>

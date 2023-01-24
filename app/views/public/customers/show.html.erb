@@ -5,10 +5,10 @@
     <!--プロフィー部分-->
     <div class="my-page-left">
       <div class="profile-contents">
-        <div style="text-align: center;"><%= image_tag @customer.profile_image,size: '100x100', url: my_page_path %></div>
+        <div style="text-align: center;"><%= image_tag current_customer.profile_image,size: '100x100', url: my_page_path %></div>
         <p><%= link_to "プロフィールを編集" ,customers_edit_path, class:"prof-edit-btn" %></p>
         <p>
-          <%= link_to bookmarks_path do %>
+          <%= link_to bookmark_path(@bookmark) do %>
           <i class="fa-regular fa-bookmark"></i>ブックマーク一覧
           <% end %>
         </p>
@@ -66,7 +66,7 @@
               <li>
                 <span class="item-content-title"><b>頻度</b>:<%= routine.frequency.frequency_i18n %></span>&emsp;
                 <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
-              <%= routine.frequency.reset_time %>
+              <%#= routine.frequency.reset_time %>
               </li>
             </ul>
 
