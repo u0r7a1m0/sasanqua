@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2023_01_24_121617) do
   create_table "sub_task_commits", force: :cascade do |t|
     t.integer "sub_task_id"
     t.integer "score"
+    t.integer "times"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(version: 2023_01_24_121617) do
   create_table "task_commits", force: :cascade do |t|
     t.integer "task_id"
     t.integer "score"
+    t.integer "times"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -12,10 +12,6 @@ class Public::RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
-#    if @routin.task.sub_tasks.length > 5
-#      flash[:error] = "サブタスクあは5個までです。"
-#      redirect_to new_routine_path
-#    end
     @routine.customer_id = current_customer.id
     # binding.pry
     if @routine.save
@@ -51,17 +47,17 @@ class Public::RoutinesController < ApplicationController
     # else
     #   render :edit
     # end
-    if params[:sub_tasks]
-      #サブタスクの処理
-      @routine.sub_tasks.update
+    # if params[:sub_tasks]
+    #   #サブタスクの処理
+    #   @routine.sub_tasks.update
 
-      redirect_to routine_path(@routine.id)
-    else params[:task]
-      #メインタスクの処理
-      @routine.task.update
+    #   redirect_to routine_path(@routine.id)
+    # else params[:task]
+    #   #メインタスクの処理
+    #   @routine.task.update
 
-      redirect_to routine_path(@routine.id)
-    end
+    #   redirect_to routine_path(@routine.id)
+    # end
 
   end
 

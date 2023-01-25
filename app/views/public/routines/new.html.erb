@@ -17,7 +17,7 @@
     <%= f.fields_for :task do |task| %>
       <%= task.text_field :name, placeholder: "日記を書く、筋トレするetc...", class: "short-text" %>
       <div>
-        <p class="sub_task_title">サブタスク&emsp;※任意※
+        <p class="sub_task_title"><span class="sub-text">サブタスク</span>&emsp;※任意※
         <%= link_to_add_association task, :sub_tasks,
                               form_name: 'sub_task',
                               data: {
@@ -28,11 +28,27 @@
                               <button class="btn-plus" id="add_order">
                                 <i class="fa-solid fa-plus"></i>
                               </button>
-                              <%end%>
+                              <% end %>
+          <p class="text-small">例：ルーティンが「筋トレ」で「腹筋」「腕立て」「ランニング1時間」などのメニューを追加したい場合、<br />フォームを「＋」で追加し、サブタスクを入力してみてください！</p>
           <div id="sub_task-forms">
             <%= task.fields_for :sub_tasks do |sub_task| %>
               <% render 'sub_task_fields', sub_task: sub_task %>
+
             <% end %>
+              <!--cocoonフォーム上限作りたいやつ！-->
+              <script>
+              $(document).on('cocoon:after-insert', function(e, insertedSubTask) {
+                  var limit = 2; // フォームの最大数
+                  var count = $(e.target).find('[sub_task_fields]').length; // data-cocoon-excludeがある要素の数をカウントする
+
+                  if (count > limit) {
+                  // フォームの上限を超えていたら、入力フォームを削除する
+                  insertedSubTask.remove();
+                  alert('フォームを追加できる上限に達しました');
+                  }
+              });
+              </script>
+
           </p>
           </div>
       </div>
@@ -51,7 +67,19 @@
         <p>
           <%= implementation_time.radio_button :accurate_time, true, checked: true, id: 'accurate_time_radio_button' %>
           <%= implementation_time.label :accurate_time, "時刻を設定", for: 'accurate_time_radio_button' %>
-          <%= implementation_time.time_field :accurate_time, id: 'accurate_time_select', class: 'short-text display-block'%>
+          <!--10分おきに分数設定-->
+          <%#= implementation_time.time_field :accurate_time, id: 'accurate_time_select', step: 600, class: 'short-text display-block'%>
+          <%= implementation_time.time_field :accurate_time, id: 'accurate_time_select', step: "1800",list: "data-list", class: 'short-text display-block'%>
+          <datalist id="data-list">
+            <option value="00:00"></option>
+            <option value="06:00"></option>
+            <option value="09:00"></option>
+            <option value="12:00"></option>
+            <option value="15:00"></option>
+            <option value="18:00"></option>
+            <option value="21:00"></option>
+          </datalist>
+
           <div id="error_message_accurate_time"></div>
         </p>
       </div>
@@ -93,8 +121,10 @@
           <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
             <div><p><%= b.radio_button + b.label %></p></div>
           <% end %>
-          <p><span>ルーティンリセット時間</span></p>
-          <%= frequency.time_field :reset_time %>
+          <p class="sub-text"><span>ルーティンリセット時間</span></p>
+          <p class="text-small">※未設定の場合、5:00にリセットされます。</p>
+          <!--時間のみ設定-->
+          <%= frequency.time_field :reset_time, step: "1800",list: "data-list", class: 'short-text'  %>
         </p>
       </div>
       <% end %>
