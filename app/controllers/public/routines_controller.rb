@@ -22,6 +22,10 @@ class Public::RoutinesController < ApplicationController
     # 投稿が失敗した場合
     redirect_to new_routine_path
     end
+
+
+    # DB column add day_count: 1 , 2 ,3
+    #
   end
 
   def index
@@ -31,7 +35,6 @@ class Public::RoutinesController < ApplicationController
 
   def show
     @routine = Routine.find(params[:id])
-
   end
 
   def edit
@@ -40,24 +43,14 @@ class Public::RoutinesController < ApplicationController
 
   def update
     @routine = Routine.find(params[:id])
-    # if @routine.update(item_params)
-    # # 更新に成功したときの処理
-    #   flash[:notice]="更新完了しました！"
-    #   redirect_to routine_path(@routine.id)
-    # else
-    #   render :edit
-    # end
-    # if params[:sub_tasks]
-    #   #サブタスクの処理
-    #   @routine.sub_tasks.update
 
-    #   redirect_to routine_path(@routine.id)
-    # else params[:task]
-    #   #メインタスクの処理
-    #   @routine.task.update
-
-    #   redirect_to routine_path(@routine.id)
-    # end
+    if @routine.update(routine_params)
+    # 更新に成功したときの処理
+      flash[:notice]="更新完了しました！"
+      redirect_to routine_path(@routine.id)
+    else
+      render :edit
+    end
 
   end
 
@@ -81,7 +74,7 @@ class Public::RoutinesController < ApplicationController
   # 複数モデル紐付けのパラムス
   def routine_params
     params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
-                                    task_attributes: [:routine_id, :name, sub_tasks_attributes: %i(name) ],
+                                    task_attributes: [:routine_id, :frequency_id, :name, sub_tasks_attributes: %i(name frequency_id _destroy) ],
                                     implementation_time_attributes: [:accurate_time, :approximate_time, :routine_id],
                                     frequency_attributes: [:routine_id, :frequency, :reset_time],
                                     period_attributes: [:routine_id, :period]

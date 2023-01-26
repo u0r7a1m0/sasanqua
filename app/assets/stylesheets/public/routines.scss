@@ -169,6 +169,23 @@
 .routine-show-left{
   width: 400px;
 }
+.update-btn2{
+  background-color: #79B39E;
+  padding: 2px 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border: solid 1px #79B39E;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 11px;
+  color: #fff;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+}
+.update-btn2:hover {
+  background-color: #97DEC4;
+  border: solid 1px #97DEC4;
+}
+
 .routine-show-right-txt{
   display: flex;
   p{

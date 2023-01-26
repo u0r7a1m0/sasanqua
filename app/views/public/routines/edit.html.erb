@@ -1,2 +1,34 @@
-<h1>Public::Routines#edit</h1>
-<p>Find me in app/views/public/routines/edit.html.erb</p>
+<h1>■Routine編集</h1>
+
+
+<div class="public-customer-edit-wrapper">
+
+  <h5>■会員情報編集</h5>
+
+  <div class="customer-edit-form">
+    <%= form_with model: @customer ,url: information_path(current_customer.id) do |f| %>
+    <div>
+      <p><%= f.label :'プロフィール画像' %></p>
+      <p><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></p>
+    </div>
+
+    <!--氏名-->
+    <div>
+      <p><%= f.label :'ニックネーム' %></p>
+      <p><%= f.text_field :nickname, autofocus: true, autocomplete: "last_name", placeholder: "ジョン・タイター", class: "form-control" %></p>
+    </div>
+    <!--メールアドレス-->
+    <div>
+      <p><%= f.label :メールアドレス %></p>
+      <p><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></p>
+    </div>
+
+    <!--ボタン-->
+    <div class="btns">
+      <%= f.submit '変更' ,class:'update-btn' %>
+      <%= link_to '退会する', unsubscribe_path, class:"withdraw-btn" %>
+    </div>
+    <% end %>
+  </div>
+
+</div>

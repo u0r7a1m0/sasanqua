@@ -13,16 +13,16 @@
   <div class="routine-content">
     <h3>■What do you routineize?</h3>
     <p class="sub-text"><span>何をルーティン化しますか？</span></p>
-    <div>
+    <div id="sub-tasks">
     <%= f.fields_for :task do |task| %>
-      <%= task.text_field :name, placeholder: "日記を書く、筋トレするetc...", class: "short-text" %>
+      <%= task.text_field :name, placeholder: "日記を書く、筋トレするetc...", class: "new-form-control" %>
       <div>
-        <p class="sub_task_title"><span class="sub-text">サブタスク</span>&emsp;※任意※
+        <div class="sub_task_title"><span class="sub-text">サブタスク</span>&emsp;※任意※
         <%= link_to_add_association task, :sub_tasks,
                               form_name: 'sub_task',
                               data: {
                                 association_insertion_node: '#sub_task-forms',
-                                association_insertion_method: 'after',
+                                association_insertion_method: 'before',
                                 partial: "sub_task_fields"
                               } do %>
                               <button class="btn-plus" id="add_order">
@@ -30,32 +30,46 @@
                               </button>
                               <% end %>
           <p class="text-small">例：ルーティンが「筋トレ」で「腹筋」「腕立て」「ランニング1時間」などのメニューを追加したい場合、<br />フォームを「＋」で追加し、サブタスクを入力してみてください！</p>
-          <div id="sub_task-forms">
+          <% (1..2).each do |i| %>
             <%= task.fields_for :sub_tasks do |sub_task| %>
-              <% render 'sub_task_fields', sub_task: sub_task %>
-
+              <%= render 'sub_task_fields', sub_task: sub_task %>
             <% end %>
-              <!--cocoonフォーム上限作りたいやつ！-->
-              <script>
-              $(document).on('cocoon:after-insert', function(e, insertedSubTask) {
-                  var limit = 2; // フォームの最大数
-                  var count = $(e.target).find('[sub_task_fields]').length; // data-cocoon-excludeがある要素の数をカウントする
-
-                  if (count > limit) {
-                  // フォームの上限を超えていたら、入力フォームを削除する
-                  insertedSubTask.remove();
-                  alert('フォームを追加できる上限に達しました');
-                  }
-              });
-              </script>
-
-          </p>
-          </div>
+          <% end %>
+          <div id="sub_task-forms"></div>
+        </div>
       </div>
-      <% end %>
     </div>
+    <% end %>
+
   </div>
 
+  <!--cocoonフォーム上限作りたいやつ！-->
+  <script>
+  $(function() {
+    $('#sub-tasks').on('cocoon:after-insert', function() {
+      check_forms_limit()
+    });
+        $('#sub-tasks').on('cocoon:after-remove', function() {
+      check_forms_limit()
+    });
+
+    check_forms_limit()
+
+    function check_forms_limit() {
+      if ($('#sub-tasks .nested-fields').length >= 10) {
+        $('#add_order').hide()
+      } else {
+        $('#add_order').show()
+      }
+
+      if ($('#sub-tasks .nested-fields .remove_fields').length <= 2) {
+        $('.remove_fields').hide()
+      } else {
+        $('.remove_fields').show()
+      }
+    }
+  })
+  </script>
 
   <!--いつ？-->
   <div class="routine-content">

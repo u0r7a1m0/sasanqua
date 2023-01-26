@@ -24,27 +24,42 @@
 
       <div>
         <p><b>目標</b>：<%= @routine.target %></p>
+        <p><b>頻度</b>：<%= @routine.frequency.frequency_i18n %></p>
         <!--サブタスクがある場合-->
         <% if @routine.task.sub_tasks.present? %>
 
           <p><b>ルーティン</b>：<%= @routine.task.name %></p>
-
+          <!--1日に1回の場合-->
           <% loop_count = 1 %>
           <%# if @routine.frequency.frequency == Frequency.frequency.oneday_once %>
-            <% loop_count = 3 %>
           <%# end %>
+
+          <!--1日に2回の場合-->
+          <% if @routine.frequency.frequency == "oneday_twice" %>
+            <% loop_count = 2 %>
+          <% end %>
+
+          <!--1日に3回の場合-->
+          <% if @routine.frequency.frequency == "oneday_third" %>
+            <% loop_count = 3 %>
+          <% end %>
+
 
           <%= form_tag routine_sub_task_commits_path(@routine.id) do %>
             <% for n in 1..loop_count do %>
+            <p>
+              <%#= hidden_filed n  %>
               <%= collection_check_boxes :sub_task, SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
                 <% if b.object.sub_task_commits.where(created_at: Time.zone.now.all_day).exists? %>
-                  <%= b.label {b.check_box(checked: false) + b.text} %> <br> <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していればすでに達成済み-->
+                  <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していればすでに達成済み-->
+                  <%= b.label {b.check_box(checked: true) + b.text} %> <br>
                 <% else %>
                   <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していなければ未達成-->
-                  <%= b.label {b.check_box(checked: true) + b.text} %> <br>
+                  <%= b.label {b.check_box(checked: false) + b.text} %> <br>
                 <% end %>
               <% end %>
-              <%= submit_tag "更新", :class=>"update_btn" %><br>
+            </p>
+              <%= submit_tag "更新", :class=>"update-btn2" %><br>
             <% end %>
           <% end %>
 
@@ -54,7 +69,20 @@
       <!--サブタスクがない場合-->
       <% else %>
         <p><b>ルーティンだよ</b></p>
-        <p><%= @routine.task.name %></p>
+          <%#= form_tag routine_task_commits_path(@routine.id) do %>
+
+          <%#= collection_check_boxes :task, Task , @routine.task, :id, :name do |b| %>
+
+          <%# if b.object.task_commits.where(created_at: Time.zone.now.all_day).exists? %>
+            <%#= b.label {b.check_box(checked: false) + b.text} %> <br>
+          <%# else %>
+            <%#= b.label {b.check_box(checked: true) + b.text} %> <br>
+          <%# end %>
+        <%# end %>
+        <%#= submit_tag "更新", :class=>"update-btn2" %>
+        <%# end %>
+
+
 
 
       <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_24_121617) do
+ActiveRecord::Schema.define(version: 2023_01_26_132133) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2023_01_24_121617) do
     t.integer "times"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "frequency_id"
+    t.index ["frequency_id"], name: "index_sub_task_commits_on_frequency_id"
   end
 
   create_table "sub_tasks", force: :cascade do |t|
@@ -125,6 +127,8 @@ ActiveRecord::Schema.define(version: 2023_01_24_121617) do
     t.integer "times"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "frequency_id"
+    t.index ["frequency_id"], name: "index_task_commits_on_frequency_id"
   end
 
   create_table "tasks", force: :cascade do |t|

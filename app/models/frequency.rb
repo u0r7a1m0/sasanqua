@@ -1,7 +1,8 @@
 class Frequency < ApplicationRecord
   before_save :set_default_time
-
   belongs_to :routine
+  has_many :task_commits
+  has_many :sub_task_commits
   validates :frequency, presence: true
   enum frequency:{
     oneday_once:  0, #1日に1回
