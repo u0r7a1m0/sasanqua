@@ -31,6 +31,7 @@
   padding-left: 1vw;
   margin-left: 1vw;
   margin-top: 2vw;
+  width: 80%;
   h5{
     margin-bottom: 3vh;
   }
@@ -64,15 +65,12 @@
   .my-page-right{
     border: none;
   }
-  .my-page-wrapper{
-    width: 90%;
-    margin: 0 auto;
-  }
   .my-page-right{
     margin-right:0;
     margin-left:0;
     padding-right: 0;
     padding-left: 0;
+    width: 100%;
   }
   .my-page-right-txt{
     border-top: 1px solid #E0DADA;
@@ -80,6 +78,7 @@
     padding-top: 2vh;
   }
 }
+
 
 // editページ
 .public-customer-edit-wrapper{

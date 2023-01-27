@@ -4,9 +4,81 @@
 
 // アドミン・会員一覧＆会員詳細画面共通
 .admin-customer-wrapper{
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
+
+// マイページ
+.admin_my-page-wrapper{
+  width: 100%;
+  margin: 0 auto;
+}
+.admin_my-page-contents{
+  display: flex;
+  // margin-top: 2vh;
+  border-top: 1px solid #E0DADA;
+}
+.profile-contents{
+  p{
+    text-align: center;
+    font-size: 12px;
+    margin-top: 2vh;
+  }
+  a{
+    text-decoration: none;
+  }
+}
+.admin_my-page-right{
+  border-left: 1px solid #E0DADA;
+  padding-left: 1vw;
+  margin-left: 1vw;
+  margin-top: 2vw;
+  width: 80%;
+  h5{
+    margin-bottom: 3vh;
+  }
+}
+.admin_my-page-left{
+  width: 400px;
+}
+.admin_my-page-right-txt{
+  display: flex;
+  p{
+    font-size: 13px;
+    margin-left: auto;
+  }
+  a{
+    text-decoration: none;
+  }
+}
+.profile-contents img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 80px;  /* 縦横を同じ値にする */
+  height: 80px;  /* 縦横を同じ値にする */
+}
+@media screen and (max-width: 992px) {
+  .admin_my-page-left{
+    width: 100%;
+  }
+  .admin_my-page-contents{
+    display: block;
+    border-top: none;
+  }
+  .admin_my-page-right{
+    border: none;
+    margin-right:0;
+    margin-left:0;
+    padding-right: 0;
+    padding-left: 0;
+    width: 100%;
+  }
+  .admin_my-page-right-txt{
+    border-top: 1px solid #E0DADA;
+    margin-top: 2vh;
+    padding-top: 2vh;
+  }
+}
+
 
 // アドミン・会員一覧画面
 .admin-customer-contents{
@@ -26,6 +98,102 @@
   margin: 0 auto;
   }
 }
+
+
+/*ルーティンアイテムボックス共通*/
+.item-contents_all{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  margin-top: 3vh;
+}
+.item-contents{
+  width: 100%;
+  margin: 0 auto;
+}
+.status_tag_routine{
+  z-index: 100;
+  position:relative;
+  left: 70%;
+  top: 30%;
+}
+.status_tag_routine .item-check{
+  color: #19D834;
+}
+.status_tag_routine .item-lock{
+  color: gray;
+}
+.item-contents{
+  width: 250px;
+  height: 250px;
+  background-image: url("/header_05.jpg");
+  background-position: bottom;
+  position: relative;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  margin-bottom: 3vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.item-content{
+  width: 249px;
+  height: 180px;
+  background-color: white;
+  position:absolute;
+  bottom: 0;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  padding: 1vw;
+}
+.item-content img{
+  position:absolute;
+  bottom: 90%;
+  right: 35%;
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 80px;  /* 縦横を同じ値にする */
+  height: 80px;  /* 縦横を同じ値にする */
+}
+.item-content ul{
+  width: 200px;
+}
+.item-content li{
+  list-style: none;
+  font-size: 12px;
+  text-align: left;
+}
+.item-content p{
+  font-size:10px;
+}
+.item-content .time-list{
+  border-top: 1px solid #E6DADF;
+  padding-top:5px;
+  margin-top:5px;
+}
+.item-contents_all a{
+  text-decoration: none;
+  color: black;
+}
+.profile_name{
+  font-size: 10px;
+  position:relative;
+  left: 10%;
+  top: 2%;
+}
+.profile_name_2{
+  font-size: 10px;
+  position:relative;
+  left: 28%;
+  top: 2%;
+}
+.create_at_tag{
+  font-size: 10px;
+  position:relative;
+  left: 10%;
+  top: 2%;
+
+}
+
 
 //アドミン・会員詳細画面
 .customer-top-content{
