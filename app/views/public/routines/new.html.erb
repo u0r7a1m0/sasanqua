@@ -135,10 +135,10 @@
           <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
             <div><p><%= b.radio_button + b.label %></p></div>
           <% end %>
-          <p class="sub-text"><span>ルーティンリセット時間</span></p>
-          <p class="text-small">※未設定の場合、5:00にリセットされます。</p>
+          <!--<p class="sub-text"><span>ルーティンリセット時間</span></p>-->
+          <!--<p class="text-small">※未設定の場合、5:00にリセットされます。</p>-->
           <!--時間のみ設定-->
-          <%= frequency.time_field :reset_time, step: "1800",list: "data-list", class: 'short-text'  %>
+          <% frequency.time_field :reset_time, step: "1800",list: "data-list", class: 'short-text'  %>
         </p>
       </div>
       <% end %>

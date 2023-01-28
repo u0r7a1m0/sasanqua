@@ -48,9 +48,9 @@
           <%= form_tag routine_sub_task_commits_path(@routine.id) do %>
             <% for n in 1..loop_count do %>
             <p>
-              <%#= hidden_filed n  %>
-              <%= collection_check_boxes :sub_task, SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
-                <% if b.object.sub_task_commits.where(created_at: Time.zone.now.all_day).exists? %>
+              <%#= hidden_field_tag :checkbox_no, n %>
+              <%= collection_check_boxes "sub_task_#{n}", SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
+                <% if b.object.sub_task_commits.where(created_at: Time.zone.now.all_day, times: n).exists? %>
                   <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していればすでに達成済み-->
                   <%= b.label {b.check_box(checked: true) + b.text} %> <br>
                 <% else %>
@@ -59,8 +59,8 @@
                 <% end %>
               <% end %>
             </p>
-              <%= submit_tag "更新", :class=>"update-btn2" %><br>
             <% end %>
+              <%= submit_tag "更新", :class=>"update-btn2" %><br>
           <% end %>
 
           <p class="period-content"><b>期間</b></p>
