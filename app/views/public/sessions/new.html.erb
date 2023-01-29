@@ -21,7 +21,10 @@
       <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
     </div>
     <div class="submit-btn">
-      <%= f.submit "ログイン" ,:class=>"input_btn" %>
+      <%#= f.submit "ログイン" ,:class=>"input_btn" %>
+      <button type="submit" class="input_btn">
+        ログイン
+      </button>
     </div>
     <% end %>
   </div>

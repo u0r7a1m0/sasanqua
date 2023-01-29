@@ -10,6 +10,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= favicon_link_tag 'favicon.ico' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
 
   <body>
@@ -71,9 +72,11 @@
         </div>
       </header>
 
-
+      <div class="flash-message">
+        <%= render partial: 'layouts/flash_window' %>
+      </div>
       <main>
-        <%#= render partial: 'layouts/flash_window' %>
+
         <%= yield %>
       </main>
 

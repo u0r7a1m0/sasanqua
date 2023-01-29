@@ -22,12 +22,18 @@ Rails.application.routes.draw do
     patch '/customers/information' => 'customers#update', as: 'information'
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
+    get '/routines/like' => 'routines#like', as: 'bookmark'
 
     resources :routines do
       resources :sub_task_commits
       resources :task_commits
     end
-    resources :bookmarks
+    # resources :bookmarks, only: [:create, :destroy, :show]
+
+
+    resources :routines, except: [:index] do
+      resource :bookmarks, only: [:create, :destroy, :show, :index]
+    end
   end
   #####################
   # 管理者側のルーティング設定

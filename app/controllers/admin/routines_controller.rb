@@ -1,6 +1,6 @@
 class Admin::RoutinesController < ApplicationController
   def index
-    @routines = Routine.all
+    @routines = Routine.all.order("created_at DESC")
   end
 
   def new

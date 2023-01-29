@@ -1,0 +1,15 @@
+<!--いいね機能-->
+<div class="routine_bookmark_content">
+
+    <% if routine.bookmarked_by?(current_customer) %>
+      <%= link_to routine_bookmarks_path(routine.id), method: :delete, remote: true  do %>
+        <i class="fa-solid fa-heart"></i>
+      <% end %>
+    <% else %>
+      <%= link_to routine_bookmarks_path(routine.id), method: :post , remote: true do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+    <% end %>
+
+</div>
+

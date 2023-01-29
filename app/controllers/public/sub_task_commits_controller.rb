@@ -97,6 +97,7 @@ class Public::SubTaskCommitsController < ApplicationController
       not_exist_sub_task_ids = sub_task_3_i - today_sub_task_commits.pluck(:sub_task_id)
       not_exist_sub_task_ids.each do |sub_task_id|
         SubTaskCommit.create(sub_task_id: sub_task_id, times: 3)
+        
       end
     end
 

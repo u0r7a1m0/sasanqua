@@ -4,7 +4,7 @@ class Admin::CustomersController < ApplicationController
   end
   def show
     @customer = Customer.find(params[:id])
-    @routines = @customer.routines
+    @routines = @customer.routines.order("created_at DESC")
     # @routines = Routine.all.order("created_at desc")
   end
 

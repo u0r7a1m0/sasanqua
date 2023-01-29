@@ -29,7 +29,7 @@ class Public::RoutinesController < ApplicationController
   end
 
   def index
-    @routines = Routine.where(public_status:true).all.order("created_at DESC")
+    @routines = Routine.where(public_status:true).all.order("created_at DESC").page(params[:page]).per(12)
     # @routine = Routine.find(params[:id])
   end
 
@@ -52,6 +52,9 @@ class Public::RoutinesController < ApplicationController
       render :edit
     end
 
+  end
+  def like
+    @routines = Routine.where(public_status:true).all.order("created_at DESC").page(params[:page]).per(12)
   end
 
   private

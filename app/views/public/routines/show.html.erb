@@ -24,15 +24,24 @@
 
       <div>
         <p><b>目標</b>：<%= @routine.target %></p>
-        <p><b>頻度</b>：<%= @routine.frequency.frequency_i18n %></p>
+
+        <p class="target_routine_text">
+        <b>ルーティン</b>：<br>
+        <span>
+          <%= @routine.frequency.frequency_i18n %>、
+          <% if @routine.implementation_time.accurate_time.present? %>
+            <%= @routine.implementation_time.accurate_time.strftime('%H:%M') if @routine.implementation_time.accurate_time %>に
+          <% else %>
+            <%= @routine.implementation_time.approximate_time %>に
+          <% end %>
+          <%= @routine.task.name %>！
+          </span>
+        </p>
         <!--サブタスクがある場合-->
         <% if @routine.task.sub_tasks.present? %>
 
-          <p><b>ルーティン</b>：<%= @routine.task.name %></p>
           <!--1日に1回の場合-->
           <% loop_count = 1 %>
-          <%# if @routine.frequency.frequency == Frequency.frequency.oneday_once %>
-          <%# end %>
 
           <!--1日に2回の場合-->
           <% if @routine.frequency.frequency == "oneday_twice" %>
@@ -44,15 +53,13 @@
             <% loop_count = 3 %>
           <% end %>
 
-
           <%= form_tag routine_sub_task_commits_path(@routine.id) do %>
             <% for n in 1..loop_count do %>
-            <p>
-              <%#= hidden_field_tag :checkbox_no, n %>
+            <p class="check_box_text">
               <%= collection_check_boxes "sub_task_#{n}", SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
                 <% if b.object.sub_task_commits.where(created_at: Time.zone.now.all_day, times: n).exists? %>
                   <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していればすでに達成済み-->
-                  <%= b.label {b.check_box(checked: true) + b.text} %> <br>
+                <%= b.label {b.check_box(checked: true) + b.text} %><br>
                 <% else %>
                   <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していなければ未達成-->
                   <%= b.label {b.check_box(checked: false) + b.text} %> <br>
@@ -60,7 +67,7 @@
               <% end %>
             </p>
             <% end %>
-              <%= submit_tag "更新", :class=>"update-btn2" %><br>
+              <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
           <% end %>
 
           <p class="period-content"><b>期間</b></p>

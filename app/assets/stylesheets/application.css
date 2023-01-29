@@ -23,12 +23,15 @@
   font-family:'TsukuBRdGothic-Regular','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',sans-serif;
 }
 main{
-  margin:5vw;
+  margin:3vw 5vw 5vh 5vw;
 }
 .container{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+li{
+  list-style: none;
 }
 footer{
   width:100%;
@@ -59,6 +62,7 @@ header {
   display: flex;
   margin:0 auto;
   padding: 0 10vw;
+  margin-bottom: 2vh
 }
 /*ヘッダーナビゲーション部分*/
 .nav_list {
@@ -434,4 +438,48 @@ header {
   left: 10%;
   top: 2%;
 
+}
+
+
+
+/*フラッシュメッセージ*/
+/*.flash-message{*/
+/*  margin-top: 2vh;*/
+/*}*/
+.flash-window {
+  font-size: 14px;
+  width: 100%;
+  padding-left: 5vw;
+  font-weight: bold;
+  magin-top: 2vh;
+}
+.flash-notice {
+  color: #3DBA58;
+
+}
+.flash-error{
+  color: red;
+}
+
+.flash-text li{
+  font-size: 10px;
+  font-weight: bold;
+  color: red;
+}
+
+/*ページネーション*/
+.pagenation-content{
+  text-align: center;
+}
+
+/*一覧*/
+.subtask_line{
+  border-right: 1px solid gray;
+  padding: 0 3px;
+}
+.subtask_line:last-child{
+  border:none;
+}
+.subtask_line:first-child{
+  padding-left: 0;
 }

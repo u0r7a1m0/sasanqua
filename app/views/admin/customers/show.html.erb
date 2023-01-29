@@ -6,7 +6,12 @@
       <!--プロフィー部分-->
       <div class="admin_my-page-left">
         <div class="profile-contents">
-          <div style="text-align: center;"><%= image_tag @customer.profile_image,size: '100x100', url: my_page_path %></div>
+          <% if @customer.profile_image.attached? %>
+            <div style="text-align: center;"><%= image_tag @customer.profile_image, size: "100x00" %></div>
+          <% else %>
+            <div style="text-align: center;"><%= image_tag 'no_image', size: "100x100" %></div>
+          <% end %>
+          <%# end %>
             <p><%= link_to "プロフィールを編集" ,edit_admin_customer_path, class:"prof-edit-btn" %></p>
         </div>
       </div>

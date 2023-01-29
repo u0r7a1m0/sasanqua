@@ -10,7 +10,7 @@ import "channels"
 import '@fortawesome/fontawesome-free/js/all'
 import "jquery"
 require("@nathanvda/cocoon")
-
+//= require rails-ujs
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

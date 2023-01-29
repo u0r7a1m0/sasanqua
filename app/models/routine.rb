@@ -17,12 +17,17 @@ class Routine < ApplicationRecord
 
 
   # def get_routine_image(width, height)
-  #   unless item_image.attached?
-  #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
-  #     routine_image.attach(io: File.open(file_path), filename: 'no_image.jpg', content_type: 'image/jpg')
+  #   unless routine_image.attached?
+  #     file_path = Rails.root.join('app/assets/images/no_image01.jpg')
+  #     routine_image.attach(io: File.open(file_path), filename: 'no_image01.jpg', content_type: 'image/jpg')
   #   end
   #   routine_image.variant(resize_to_limit: [width, height]).processed
   # end
+
+
+  def bookmarked_by?(customer)
+    bookmarks.where(customer_id: customer).exists?
+  end
   def short_description
     description[0, 9] + '...'
   end

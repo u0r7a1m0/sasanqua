@@ -14,13 +14,6 @@
       <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ジョン・タイター",class:'form-control' %>
     </div>
 
-    <!--プロフィール画像-->
-    <div class="image_btn">
-      <!--<label for="upload" class="image_input_btn">プロフィール画像をアップロード</label>-->
-      <!--<input id="upload" type="file" name="upload" class="image_form">-->
-      <%= f.file_field :profile_image, placeholder: "", accept: "image/*" %>
-    </div>
-
     <!--メールアドレス-->
     <div>
       <%= f.label :メールアドレス %>

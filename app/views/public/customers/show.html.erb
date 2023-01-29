@@ -5,13 +5,16 @@
     <!--プロフィー部分-->
     <div class="my-page-left">
       <div class="profile-contents">
-        <div style="text-align: center;"><%= image_tag current_customer.profile_image,size: '100x100', url: my_page_path %></div>
+        <% if @customer.profile_image.attached? %>
+            <div style="text-align: center;"><%= image_tag @customer.profile_image, size: "100x00" %></div>
+          <% else %>
+            <div style="text-align: center;"><%= image_tag 'no_image', size: "100x100" %></div>
+          <% end %>
         <p><%= link_to "プロフィールを編集" ,customers_edit_path, class:"prof-edit-btn" %></p>
         <p>
-          <%= link_to bookmark_path(@bookmark) do %>
+          <%= link_to bookmark_path do %>
           <i class="fa-regular fa-bookmark"></i>ブックマーク一覧
           <% end %>
-        </p>
       </div>
     </div>
     <!--ルーティン一覧部分-->
@@ -50,7 +53,10 @@
               <li class="sub_task_list">
                 <p>
                 <% routine.task.sub_tasks.each do | sub_task| %>
-                  <span class="subtask_line"><%= sub_task.name %></span>
+                  <span class="subtask_line">
+                    <%= sub_task.name %>
+                  </span>
+                  <!--</span>-->
                 <% end %>
                 </p>
               </li>

@@ -22,6 +22,7 @@
     font-size: 10px;
   }
 }
+
 .text-small{
   font-size: 5px!important;
 }
@@ -130,7 +131,9 @@
 
 // ルーティン詳細画面
 
-
+.target_routine_text span{
+  background:linear-gradient(transparent 60%, #ff6 60%);
+}
 .routine-show-wrapper{
   width: 100%;
   margin: 0 auto;
@@ -159,6 +162,7 @@
   padding-left: 1vw;
   margin-left: 1vw;
   margin-top: 2vw;
+  width: 80%;
   h5{
     margin-bottom: 3vh;
   }
@@ -197,6 +201,12 @@
     text-decoration: none;
   }
 }
+.check_box_text{
+  margin-bottom: 2vh;
+}
+.target_routine_text{
+  margin-bottom: 2vh;
+}
 .period-content{
   border-top: 1px solid #E0DADA;
   padding-top: 3vh;
@@ -217,6 +227,7 @@
   }
   .routine-show-right{
     border: none;
+    width: 100%;
   }
   .routine-show-wrapper{
     width: 90%;
@@ -233,4 +244,36 @@
     margin-top: 2vh;
     padding-top: 2vh;
   }
+}
+
+.public-routine-edit-wrapper{
+  width: 50%;
+  margin: 0 auto;
+}
+.public-routine-edit-wrapper h5{
+  margin-bottom: 3vh;
+}
+.routine-edit-form p{
+  font-size: 13px;
+}
+.routine-edit-form span{
+  background:linear-gradient(transparent 60%, #ff6 60%);
+}
+.routine-edit-form div{
+  margin-bottom: 2vh;
+}
+@media screen and (max-width: 992px) {
+  .public-routine-edit-wrapper{
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+
+// いいね機能
+.like_content{
+  position: absolute;
+  top: 10vh;
+  left: 15.5vw;
+  z-index: 100;
 }

@@ -4,6 +4,7 @@ class Public::CustomersController < ApplicationController
     @routines = current_customer.routines.order("created_at DESC")
     @bookmark = current_customer.bookmarks
 
+
   end
 
   def edit

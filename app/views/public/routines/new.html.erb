@@ -6,7 +6,7 @@
     <p class="sub-text"><span>目標はなんですか？</span></p>
       <%= f.text_field :target, autofocus: true, placeholder: "ナイスバディになって彼氏を見返す！", class: "new-form-control" %>
     <p class="sub-text"><i class="fa-solid fa-camera-retro"></i><span>こういう人になりたい！ここに行きたい！</span>など参考画像があればアップしてみてください！<br/>毎日、目にしてモチベーションを上げましょう！</p>
-      <%= f.file_field :routine_image, placeholder: "", accept: "image/*", class: "routine_image_form" %>
+      <%= f.file_field :routine_image, placeholder: "", accept: "image/*" %>
   </div>
 
   <!--ルーティンここから-->
