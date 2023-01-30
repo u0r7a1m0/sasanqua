@@ -53,27 +53,14 @@ class Public::RoutinesController < ApplicationController
     end
 
   end
+
   def like
-    @routines = Routine.where(public_status:true).all.order("created_at DESC").page(params[:page]).per(12)
+    bookmarks = Bookmark.where(customer_id: current_customer.id).pluck(:routine_id)
+    @routines = Routine.find(bookmarks)
+    # @routines = Routine.all.order("created_at DESC").page(params[:page]).per(12)
   end
 
   private
-  # def routine_params
-  #   params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id)
-  # end
-  # def task_params
-  #   params.require(:task).permit(:routine_id, :main_task, :sub_task)
-  # end
-  # def implementation_time_params
-  #   params.require(:implementation_time).permit(:accurate_time, :approximate_time, :routine_id)
-  # end
-  # def frequencie_params
-  #   params.require(:frequencie).permit(:routine_id, :frequency)
-  # end
-  # def priod
-  #   params.require(:frequencie).permit(:routine_id, :period)
-  # end
-
   # 複数モデル紐付けのパラムス
   def routine_params
     params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
@@ -84,9 +71,8 @@ class Public::RoutinesController < ApplicationController
                                     )
   end
 
-   # params.require(:menu).permit(:menu_name, foods_attributes: [:food_name, :_destroy, materials_attributes: %i(material_name, _destroy) ] )
-
   def customer_params
     params.require(:customer).permit(:customer_id, :nickname, :is_deleted, :created_at, :updated_at)
   end
+
 end
