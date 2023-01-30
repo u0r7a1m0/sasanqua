@@ -272,8 +272,9 @@
 
 // いいね機能
 .like_content{
+  display: flex;
   position: absolute;
-  top: 10vh;
-  left: 15.5vw;
+  bottom: 29vh;
+  // left: 15.5vw;
   z-index: 100;
 }

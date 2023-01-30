@@ -2,9 +2,18 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @routines = current_customer.routines.order("created_at DESC")
+    @current_routines = []
+    @backnumber_routines = []
+    current_daytime = Time.current
+    @routines.find_each do |routine|
+      # created_at + period <=> current_day
+      if routine.created_at.since(Period::TASK_DURATION_TABLE[routine.period.period.to_sym]).after?(current_daytime)
+        @current_routines << routine
+      else
+        @backnumber_routines << routine
+      end
+    end
     @bookmark = current_customer.bookmarks
-
-
   end
 
   def edit

@@ -5,11 +5,11 @@
     <% @routines.each do |routine| %>
     <div class="item-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
-      <div class="like_content">
-        <%= render "public/bookmarks/bookmarks", routine: routine %>
-      </div>
 
       <div class="item-content">
+        <div class="like_content">
+          <%= render "public/bookmarks/bookmarks", routine: routine %>
+        </div>
         <ul>
           <li><b>目標</b><br><p><%= routine.target %></p></li>
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>

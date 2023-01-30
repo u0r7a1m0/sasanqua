@@ -2,11 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .routine_bookmark_content{
-  font-size: 12px;
+  font-size: 14px;
 }
 .routine_bookmark_content .fa-regular{
   color: #7CADBB;
 }
 .routine_bookmark_content .fa-solid {
   color: #D6ADBB;
+}
+
+// いいね機能
+.like_content{
+  display: flex;
+  justify-content: left;
+  position: absolute;
+  bottom: 29vh;
+  right: 220px;
+  z-index: 100;
 }
