@@ -8,6 +8,13 @@
   margin: 0 auto;
 }
 
+.profile-icon img{
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 60px;  /* 縦横を同じ値にする */
+  height: 60px;  /* 縦横を同じ値にする */
+}
+
+
 // マイページ
 .admin_my-page-wrapper{
   width: 100%;
@@ -51,11 +58,9 @@
     text-decoration: none;
   }
 }
-.profile-contents img{
-  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-  width: 80px;  /* 縦横を同じ値にする */
-  height: 80px;  /* 縦横を同じ値にする */
-}
+
+
+
 @media screen and (max-width: 992px) {
   .admin_my-page-left{
     width: 100%;
@@ -90,6 +95,12 @@
   }
   td{
     padding:1vw;
+  }
+  img{
+    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    width: 50px;  /* 縦横を同じ値にする */
+    height: 50px;  /* 縦横を同じ値にする */
+    margin-bottom: 1vh;
   }
 }
 @media screen and (max-width: 768px) {

@@ -381,6 +381,18 @@ header {
   display: flex;
   justify-content: space-around;
 }
+.item-old-contents{
+  width: 250px;
+  height: 250px;
+  background-image: url("/header_03.jpg");
+  background-position: bottom;
+  position: relative;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  margin-bottom: 3vh;
+  display: flex;
+  justify-content: space-around;
+}
 
 
 .item-content{
@@ -443,9 +455,7 @@ header {
 
 
 /*フラッシュメッセージ*/
-/*.flash-message{*/
-/*  margin-top: 2vh;*/
-/*}*/
+
 .flash-window {
   font-size: 14px;
   width: 100%;

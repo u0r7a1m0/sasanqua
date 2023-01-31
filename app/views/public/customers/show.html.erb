@@ -85,23 +85,16 @@
         </div>
       </div>
 
-      <!---->
+      <!--バックナンバー-->
       <div>
         <div class="my-page-right-txt">
           <h5>
-            ■Routine一覧2
+            ■バックナンバー一覧
           </h5>
-          <p>
-            <%= link_to new_routine_path do %>
-              ルーティンを追加<i class="fa-solid fa-circle-plus"></i>
-            <% end %>
-          </p>
         </div>
-
         <div class="item-contents_all">
           <% @backnumber_routines.each do |routine| %>
-          <%= link_to routine_path(routine.id) do %>
-          <div class="item-contents">
+          <div class="item-old-contents">
             <div class="status_tag_routine">
               <%if routine.public_status %>
                 <span class="item-check"><i class="fa-solid fa-lock-open"></i></span>
@@ -146,7 +139,7 @@
               <img src="/level_10.jpg">
             </div>
           </div>
-          <% end %>
+
           <% end %>
         </div>
       </div>

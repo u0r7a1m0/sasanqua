@@ -5,7 +5,8 @@
 
     <tr>
       <td style="width: 40%" class="created_at_time"><p>登録日時</p></td>
-      <td style="width: 30%"><p>ニックネーム</p></td>
+      <!--<td></td>-->
+      <td style="width: 30%" colspan="2"><p>ニックネーム</p></td>
       <td><p>ステータス</p></td>
     </tr>
 
@@ -13,11 +14,28 @@
     <% @customers.each do |customer| %>
     <tr>
       <td class="created_at_time"><p><%= l customer.created_at %></p></td>
+
       <td>
-        <%= link_to admin_customer_path(customer.id) do %>
-        <p><%= customer.nickname %></p>
-        <% end %>
+        <div class="cutomer-profile-content">
+
+          <%= link_to admin_customer_path(customer.id) do %>
+            <% if customer.profile_image.attached? %>
+              <div style="text-align: center;" class="profile-icon"><%= image_tag customer.profile_image, size: "50x50" %></div>
+            <% else %>
+              <div style="text-align: center;" class="profile-icon"><%= image_tag 'no_image', size: "50x50" %></div>
+            <% end %>
+          <%# end %>
+        </div>
       </td>
+      <td>
+        <div>
+          <%#= link_to admin_customer_path(customer.id) do %>
+          <p><%= customer.nickname %></p>
+          <% end %>
+        </div>
+        </div>
+      </td>
+
       <%if customer.is_deleted %>
       <!--退会している場合-->
       <td class="text-secondary"><p>退会</p></td>

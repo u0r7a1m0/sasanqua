@@ -76,19 +76,6 @@
       <!--サブタスクがない場合-->
       <% else %>
         <p><b>ルーティンだよ</b></p>
-          <%#= form_tag routine_task_commits_path(@routine.id) do %>
-
-          <%#= collection_check_boxes :task, Task , @routine.task, :id, :name do |b| %>
-
-          <%# if b.object.task_commits.where(created_at: Time.zone.now.all_day).exists? %>
-            <%#= b.label {b.check_box(checked: false) + b.text} %> <br>
-          <%# else %>
-            <%#= b.label {b.check_box(checked: true) + b.text} %> <br>
-          <%# end %>
-        <%# end %>
-        <%#= submit_tag "更新", :class=>"update-btn2" %>
-        <%# end %>
-
 
 
 

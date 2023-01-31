@@ -13,6 +13,7 @@ class Public::CustomersController < ApplicationController
         @backnumber_routines << routine
       end
     end
+    
     @bookmark = current_customer.bookmarks
   end
 
