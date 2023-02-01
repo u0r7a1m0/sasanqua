@@ -39,22 +39,8 @@
         </p>
         <!--サブタスクがある場合-->
         <% if @routine.task.sub_tasks.present? %>
-
-          <!--1日に1回の場合-->
-          <% loop_count = 1 %>
-
-          <!--1日に2回の場合-->
-          <% if @routine.frequency.frequency == "oneday_twice" %>
-            <% loop_count = 2 %>
-          <% end %>
-
-          <!--1日に3回の場合-->
-          <% if @routine.frequency.frequency == "oneday_third" %>
-            <% loop_count = 3 %>
-          <% end %>
-
           <%= form_tag routine_sub_task_commits_path(@routine.id) do %>
-            <% for n in 1..loop_count do %>
+            <% for n in 1..@loop_count do %>
             <p class="check_box_text">
               <%= collection_check_boxes "sub_task_#{n}", SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
                 <% if b.object.sub_task_commits.where(created_at: Time.zone.now.all_day, times: n).exists? %>
@@ -76,9 +62,13 @@
       <!--サブタスクがない場合-->
       <% else %>
         <p><b>ルーティンだよ</b></p>
-
-
-
+        <%= form_tag routine_task_commits_path(@routine.id) do %>
+          <% for n in 1..@loop_count do %>
+            <%= check_box "task", "task_#{n}", checked: @routine.task.task_commits.where(times: n).present? %>
+            <%= label @routine.task.name, @routine.task.name %> <br>
+          <% end %>
+          <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
+        <% end %>
       <% end %>
       </div>
     </div>
