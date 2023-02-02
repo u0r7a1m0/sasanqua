@@ -12,6 +12,18 @@ class Routine < ApplicationRecord
   accepts_nested_attributes_for :implementation_time, allow_destroy: true, update_only: true
   accepts_nested_attributes_for :frequency, allow_destroy: true, update_only: true
   accepts_nested_attributes_for :period, allow_destroy: true, update_only: true
+  
+  
+  def  next_day
+    r = Rational("5/24")
+    if frequency.frequency == "twoday_once"
+      Date.today.to_datetime + 2 + r
+    elsif frequency.frequency == "threeday_once"
+      Date.today.to_datetime + 3 + r
+    else
+      Date.today.to_datetime + 1 + r
+    end
+  end
 
 
 

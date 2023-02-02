@@ -32,7 +32,7 @@ class Public::SubTaskCommitsController < ApplicationController
       today = Date.today.to_datetime + Rational("5/24")
       next_day = Date.today.to_datetime + 1 + Rational("5/24")
       ## TODO: sub_task_idを指定する,　このままだと他のサブタスクのcommitも参照してしまう
-      today_sub_task_commits = SubTaskCommit.where(created_at: today..next_day, times: 1)
+      today_sub_task_commits = SubTaskCommit.where(sub_task_id: sub_task_1, created_at: today..next_day, times: 1)
       # 今日のコミット(SubTaskCommit)としてクリエイトされていて、且つチェックされているかの分岐
       today_sub_task_commits.each do |commit|
         if sub_task_1.include?(commit.sub_task_id)
@@ -56,7 +56,7 @@ class Public::SubTaskCommitsController < ApplicationController
     if sub_task_2.present?
       today = Date.today.to_datetime + Rational("5/24")
       next_day = Date.today.to_datetime + 1 + Rational("5/24")
-      today_sub_task_commits = SubTaskCommit.where(created_at: today..next_day, times: 2)
+      today_sub_task_commits = SubTaskCommit.where(sub_task_id: sub_task_2, created_at: today..next_day, times: 2)
       # 今日のコミット(SubTaskCommit)としてクリエイトされていて、且つチェックされているかの分岐
       today_sub_task_commits.each do |commit|
         if sub_task_2.include?(commit.sub_task_id)
@@ -80,7 +80,7 @@ class Public::SubTaskCommitsController < ApplicationController
     if sub_task_3.present?
       today = Date.today.to_datetime + Rational("5/24")
       next_day = Date.today.to_datetime + 1 + Rational("5/24")
-      today_sub_task_commits = SubTaskCommit.where(created_at: today..next_day, times: 3)
+      today_sub_task_commits = SubTaskCommit.where(sub_task_id: sub_task_3, created_at: today..next_day, times: 3)
       # 今日のコミット(SubTaskCommit)としてクリエイトされていて、且つチェックされているかの分岐
       today_sub_task_commits.each do |commit|
         if sub_task_3.include?(commit.sub_task_id)

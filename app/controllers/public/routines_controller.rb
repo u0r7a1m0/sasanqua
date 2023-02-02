@@ -43,6 +43,7 @@ class Public::RoutinesController < ApplicationController
 
   def show
     @routine = Routine.find(params[:id])
+    @today =  Date.today.to_datetime + Rational("5/24")
     if @routine.frequency.frequency == "oneday_twice"
       @loop_count = 2
     elsif @routine.frequency.frequency == "oneday_third"

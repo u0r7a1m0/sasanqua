@@ -2,7 +2,7 @@ class Public::TaskCommitsController < ApplicationController
   def create
     @routine = Routine.find(params[:routine_id])
     today = Date.today.to_datetime + Rational("5/24")
-    next_day = Date.today.to_datetime + 1 + Rational("5/24")
+    next_day = @routine.next_day
 
     loop_count.times do |index|
       next if task_params["task_#{index + 1}".to_sym].to_i.zero?
@@ -10,9 +10,10 @@ class Public::TaskCommitsController < ApplicationController
       TaskCommit.create!(task: @routine.task, frequency: @routine.frequency, times: index + 1)
     end
   end
+  
 
   private
-
+  
   def task_params
      params.require(:task).permit(:task_1, :task_2, :task_3)
   end

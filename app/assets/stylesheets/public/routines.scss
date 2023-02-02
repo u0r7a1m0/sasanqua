@@ -56,6 +56,25 @@
 .routine_image_form{
   margin-top:20px;
 }
+.target_title{
+  margin-left: 2vw;
+}
+.routine_images img{
+  border-radius: 10%;
+  width: 200px;
+  object-fit: cover;
+  // margin-left: 2vw;
+  }
+.fukidashi{
+  border-radius: 10%;
+  width: 50%;
+  // height: 50px;
+  object-fit: cover;
+  // margin-left: 2vw;
+}
+.routine_info_1>div{
+  margin-left: 2vw;
+}
 
 .short-text{
   height: 1.8em;
@@ -213,9 +232,9 @@
   margin-top: 3vh;
 }
 .profile-contents img{
-  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-  width: 80px;  /* 縦横を同じ値にする */
-  height: 80px;  /* 縦横を同じ値にする */
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
 }
 @media screen and (max-width: 992px) {
   .routine-show-left{

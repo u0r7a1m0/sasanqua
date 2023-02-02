@@ -22,55 +22,68 @@
 
       </div>
 
-      <div>
-        <p><b>目標</b>：<%= @routine.target %></p>
+      <div class="routine_info_contents">
+        <div class="routine_info">
 
-        <p class="target_routine_text">
-        <b>ルーティン</b>：<br>
-        <span>
-          <%= @routine.frequency.frequency_i18n %>、
-          <% if @routine.implementation_time.accurate_time.present? %>
-            <%= @routine.implementation_time.accurate_time.strftime('%H:%M') if @routine.implementation_time.accurate_time %>に
-          <% else %>
-            <%= @routine.implementation_time.approximate_time %>に
-          <% end %>
-          <%= @routine.task.name %>！
-          </span>
-        </p>
+          <div class="routine_info_1">
+            <p class="target_title"><b>目標</b>：<%= @routine.target %></p>
+            <img src="/fukidashi3.png" class="fukidashi"><br>
+            <div>
+            <% if @routine.routine_image.attached? %>
+              <div class="routine_images"><%= image_tag @routine.routine_image %></div>
+            <% else %>
+              <div class="routine_images"><%= image_tag 'no_image' %></div>
+            <% end %>
+            </div>
+
+            <p class="target_routine_text">
+            <b>ルーティン</b>：
+            <span>
+              <%= @routine.frequency.frequency_i18n %>、
+              <% if @routine.implementation_time.accurate_time.present? %>
+                <%= @routine.implementation_time.accurate_time.strftime('%H:%M') if @routine.implementation_time.accurate_time %>に
+              <% else %>
+                <%= @routine.implementation_time.approximate_time %>に
+              <% end %>
+              <%= @routine.task.name %>！
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="routine_checkbox_content">
+
         <!--サブタスクがある場合-->
         <% if @routine.task.sub_tasks.present? %>
           <%= form_tag routine_sub_task_commits_path(@routine.id) do %>
             <% for n in 1..@loop_count do %>
             <p class="check_box_text">
               <%= collection_check_boxes "sub_task_#{n}", SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
-                <% if b.object.sub_task_commits.where(created_at: Time.zone.now.all_day, times: n).exists? %>
-                  <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していればすでに達成済み-->
-                <%= b.label {b.check_box(checked: true) + b.text} %><br>
-                <% else %>
-                  <!-- sub_task_commitsに今日＋回数＝ｎで絞ったレコードが存在していなければ未達成-->
-                  <%= b.label {b.check_box(checked: false) + b.text} %> <br>
-                <% end %>
+                <%= b.label {b.check_box(checked: b.object.sub_task_commits.where(sub_task_id: b.object.id, times: n, created_at: @today..@routine.next_day).present?) + b.text} %><br>
               <% end %>
             </p>
             <% end %>
-              <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
+            <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
           <% end %>
 
           <p class="period-content"><b>期間</b></p>
           <p><%= @routine.period.period_i18n %></p>
+        </div>
 
       <!--サブタスクがない場合-->
+      <div class="routine_checkbox_content">
       <% else %>
-        <p><b>ルーティンだよ</b></p>
         <%= form_tag routine_task_commits_path(@routine.id) do %>
           <% for n in 1..@loop_count do %>
-            <%= check_box "task", "task_#{n}", checked: @routine.task.task_commits.where(times: n).present? %>
+            <%= check_box "task", "task_#{n}", checked: @routine.task.task_commits.where(task_id: @routine.task.id ,times: n, created_at: @today..@routine.next_day).present? %>
             <%= label @routine.task.name, @routine.task.name %> <br>
           <% end %>
           <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
         <% end %>
       <% end %>
       </div>
+      </div>
+
     </div>
   </div>
 </div>
