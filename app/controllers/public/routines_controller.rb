@@ -51,6 +51,17 @@ class Public::RoutinesController < ApplicationController
     else
       @loop_count = 1
     end
+
+    # レベルアイコン
+    # 2日に1回
+    # if @routine.frequency.frequency == "twoday_once"
+
+    # # 3日に1回
+    # elsif @routine.frequency.frequency == "threeday_once"
+
+
+    # else
+
   end
 
   def edit
