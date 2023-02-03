@@ -37,6 +37,8 @@
       <%= link_to '戻る' ,my_page_path ,class: "update-btn" %>
     </div>
     <% end %>
+
   </div>
+    <%= link_to "ルーティンを削除", routine_path, method: :delete, "data-confirm" => "本当にルーティンを削除しますか？", class:'text-danger' %>
 
 </div>

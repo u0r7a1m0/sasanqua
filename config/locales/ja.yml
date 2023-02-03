@@ -9,7 +9,7 @@ ja:
   enums:
     period:
       period:
-        everyday: "ずっと続ける"
+        everyday: "ずっと"
         one_week: "1週間"
         two_week: "2週間"
         three_week: "3週間"

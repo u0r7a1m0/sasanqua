@@ -157,10 +157,12 @@
   width: 100%;
   margin: 0 auto;
 }
+
+.routine_images{
+  margin-left: 3vw;
+}
 .routine-show-contents{
   display: flex;
-  // margin-top: 2vh;
-  // border-top: 1px solid #E0DADA;
 }
 .profile-contents{
   img{
@@ -264,7 +266,9 @@
     padding-top: 2vh;
   }
 }
-
+.outine-edit-form{
+  margin-bottom: 2vh;
+}
 .public-routine-edit-wrapper{
   width: 50%;
   margin: 0 auto;
@@ -280,6 +284,11 @@
 }
 .routine-edit-form div{
   margin-bottom: 2vh;
+}
+.text-danger{
+  font-size: 15px;
+  color: red;
+  // text-decoration: none;
 }
 @media screen and (max-width: 992px) {
   .public-routine-edit-wrapper{
@@ -297,3 +306,5 @@
   // left: 15.5vw;
   z-index: 100;
 }
+
+

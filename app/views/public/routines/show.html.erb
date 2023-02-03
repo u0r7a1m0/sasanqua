@@ -26,7 +26,20 @@
         <div class="routine_info">
 
           <div class="routine_info_1">
-            <p class="target_title"><b>目標</b>：<%= @routine.target %></p>
+            <p class="target_title" style=""><b>目標</b>：<%= @routine.target %></p>
+            <p class="target_routine_text">
+            <b>ルーティン</b>：
+            <span>
+              <% if @routine.implementation_time.accurate_time.present? %>
+                <%= @routine.implementation_time.accurate_time.strftime('%H:%M') if @routine.implementation_time.accurate_time %>に
+              <% else %>
+                <%= @routine.implementation_time.approximate_time %>に
+              <% end %>
+              <%= @routine.frequency.frequency_i18n %>、
+              <%= @routine.task.name %>を、
+              <%= @routine.period.period_i18n %>続ける！
+              </span>
+            </p>
             <img src="/fukidashi3.png" class="fukidashi"><br>
             <div>
             <% if @routine.routine_image.attached? %>
@@ -36,18 +49,6 @@
             <% end %>
             </div>
 
-            <p class="target_routine_text">
-            <b>ルーティン</b>：
-            <span>
-              <%= @routine.frequency.frequency_i18n %>、
-              <% if @routine.implementation_time.accurate_time.present? %>
-                <%= @routine.implementation_time.accurate_time.strftime('%H:%M') if @routine.implementation_time.accurate_time %>に
-              <% else %>
-                <%= @routine.implementation_time.approximate_time %>に
-              <% end %>
-              <%= @routine.task.name %>！
-              </span>
-            </p>
           </div>
         </div>
 
@@ -66,24 +67,29 @@
             <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
           <% end %>
 
-          <p class="period-content"><b>期間</b></p>
-          <p><%= @routine.period.period_i18n %></p>
+
         </div>
 
       <!--サブタスクがない場合-->
       <div class="routine_checkbox_content">
       <% else %>
+
         <%= form_tag routine_task_commits_path(@routine.id) do %>
           <% for n in 1..@loop_count do %>
+          <p class="check_box_text">
             <%= check_box "task", "task_#{n}", checked: @routine.task.task_commits.where(task_id: @routine.task.id ,times: n, created_at: @today..@routine.next_day).present? %>
             <%= label @routine.task.name, @routine.task.name %> <br>
+            </p>
           <% end %>
           <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
+
         <% end %>
       <% end %>
       </div>
+
       </div>
 
     </div>
   </div>
 </div>
+

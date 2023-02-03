@@ -336,6 +336,9 @@ header {
   color: white;
   background-color: #73736C;
 }
+.update-btn{
+  margin-right: 2vw;
+}
 
 
   /*テキスト関連*/
@@ -353,7 +356,7 @@ header {
   margin: 0 auto;
   margin-top: 3vh;
 }
-.item-contents{
+.item-contents, .item-contents2{
   width: 100%;
   margin: 0 auto;
 }
@@ -369,7 +372,7 @@ header {
 .status_tag_routine .item-lock{
   color: gray;
 }
-.item-contents{
+.item-contents, .item-contents2{
   width: 250px;
   height: 250px;
   background-image: url("/header_05.jpg");
@@ -403,6 +406,9 @@ header {
   bottom: 0;
   box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
   padding: 1vw;
+}
+.item-contents2:hover{
+  box-shadow: 0 10px 50px 0 rgba(100, 100, 100, .5);
 }
 .item-content img{
   position:absolute;

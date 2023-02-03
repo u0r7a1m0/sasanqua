@@ -35,7 +35,7 @@
         <div class="item-contents_all">
           <% @current_routines.each do |routine| %>
           <%= link_to routine_path(routine.id) do %>
-          <div class="item-contents">
+          <div class="item-contents2">
             <div class="status_tag_routine">
               <%if routine.public_status %>
                 <span class="item-check"><i class="fa-solid fa-lock-open"></i></span>
@@ -116,7 +116,6 @@
                     <span class="subtask_line">
                       <%= sub_task.name %>
                     </span>
-                    <!--</span>-->
                   <% end %>
                   </p>
                 </li>
@@ -132,7 +131,6 @@
                 <li>
                   <span class="item-content-title"><b>頻度</b>:<%= routine.frequency.frequency_i18n %></span>&emsp;
                   <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
-                <%#= routine.frequency.reset_time %>
                 </li>
               </ul>
 

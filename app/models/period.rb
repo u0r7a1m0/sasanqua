@@ -2,7 +2,7 @@ class Period < ApplicationRecord
   belongs_to :routine
   validates :period, presence: true
   enum period:{
-    everyday: 0, #ずっと続ける
+    everyday: 0, #ずっと
     one_week: 1, #1週間
     two_week: 2, #2週間
     three_week: 3, #3週間
