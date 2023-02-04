@@ -4,9 +4,9 @@
     <div class="routine-show-left">
       <div class="profile-contents">
         <div style="text-align: center;">
-          <%#= image_tag current_customer.profile_image,size: '100x100' %>
-          <img src="/level_10.jpg">
-          <p>level.10</p>
+          <%= image_tag "/level_#{@routine.level}.jpg" %>
+          <!--<img src="/level_#{}.jpg">-->
+          <p>level.<%= @routine.level %></p>
         </div>
 
         </p>

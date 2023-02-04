@@ -32,4 +32,46 @@ class Routine < ApplicationRecord
     description[0, 9] + '...'
   end
 
+  def level
+    # 9
+    # byebug
+
+    if frequency.frequency == "twoday_once"
+      if task.sub_tasks.present?
+        task_count = task.sub_tasks.count
+        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*task_count
+        commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
+        num = (commit_count.to_f/total.to_f)
+          if !num.zero?
+            (num*100).ceil(-1).digits[1]
+          else
+            1
+          end
+    # 　else
+        # d = task.count
+        # n= task.task_commits.count/(Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*d
+        # n*100.ceil.digits[1]
+      end
+    end
+  #   elsif　@routine.frequency.frequency == "threeday_once"
+  #   　if sub_task.present?
+  #   　　d = @routine.task.sub_task.count
+  #   　　n= {(Period: :DAY_COUNT_TABELE/3)*d}/@routine.task.sub_task.sub_task_commits.count
+  #   　　s = n*100
+  #   　else
+  #   　　d = @routine.task.count
+  #   　　n= {(Period: :DAY_COUNT_TABELE/3)*d}/@routine.task.task_commits.count
+  #   　　s = n*100
+  #   else　それ以外(1~3)
+  #   　if sub_task.present?
+  #       d = @routine.task.sub_task.count
+  #       n= (Period: :DAY_COUNT_TABELE*d)/@routine.task.sub_task.sub_task_commits.count
+  #       s = n*100
+  #   　else
+  #       d = @routine.task.count
+  #       n= (Period: :DAY_COUNT_TABELE*d)/@routine.task.task_commits.count
+  #       s = n*100
+  #   end
+  end
+
 end
