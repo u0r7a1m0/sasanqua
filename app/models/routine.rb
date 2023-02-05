@@ -43,8 +43,8 @@ class Routine < ApplicationRecord
             1
           end
       else
-        task_count = task.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*task_count
+
+        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*1
         commit_count = task.map{|t| t.task_commits.count}.sum
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
@@ -65,8 +65,7 @@ class Routine < ApplicationRecord
             1
           end
       else
-        task_count = task.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*task_count
+        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*1
         commit_count = task.map{|t| t.task_commits.count}.sum
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
@@ -87,8 +86,7 @@ class Routine < ApplicationRecord
             1
           end
       else
-        task_count = task.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*task_count
+        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*1
         commit_count = task.map{|t| t.task_commits.count}.sum
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
@@ -101,7 +99,6 @@ class Routine < ApplicationRecord
 
     elsif frequency.frequency == "oneday_twice" #1日に2回
       if task.sub_tasks.present?
-        task_count = task.sub_tasks.count
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*task_count
         commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
         num = (commit_count.to_f/total.to_f)
@@ -111,8 +108,7 @@ class Routine < ApplicationRecord
             1
           end
       else
-        task_count = task.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*task_count
+        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*1
         commit_count = task.map{|t| t.task_commits.count}.sum
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
@@ -134,8 +130,7 @@ class Routine < ApplicationRecord
             1
           end
       else
-        task_count = task.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*task_count
+        total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*1
         commit_count = task.map{|t| t.task_commits.count}.sum
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
