@@ -57,7 +57,7 @@
   margin-top:20px;
 }
 .target_title{
-  margin-left: 2vw;
+  // margin-left: 2vw;
 }
 .routine_images img{
   border-radius: 10%;
@@ -71,6 +71,14 @@
   // height: 50px;
   object-fit: cover;
   // margin-left: 2vw;
+}
+.routine_info_1{
+  width: 90%;
+  height: 130px;
+  // background-image: url(/fukidashi4.png);
+  // background-size: cover;
+  // object-fit: cover;
+  padding: 20px 40px;
 }
 .routine_info_1>div{
   margin-left: 2vw;

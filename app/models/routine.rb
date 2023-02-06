@@ -43,9 +43,8 @@ class Routine < ApplicationRecord
             1
           end
       else
-
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*1
-        commit_count = task.map{|t| t.task_commits.count}.sum
+        commit_count = task.task_commits.count
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
             (num*100).ceil(-1).digits[1]
@@ -54,7 +53,7 @@ class Routine < ApplicationRecord
           end
       end
     elsif frequency.frequency == "threeday_once" #3日に1回
-      if sub_task.present?
+      if task.sub_tasks.present?
         task_count = task.sub_tasks.count
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*task_count
         commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
@@ -66,7 +65,7 @@ class Routine < ApplicationRecord
           end
       else
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*1
-        commit_count = task.map{|t| t.task_commits.count}.sum
+        commit_count = task.task_commits.count
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
             (num*100).ceil(-1).digits[1]
@@ -75,7 +74,7 @@ class Routine < ApplicationRecord
           end
       end
     elsif frequency.frequency == "oneday_third" #1日に3回
-      if sub_task.present?
+      if task.sub_tasks.present?
         task_count = task.sub_tasks.count
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*task_count
         commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
@@ -87,7 +86,7 @@ class Routine < ApplicationRecord
           end
       else
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*1
-        commit_count = task.map{|t| t.task_commits.count}.sum
+        commit_count = task.task_commits.count
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
             (num*100).ceil(-1).digits[1]
@@ -96,9 +95,9 @@ class Routine < ApplicationRecord
           end
       end
 
-
     elsif frequency.frequency == "oneday_twice" #1日に2回
       if task.sub_tasks.present?
+        task_count = task.sub_tasks.count
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*task_count
         commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
         num = (commit_count.to_f/total.to_f)
@@ -109,7 +108,7 @@ class Routine < ApplicationRecord
           end
       else
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*1
-        commit_count = task.map{|t| t.task_commits.count}.sum
+        commit_count = task.task_commits.count
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
             (num*100).ceil(-1).digits[1]
@@ -118,7 +117,7 @@ class Routine < ApplicationRecord
           end
       end
 
-    else
+    else  # 1日に1回
       if task.sub_tasks.present?
         task_count = task.sub_tasks.count
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*task_count
@@ -131,7 +130,7 @@ class Routine < ApplicationRecord
           end
       else
         total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*1
-        commit_count = task.map{|t| t.task_commits.count}.sum
+        commit_count = task.task_commits.count
         num = (commit_count.to_f/total.to_f)
           if !num.zero?
             (num*100).ceil(-1).digits[1]
