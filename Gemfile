@@ -66,3 +66,9 @@ gem "net-smtp"
 
 # gem 'jquery-turbolinks'
 gem 'cocoon'
+
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
+gem 'dotenv-rails'
+gem 'line-bot-api'
+# gem 'cal-heatmap-rails'

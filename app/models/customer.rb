@@ -2,7 +2,8 @@ class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[line] # この1行を追加
 
   has_one_attached :profile_image
 
@@ -16,6 +17,29 @@ class Customer < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'no_image01.jpg', content_type: 'image/jpeg')
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
+  end
+
+
+
+  #LINEAPI用に追記
+  def social_profile(provider)
+    social_profiles.select { |sp| sp.provider == provider.to_s }.first
+  end
+
+  def set_values(omniauth)
+    return if provider.to_s != omniauth["provider"].to_s || uid != omniauth["uid"]
+    credentials = omniauth["credentials"]
+    info = omniauth["info"]
+
+    access_token = credentials["refresh_token"]
+    access_secret = credentials["secret"]
+    credentials = credentials.to_json
+    nickname = info["nickname"]
+  end
+
+  def set_values_by_raw_info(raw_info)
+    self.raw_info = raw_info.to_json
+    self.save!
   end
 
 end

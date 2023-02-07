@@ -39,14 +39,14 @@
               <%= @routine.period.period_i18n %>続ける！
               </span>
             </p>
-            <img src="/fukidashi3.png" class="fukidashi"><br>
-            <div>
-            <% if @routine.routine_image.attached? %>
-              <div class="routine_images"><%= image_tag @routine.routine_image %></div>
-            <% else %>
-              <div class="routine_images"><%= image_tag 'no_image' %></div>
-            <% end %>
-            </div>
+            <!--<img src="/fukidashi3.png" class="fukidashi"><br>-->
+            <!--<div>-->
+            <!--<%# if @routine.routine_image.attached? %>-->
+            <!--  <div class="routine_images"><%#= image_tag @routine.routine_image %></div>-->
+            <!--<%# else %>-->
+            <!--  <div class="routine_images"><%#= image_tag 'no_image' %></div>-->
+            <!--<%# end %>-->
+            <!--</div>-->
 
           </div>
         </div>
@@ -90,5 +90,21 @@
 
     </div>
   </div>
+
+  <!--草機能テスト-->
+  <!--<div id="cal-heatmap"></div>-->
+  <!--<script src="https://d3js.org/d3.v7.min.js"></script>-->
+
+  <!--<script>-->
+  <!--const cal = new CalHeatmap();-->
+  <!--  cal.paint({-->
+  <!--  date: { start: new Date(2020, 0, 15) },-->
+  <!--  domain: { type: 'month' },-->
+  <!--  subDomain: { type: 'day' },-->
+  <!--  });-->
+
+  <!--</script>-->
+
 </div>
+
 
