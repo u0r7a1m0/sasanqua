@@ -1,57 +1,57 @@
 <div class="routine-show-wrapper">
   <div class="routine-show-contents">
-    <!--プロフィー部分-->
-    <div class="routine-show-left">
-      <div class="profile-contents">
-        <div style="text-align: center;">
-          <%= image_tag "/level_#{@routine.level}.jpg" %>
-          <p>level.<%= @routine.level %></p>
-        </div>
-
-        </p>
+    <div class="routine-show-left"><!--左側コンテンツここから-->
+      <div class="routine_images">
+        <p class="target_title" style="text-align: center;">＼<%= @routine.target %>／</p>
+        <% if @routine.routine_image.attached? %>
+        <div style="text-align: center;"><%= image_tag @routine.routine_image %></div>
+        <% else %>
+        <div style="text-align: center;"><%= image_tag 'no_image' %></div>
+        <% end %>
       </div>
-    </div>
-    <!--ルーティン一覧部分-->
+      <div class="heatmap_content">
+        <div id="cal-heatmap"></div>
+      </div>
+    </div><!--左側コンテンツここまで-->
+
     <div class="routine-show-right">
-      <div class="routine-show-right-txt">
+      <div class="routine-show-right-txt"><!--ルーティン一覧部分-->
         <h5>
           ■Routine
           <%= link_to '編集', edit_routine_path(@routine.id), class:'edit-btn' %>
         </h5>
-
       </div>
 
-      <div class="routine_info_contents">
-        <div class="routine_info">
-
-          <div class="routine_info_1">
-            <p class="target_title" style=""><b>目標</b>：<%= @routine.target %></p>
-            <p class="target_routine_text">
-            <b>ルーティン</b>：
-            <span>
-              <% if @routine.implementation_time.accurate_time.present? %>
-                <%= @routine.implementation_time.accurate_time.strftime('%H:%M') if @routine.implementation_time.accurate_time %>に
-              <% else %>
-                <%= @routine.implementation_time.approximate_time %>に
-              <% end %>
-              <%= @routine.frequency.frequency_i18n %>、
-              <%= @routine.task.name %>を、
-              <%= @routine.period.period_i18n %>続ける！
-              </span>
-            </p>
-            <img src="/fukidashi3.png" class="fukidashi"><br>
-            <div>
-            <% if @routine.routine_image.attached? %>
-              <div class="routine_images"><%= image_tag @routine.routine_image %></div>
-            <% else %>
-              <!--<div class="routine_images"><%#= image_tag 'no_image' %></div>-->
-            <% end %>
+      <div class="profile-contents-2">
+        <div style="text-align: center;" class="level_icon_content">
+          <%= image_tag "/level_#{@routine.level}.jpg" %>
+          <p>level.<%= @routine.level %></p>
+        </div>
+        <div>
+            <div class="target_routine_text">
+              <p>
+                <b>ルーティン</b>：<%= @routine.task.name %>
+              </p>
+              <p>
+                <b>いつ</b>：
+                  <% if @routine.implementation_time.accurate_time.present? %>
+                    <%= @routine.implementation_time.accurate_time.strftime('%H:%M') if @routine.implementation_time.accurate_time %>
+                  <% else %>
+                    <%= @routine.implementation_time.approximate_time %>
+                  <% end %>
+              </p>
+              <p>
+                <b>頻度</b>：<%= @routine.frequency.frequency_i18n %>
+              </p>
+              <p>
+                <b>期間</b>：<%= @routine.period.period_i18n %>
+              </p>
             </div>
 
-          </div>
         </div>
+      </div>
 
-        <div class="routine_checkbox_content">
+      <div class="routine_checkbox_content">
 
         <!--サブタスクがある場合-->
         <% if @routine.task.sub_tasks.present? %>
@@ -92,18 +92,10 @@
   </div>
 
   <!--草機能テスト-->
-  <!--<div id="cal-heatmap"></div>-->
-  <!--<script src="https://d3js.org/d3.v7.min.js"></script>-->]
-  <div id="cal-heatmap"></div>
 
   <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
-
-  <!--<script src="https://d3js.org/d3.v7.min.js"></script>-->
-  <!--<script src="https://unpkg.com/cal-heatmap@4.0.0-beta.4/dist/cal-heatmap.min.js"></script>-->
-  <!--<link rel="stylesheet" href="https://unpkg.com/cal-heatmap@4.0.0-beta.4/dist/cal-heatmap.css"></script>-->
-
 
   <script>
   var date = new Date(2023,01,1,0,00,00);
@@ -112,7 +104,6 @@
   var hash = {
     linux_time : 5
   }
-
 
   var datas = {
     "1662684000" : 1, // 2022/??/??
@@ -134,16 +125,5 @@
   });
 
 
-  // const cal = new CalHeatmap();
-  // cal.paint({
-  //   date: { start: new Date(2020, 0, 15) },
-  //   domain: { type: 'month' },
-  //   subDomain: { type: 'day' },
-  // });
-
-
   </script>
-
 </div>
-
-
