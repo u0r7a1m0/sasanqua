@@ -224,8 +224,10 @@
   border: solid 1px #97DEC4;
 }
 .heatmap_content{
+  width: 300px;
   margin: 0 auto;
-  margin-left: 3vw;
+  text-align: center;
+  // margin-left: 3vw;
 }
 .routine-show-right-txt{
   display: flex;
