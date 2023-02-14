@@ -2,10 +2,21 @@ class Admin::CustomersController < ApplicationController
   def index
     @customers = Customer.all.order("created_at DESC")
   end
+
   def show
     @customer = Customer.find(params[:id])
     @routines = @customer.routines.order("created_at DESC")
-    # @routines = Routine.all.order("created_at desc")
+    @current_routines = []
+    @backnumber_routines = []
+    current_daytime = Time.current
+    @routines.find_each do |routine|
+      # created_at + period <=> current_day
+      if routine.created_at.since(Period::TASK_DURATION_TABLE[routine.period.period.to_sym]).after?(current_daytime)
+        @current_routines << routine
+      else
+        @backnumber_routines << routine
+      end
+    end
   end
 
   def edit

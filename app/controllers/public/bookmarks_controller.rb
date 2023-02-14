@@ -30,5 +30,8 @@ class Public::BookmarksController < ApplicationController
   def index
 
   end
+  def redirect_root
+    redirect_to root_path unless customer_signed_in?
+  end
 end
 

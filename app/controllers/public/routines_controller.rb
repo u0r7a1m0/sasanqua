@@ -1,4 +1,6 @@
 class Public::RoutinesController < ApplicationController
+  before_action :authenticate_customer!
+
 
   def new
     @routine = Routine.new
@@ -96,4 +98,8 @@ class Public::RoutinesController < ApplicationController
     params.require(:customer).permit(:customer_id, :nickname, :is_deleted, :created_at, :updated_at)
   end
 
+
+  def redirect_root
+    redirect_to root_path unless customer_signed_in?
+  end
 end
