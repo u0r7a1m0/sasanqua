@@ -216,11 +216,11 @@ header {
   text-decoration: none;
   }
   .nav_item:first-child{
-  padding-top:75vh;
+  padding-top:30%;
   }
   /* アイコンがクリックされたらメニューを表示 */
   #drawer_input:checked ~ .nav_content {
-  bottom: 75%;/* メニューを画面に入れる */
+  bottom: 0%;/* メニューを画面に入れる */
   }
 }
 

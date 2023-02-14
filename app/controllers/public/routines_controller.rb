@@ -28,7 +28,7 @@ class Public::RoutinesController < ApplicationController
 
   def index
     # @customer = current_customer
-    @routines = Routine.order("created_at DESC").all
+    @routines = Routine.where(public_status:true).order("created_at DESC").all
 
     @current_routines = []
     @backnumber_routines = []

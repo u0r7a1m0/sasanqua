@@ -52,9 +52,10 @@
 
       <div class="item-content">
 
-      <div class="like_content">
-        <%= render "public/bookmarks/bookmarks", routine: routine %>
-      </div>
+        <div class="like_content">
+          <%= render "public/bookmarks/bookmarks", routine: routine %>
+        </div>
+        
         <ul>
           <li><b>目標</b><br><p><%= routine.target %></p></li>
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
