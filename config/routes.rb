@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     get '/routines/bookmark' => 'routines#like', as: 'bookmark'
+    get '/routines/heatmap' => 'routines#heatmap'
 
     resources :routines do
       resources :sub_task_commits

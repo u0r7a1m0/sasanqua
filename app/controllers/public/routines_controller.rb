@@ -53,12 +53,37 @@ class Public::RoutinesController < ApplicationController
     else
       @loop_count = 1
     end
-
-    # レベルアイコン
     
-
-
   end
+  
+  def heatmap
+    routine_id = params["routine_id"]
+    routine = Routine.find(routine_id)
+    heat_map = Hash.new
+    # if routine.task.sub_tasks.present?
+    #   # sub task
+    #   count = routine.task.sub_tasks.sub_task_commits.present? ? routine.task.sub_tasks.sub_task_commits.count : 0
+    #   if count > 0      
+    #     score = (count / routine.task.sub_tasks.count * 100).round
+    #   else
+    #     score = 0
+    #   end
+    # else
+      # no sub task
+      today = Time.current.beginning_of_day
+      (today.ago(4.month).to_date..today.to_date).map do |date| 
+        time = Time.parse(date.to_s).to_i
+        score = routine.task.task_commits.where(created_at: (date.beginning_of_day)..(date.end_of_day)).count > 0 ? 100 : 0
+        if score > 0
+          heat_map.merge!(time => score)
+        end
+      end
+
+#    end
+
+    render json: heat_map
+  end
+  
 
   def edit
     @routine = Routine.find(params[:id])
