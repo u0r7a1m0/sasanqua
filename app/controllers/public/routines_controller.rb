@@ -66,50 +66,51 @@ class Public::RoutinesController < ApplicationController
         today = Time.current.beginning_of_day
         (today.ago(4.month).to_date..today.to_date).map do |date| 
           time = Time.parse(date.to_s).to_i
-          if routine.task.sub_tasks.sub_task_commits.present?
-            top = routine.task.sub_tasks.sub_task_commits.where(created_at: (date.beginning_of_day)..(date.end_of_day)).count
+          if routine.task.sub_task_commits.present?
+            # (sub_tasks.count * sub_task_commits.count ) / 100
+            top = routine.task.sub_task_commits.where(created_at: (date.beginning_of_day)..(date.end_of_day)).count
           else
             top = 0
           end
           bottom = routine.task.sub_tasks.count
           # サブタスクの数　÷ サブタスクコミットでcreatされている(達成している個数）カウント
-          score = top / bottom
-          #byebug
+          score = (top / bottom) * 100
           if score > 0
+            # byebug
+            # byebug
             heat_map.merge!(time => score)
-          elsif score > 30
-            heat_map.merge!(time => score)
-          elsif score > 60
-            heat_map.merge!(time => score)
-          elsif score > 99
-            heat_map.merge!(time => score)
-          elsif score = 100
-            heat_map.merge!(time => score)
-          else
-            
           end
         end
     else
       # no sub task
+      # today = Time.current.beginning_of_day
+      # (today.ago(4.month).to_date..today.to_date).map do |date| 
+      #   time = Time.parse(date.to_s).to_i
+      #   if routine.frequency.frequency == "oneday_twice"
+      #     loop_count = 2
+      #   elsif routine.frequency.frequency == "oneday_third"
+      #     loop_count = 3
+      #   else
+      #     loop_count = 1
+      #   end
+      #   # SQLが9時間ずれる(-9時間)。下の記述自体は問題ないけどSQLに問い合わせすると9時間ずれる。
+      #   score = routine.task.task_commits.where(created_at: 9.hours.ago(date.beginning_of_day)..9.hours.ago(date.end_of_day)).count / loop_count * 100
+      #   byebug
+      #   if score > 0
+      #     heat_map.merge!(time => score)
+      #   end
+      
       today = Time.current.beginning_of_day
       (today.ago(4.month).to_date..today.to_date).map do |date| 
         time = Time.parse(date.to_s).to_i
-        if routine.frequency.frequency == "oneday_twice"
-          loop_count = 2
-        elsif routine.frequency.frequency == "oneday_third"
-          loop_count = 3
-        else
-          loop_count = 1
-        end
-        # SQLが9時間ずれる(-9時間)。下の記述自体は問題ないけどSQLに問い合わせすると9時間ずれる。
-        score = routine.task.task_commits.where(created_at: (date.beginning_of_day)..(date.end_of_day)).count / loop_count * 100
-        byebug
-        if score > 0
+        score = routine.task.task_commits.where(created_at: (date.beginning_of_day)..(date.end_of_day)).count * 33
+        if score == 99
+          score = 100
+          heat_map.merge!(time => score)
+        elsif score > 0
           heat_map.merge!(time => score)
         end
-   
       end
-
     end
 
     render json: heat_map

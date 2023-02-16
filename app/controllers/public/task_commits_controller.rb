@@ -9,7 +9,7 @@ class Public::TaskCommitsController < ApplicationController
       next if TaskCommit.where(task_id: @routine.task.id, created_at: today..next_day, times: index + 1).present?
       TaskCommit.create!(task: @routine.task, frequency: @routine.frequency, times: index + 1)
     end
-    redirect_to my_page_path
+    redirect_to request.referer
   end
   
 
