@@ -27,13 +27,11 @@ class Public::RoutinesController < ApplicationController
   end
 
   def index
-    # @customer = current_customer
     @routines = Routine.where(public_status:true).order("created_at DESC").all
-
     @current_routines = []
     @backnumber_routines = []
     current_daytime = Time.current
-    @routines.find_each do |routine|
+    @routines.each do |routine|
       # created_at + period <=> current_day
       if routine.created_at.since(Period::TASK_DURATION_TABLE[routine.period.period.to_sym]).after?(current_daytime)
         @current_routines << routine

@@ -1,11 +1,11 @@
 class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
-    @routines = current_customer.routines.order("created_at DESC")
+    @routines = current_customer.routines.all.order(created_at: "DESC")
     @current_routines = []
     @backnumber_routines = []
     current_daytime = Time.current
-    @routines.find_each do |routine|
+    @routines.each do | routine |
       # created_at + period <=> current_day
       if routine.created_at.since(Period::TASK_DURATION_TABLE[routine.period.period.to_sym]).after?(current_daytime)
         @current_routines << routine
@@ -13,14 +13,11 @@ class Public::CustomersController < ApplicationController
         @backnumber_routines << routine
       end
     end
-
     @bookmark = current_customer.bookmarks
   end
-
   def edit
     @customer = current_customer
   end
-
   def update
     @customer = current_customer
     if @customer.update(customer_params)
@@ -31,7 +28,6 @@ class Public::CustomersController < ApplicationController
       render 'edit'
     end
   end
-
   def withdraw
     @customer = current_customer
 		#is_deletedカラムにフラグを立てる(defaultはfalse)
@@ -56,5 +52,8 @@ class Public::CustomersController < ApplicationController
   end
   def bookmark_params
     params.require(:bookmark).permit(:routine_id, :customer_id)
+  end
+  def active_for_authentication?
+    super && self.is_active?
   end
 end
