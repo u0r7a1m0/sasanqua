@@ -23,16 +23,16 @@
       </div>
       <!--ステータス-->
       <div>
-        <p class="edit-label"><b><%= f.label :'会員ステータス'%></b></p>
-        <p>
+        <p class="edit-label"><b><%= f.label :会員ステータス %></b></p>
+        <p class="edit-label">
           <label><%= f.radio_button :is_deleted, false %>有効</label>
           <label class="radio_button_content"><%= f.radio_button :is_deleted, true %>退会</label>
         </p>
       </div>
       <!--ボタン-->
       <div class="btns">
-        <%= link_to '戻る' , admin_customer_path(@customer.id), class: "update-btn" %>
         <%= f.submit'変更', class: "update-btn" %>
+        <%= link_to '戻る' , admin_customer_path(@customer.id), class: "update-btn" %>
         <!--<button type="submit" class="update-btn">変更</button>-->
       </div>
 

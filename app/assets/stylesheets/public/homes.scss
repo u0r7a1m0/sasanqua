@@ -86,3 +86,39 @@
     text-align:center;
   }
 }
+
+// サンクスページ
+.thanks_wrapper{
+  width: 80%;
+  margin: 0 auto;
+}
+.thanks_wrapper img{
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  filter: drop-shadow(5px 5px 5px #aaa);
+}
+.thanks_wrapper h5{
+  margin-top: 3vh;
+  margin-left: 5vw;
+  background:linear-gradient(transparent 60%, #ff6 60%);
+  display: inline;
+}
+.thanks_contents{
+  margin-left: 5vw;
+  margin-top: 5vh;
+  display: flex;
+}
+.thanks_content2 a{
+  text-decoration: none;
+  color:#1DA1F2;
+}
+.thanks_content2{
+  padding-left: 5vw;
+  margin-left: 5vw;
+  border-left: 3px solid #E0DADA;
+}
+.thanks_content2 p{
+  font-size: 13px;
+}

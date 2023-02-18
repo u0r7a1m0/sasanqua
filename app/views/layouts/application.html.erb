@@ -77,7 +77,6 @@
         <%= render partial: 'layouts/flash_window' %>
       </div>
       <main>
-
         <%= yield %>
       </main>
 
@@ -85,7 +84,9 @@
         <nav class="nav_content_footer">
           <ul class="nav_list_footer">
             <li class="nav_item_footer">
-              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <%= link_to thanks_path do %>
+              <i class="fa-solid fa-gift"></i>
+              <% end %>
             </li>
             <li class="nav_item_footer">
               <%= link_to privacy_policy_path do %>

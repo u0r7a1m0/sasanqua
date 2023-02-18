@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   scope module: :public do
     get '/about' => 'homes#about'
+    get '/thanks' => 'homes#thanks'
     get '/privacy_policy' => 'homes#privacy'
 
     # 「customers」
