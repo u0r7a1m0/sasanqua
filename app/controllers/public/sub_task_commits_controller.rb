@@ -51,7 +51,7 @@ class Public::SubTaskCommitsController < ApplicationController
       not_exist_sub_task_ids.each do |sub_task_id|
         SubTaskCommit.create(sub_task_id: sub_task_id, times: 1)
       end
-     end
+    end
 
     if sub_task_2.present?
       today = Date.today.to_datetime + Rational("5/24")
