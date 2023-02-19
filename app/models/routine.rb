@@ -31,112 +31,223 @@ class Routine < ApplicationRecord
 
   # レベルアイコン
   def level
-    if frequency.frequency == "twoday_once" #2日に1回
-      if task.sub_tasks.present?
-        task_count = task.sub_tasks.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*task_count
-        commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      else
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*1
-        commit_count = task.task_commits.count
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
+    if period.period == "one_year" or period.period == "everyday"
+      # 10
+      if frequency.frequency == "twoday_once" #2日に1回
+      # byebug
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*1
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+      elsif frequency.frequency == "threeday_once" #3日に1回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*1
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+      elsif frequency.frequency == "oneday_third" #1日に3回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*1
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+      elsif frequency.frequency == "oneday_twice" #1日に2回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*1
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+      else  # 1日に1回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*1
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
       end
-    elsif frequency.frequency == "threeday_once" #3日に1回
-      if task.sub_tasks.present?
-        task_count = task.sub_tasks.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*task_count
-        commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      else
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*1
-        commit_count = task.task_commits.count
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      end
-    elsif frequency.frequency == "oneday_third" #1日に3回
-      if task.sub_tasks.present?
-        task_count = task.sub_tasks.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*task_count
-        commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      else
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*1
-        commit_count = task.task_commits.count
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      end
-
-    elsif frequency.frequency == "oneday_twice" #1日に2回
-      if task.sub_tasks.present?
-        task_count = task.sub_tasks.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*task_count
-        commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      else
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*1
-        commit_count = task.task_commits.count
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      end
-
-    else  # 1日に1回
-      if task.sub_tasks.present?
-        task_count = task.sub_tasks.count
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*task_count
-        commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
-      else
-        total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*1
-        commit_count = task.task_commits.count
-        num = (commit_count.to_f/total.to_f)
-          if !num.zero?
-            (num*100).ceil(-1).digits[1]
-          else
-            1
-          end
+    else
+      if frequency.frequency == "twoday_once" #2日に1回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*1
+          commit_count = task.task_commits.count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+      elsif frequency.frequency == "threeday_once" #3日に1回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*1
+          commit_count = task.task_commits.count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+      elsif frequency.frequency == "oneday_third" #1日に3回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*1
+          commit_count = task.task_commits.count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+  
+      elsif frequency.frequency == "oneday_twice" #1日に2回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*1
+          commit_count = task.task_commits.count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
+  
+      else  # 1日に1回
+        if task.sub_tasks.present?
+          task_count = task.sub_tasks.count
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*task_count
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        else
+          total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*1
+          commit_count = task.task_commits.count
+          num = (commit_count.to_f/total.to_f)
+            if !num.zero?
+              (num*100).ceil(-1).digits[1]
+            else
+              1
+            end
+        end
       end
     end
   end
