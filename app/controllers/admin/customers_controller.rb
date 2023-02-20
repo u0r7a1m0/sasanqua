@@ -1,11 +1,11 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all.order("created_at DESC")
+    @customers = Customer.all.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show
     @customer = Customer.find(params[:id])
-    @routines = @customer.routines.order("created_at DESC")
+    @routines = @customer.routines.order("created_at DESC").page(params[:page])
     @current_routines = []
     @backnumber_routines = []
     current_daytime = Time.current

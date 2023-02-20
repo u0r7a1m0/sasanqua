@@ -16,10 +16,6 @@
           <i class="fa-regular fa-bookmark"></i>ブックマーク一覧
           <% end %>
         </p>
-        <p class="line_bot_text">
-          <%= image_tag '/qr.jpg', size: "100x100" %>
-          <p class="line_bot_icon"><i class="fa-brands fa-line"></i>&ensp;ルーティンの時間に<br />LINEで通知を受け取る</p>
-        </p>
       </div>
     </div>
 
@@ -84,8 +80,11 @@
           </div>
           <% end %>
           <% end %>
+        <div class="pagenate_content">
+          <%= paginate @current_routines %>
         </div>
-      </div>
+    </div>
+  </div>
 
       <!--バックナンバー-->
       <div>
@@ -143,7 +142,10 @@
           <% end %>
         </div>
       </div>
+        <div class="pagenate_content">
+          <%= paginate @backnumber_routines %>
+        </div>
     </div><!-- my-page-right start -->
-
   </div>
+
 </div>

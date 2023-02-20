@@ -2,12 +2,12 @@ class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
   def top
     # @customer = current_customer
-    @routines = Routine.order("created_at DESC").all
+    @routines = Routine.order("created_at DESC").page(params[:page]) 
 
     @current_routines = []
     @backnumber_routines = []
     current_daytime = Time.current
-    @routines.find_each do |routine|
+    @routines.each do |routine|
       # created_at + period <=> current_day
       if routine.created_at.since(Period::TASK_DURATION_TABLE[routine.period.period.to_sym]).after?(current_daytime)
         @current_routines << routine

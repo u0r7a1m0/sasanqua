@@ -26,6 +26,7 @@
 
         <div class="item-contents_all">
           <% @current_routines.each do |routine| %>
+          <%= link_to edit_admin_routine_path(routine.id) do %>
           <div class="item-contents2">
             <div class="status_tag_routine">
               <%if routine.public_status %>
@@ -67,8 +68,12 @@
             </div>
           </div>
           <% end %>
+          <% end %>
         </div>
       </div>
+    <div class="pagenate_content">
+      <%= paginate @routines %>
+    </div>
 
       <!--バックナンバー-->
       <div>
@@ -125,6 +130,9 @@
           <% end %>
         </div>
       </div>
+          <div class="pagenate_content">
+      <%= paginate @routines %>
+    </div>
     </div><!-- my-page-right start -->
   </div>
 </div>

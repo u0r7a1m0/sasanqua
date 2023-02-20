@@ -14,6 +14,7 @@ class Routine < ApplicationRecord
   accepts_nested_attributes_for :frequency, allow_destroy: true, update_only: true
   accepts_nested_attributes_for :period, allow_destroy: true, update_only: true
 
+  validates :target, {length:{maximum:20} }
   def  next_day
     r = Rational("5/24")
     if frequency.frequency == "twoday_once"

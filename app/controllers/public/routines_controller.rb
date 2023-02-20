@@ -28,15 +28,20 @@ class Public::RoutinesController < ApplicationController
 
   def index
     @routines = Routine.where(public_status:true).order("created_at DESC").all
-    @current_routines = []
-    @backnumber_routines = []
+    @current_routines_array = []
+    @backnumber_routines_array = []
     current_daytime = Time.current
     @routines.each do |routine|
       # created_at + period <=> current_day
       if routine.created_at.since(Period::TASK_DURATION_TABLE[routine.period.period.to_sym]).after?(current_daytime)
-        @current_routines << routine
+        @current_routines_array << routine
+        @current_routines = Kaminari.paginate_array(@current_routines_array).page(params[:page])
+      end
+      unless routine.created_at.since(Period::TASK_DURATION_TABLE[routine.period.period.to_sym]).after?(current_daytime)
+        @backnumber_routines_array << routine
+        @backnumber_routines = Kaminari.paginate_array(@backnumber_routines_array).page(params[:page])
       else
-        @backnumber_routines << routine
+        @backnumber_routines = Kaminari.paginate_array(@backnumber_routines_array).page(params[:page])
       end
     end
   end

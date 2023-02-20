@@ -499,3 +499,54 @@ header {
 .subtask_line:first-child{
   padding-left: 0;
 }
+
+
+/*ページネーション*/
+.pagenate_content{
+  text-align:center;
+  font-size: 10px;
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.pagenate_content li{
+  display: inline-block;
+}
+.active a{
+  padding: 8px 10px;
+  border-radius: 50%;
+  background-color: #C8F4F5;
+  color: gray;
+  margin: 20px;
+}
+.waves-effect a{
+  padding: 8px 10px;
+  border-radius: 50%;
+  background-color: #D4D6D8;
+  color: gray;
+  margin: 20px;
+}
+.waves-effect2 a{
+  padding: 20px 10px;
+  border-radius: 50%;
+  /*// background-color: #D4D6D8;*/
+  color: gray;
+  margin: 20px;
+}
+
+.last a, .first a{
+  padding: 15px 10px;
+  border-radius: 50%;
+  background-color: #F5D7C1;
+  color: gray;
+  margin: 20px;
+}
+.material-icons{
+  width: 20px;
+  height: 15px;
+}
+
+.last a:hover, .first a:hover, .waves-effect2 a:hover, .waves-effect2 a:hover, .active a:hover{
+   opacity: 0.5;
+}

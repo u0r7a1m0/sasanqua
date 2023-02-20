@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
   has_many :routines, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_routines, through: :bookmarks, source: :routine
+  
+  validates :email, uniqueness: true
 
   def get_profile_image(width, height)
     unless profile_image.attached?
@@ -41,5 +43,19 @@ class Customer < ApplicationRecord
     self.raw_info = raw_info.to_json
     self.save!
   end
+  # 検索機能
+  # def self.looks(search, word)
+  #   if search == "perfect_match"
+  #     @customer = Customer.where("name LIKE?", "#{word}")
+  #   elsif search == "forward_match"
+  #     @customer = Customer.where("name LIKE?","#{word}%")
+  #   elsif search == "backward_match"
+  #     @customer = Customer.where("name LIKE?","%#{word}")
+  #   elsif search == "partial_match"
+  #     @customer = Customer.where("name LIKE?","%#{word}%")
+  #   else
+  #     @customer = Customer.all
+  #   end
+  # end
 
 end

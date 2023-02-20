@@ -4,6 +4,7 @@
   <div class="item-contents_all">
 
     <% @current_routines.each do |routine| %>
+    <%= link_to edit_admin_routine_path(routine.id) do %>
     <div class="item-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
       <div class="item-content">
@@ -37,6 +38,11 @@
       </div>
     </div>
     <% end %>
+    <% end %>
+  </div>
+  <div class="pagenate_content">
+    <!--アクティブなものだけに変更したい-->
+    <%= paginate @routines %>
   </div>
 </div>
 
@@ -84,12 +90,8 @@
     </div>
     <% end %>
   </div>
-
-
-
-
-
-
-
-
+  <div class="pagenate_content">
+    <!--バックナンバーのみに変更したい-->
+    <%= paginate @routines %>
+  </div>
 </div>

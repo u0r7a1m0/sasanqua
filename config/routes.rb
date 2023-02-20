@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     get '/routines/bookmark' => 'routines#like', as: 'bookmark'
     get '/routines/heatmap' => 'routines#heatmap'
+    # get 'search' => 'searches#search'
+
 
     resources :routines do
       resources :sub_task_commits

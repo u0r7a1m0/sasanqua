@@ -40,6 +40,10 @@
     </div>
     <% end %>
   </div>
+    <div class="pagenate_content">
+    <!--バックナンバーのみに変更したい-->
+    <%= paginate @current_routines %>
+  </div>
 </div>
 
 <div class="routine-contents">
@@ -85,12 +89,8 @@
     </div>
     <% end %>
   </div>
-
-
-
-
-
-
-
-
+    <div class="pagenate_content">
+    <!--バックナンバーのみに変更したい-->
+    <%= paginate @backnumber_routines %>
+  </div>
 </div>
