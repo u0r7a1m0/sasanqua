@@ -1,13 +1,14 @@
 # Sasanqua
 
 ### サイトテーマ
-日々のルーティン・習慣を設定し、続けるためのサイトです。<br>
+日々のルーティン・習慣を設定し、楽しく続けるためのサイトです。<br>
 アプリケーション名にあるサザンカという花には<br>
 「ひたむきさ」「困難に打ち勝つ」という花言葉があります。<br>
 サザンカのように強く美しく自分の目標に対してひたむきに向き合い<br>
 目標を達成できるような人になってほしいという思いから作成させていただきました。<br>
 【オリジナル題材】<br>
 ルーティン管理サイト<br>
+![majo](https://user-images.githubusercontent.com/114331695/220039131-25a257a0-5d82-422f-8939-0ba8c3782435.jpg)
 
 ### テーマを選んだ理由
 自分自身が続けるということがあまり得意ではありませんでした。<br>
@@ -41,8 +42,9 @@ https://docs.google.com/spreadsheets/d/1Qa9KbB3Ej2oCd2ZDAbPk9HqNbXcTERm7mmE0HpWb
 - IDE：Cloud9
 
 ## 使用素材
-- イラストレーターさんへ依頼予定
+- イラストレーター：Haleta（ヘッダー、フッター、アイコン担当）<br>
 - アイコン素材<br>
 http://flat-icon-design.com/ <br>
 https://kage-design.com/ <br>
 https://fukidesign.com/ <br>
+https://unsplash.com/ja
