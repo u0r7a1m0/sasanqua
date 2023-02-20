@@ -1,7 +1,6 @@
 class Public::RoutinesController < ApplicationController
   before_action :authenticate_customer!
 
-
   def new
     @routine = Routine.new
     task = @routine.build_task
@@ -9,7 +8,6 @@ class Public::RoutinesController < ApplicationController
     @routine.build_implementation_time
     @routine.build_frequency
     @routine.build_period
-
   end
 
   def create
@@ -106,14 +104,11 @@ class Public::RoutinesController < ApplicationController
     end
     render json: heat_map
   end
-  
   def edit
     @routine = Routine.find(params[:id])
   end
-
   def update
     @routine = Routine.find(params[:id])
-
     if @routine.update(routine_params)
     # 更新に成功したときの処理
       flash[:notice]="更新完了しました！"
@@ -121,7 +116,6 @@ class Public::RoutinesController < ApplicationController
     else
       render :edit
     end
-
   end
 
   def like

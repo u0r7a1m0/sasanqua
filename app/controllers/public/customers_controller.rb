@@ -4,6 +4,8 @@ class Public::CustomersController < ApplicationController
     @routines = current_customer.routines.all.order(created_at: "DESC")
     @current_routines_array = []
     @backnumber_routines_array = []
+    @current_routines = Kaminari.paginate_array([]).page(params[:page])
+    @backnumber_routines = Kaminari.paginate_array([]).page(params[:page])
     current_daytime = Time.current
     @routines.each do |routine|
       # created_at + period <=> current_day

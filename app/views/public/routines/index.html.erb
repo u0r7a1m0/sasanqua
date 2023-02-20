@@ -1,8 +1,6 @@
 <div class="routine-contents">
-
   <h5>■ルーティン一覧</h5>
   <div class="item-contents_all">
-
     <% @current_routines.each do |routine| %>
     <div class="item-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
@@ -90,7 +88,6 @@
     <% end %>
   </div>
     <div class="pagenate_content">
-    <!--バックナンバーのみに変更したい-->
     <%= paginate @backnumber_routines %>
   </div>
 </div>
