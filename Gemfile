@@ -61,14 +61,11 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 gem "enum_help"
 gem 'rails-i18n'
-# gem 'rails-line-bot'
 gem "net-smtp"
 
-# gem 'jquery-turbolinks'
 gem 'cocoon'
 
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
-gem 'line-bot-api'
-# gem 'cal-heatmap-rails'
+gem 'ransack'

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     sessions: 'public/sessions',
     omniauth_callbacks: "omniauth_callbacks"
   }
+  devise_scope :customer do
+    get '/customers', to: 'public/registrations#new'
+  end
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -26,7 +29,6 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw', as: 'withdraw'
     get '/routines/bookmark' => 'routines#like', as: 'bookmark'
     get '/routines/heatmap' => 'routines#heatmap'
-    # get 'search' => 'searches#search'
 
 
     resources :routines do

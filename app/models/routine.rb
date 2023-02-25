@@ -15,6 +15,12 @@ class Routine < ApplicationRecord
   accepts_nested_attributes_for :period, allow_destroy: true, update_only: true
 
   validates :target, {length:{maximum:20} }
+  def self.ransackable_associations(auth_object = nil)
+    ["bookmarks", "customer", "frequency", "implementation_time", "level_icon_attachment", "level_icon_blob", "period", "routine_image_attachment", "routine_image_blob", "task"]
+  end
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "customer_id", "id", "public_status", "target", "updated_at"]
+  end
   def  next_day
     r = Rational("5/24")
     if frequency.frequency == "twoday_once"

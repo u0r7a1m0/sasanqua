@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_routines, through: :bookmarks, source: :routine
   
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image01.jpg')

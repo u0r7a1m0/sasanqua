@@ -6,4 +6,10 @@ class Task < ApplicationRecord
   validates :name, {length:{maximum:18} }
   validates :name, presence: true
   accepts_nested_attributes_for :sub_tasks, allow_destroy: true, update_only: true, reject_if: :all_blank
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
+  def self.ransackable_associations(auth_object = nil)
+    ["routine", "sub_tasks", "task_commits"]
+  end
 end
