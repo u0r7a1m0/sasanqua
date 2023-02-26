@@ -72,6 +72,7 @@
         </div>
         <div class="item-contents_all">
           <% @backnumber_routines.each do |routine| %>
+          <%= link_to edit_admin_routine_path(routine.id) do %>
           <div class="item-old-contents">
             <div class="status_tag_routine">
               <%if routine.public_status %>
@@ -109,6 +110,7 @@
               <%= image_tag "/level_#{routine.level}.jpg" %>
             </div>
           </div>
+          <% end %>
           <% end %>
         </div>
       </div>

@@ -1,24 +1,14 @@
 class Admin::RoutinesController < ApplicationController
-  def index
-  end
-
-  def new
-  end
-
-  def show
-  end
-
   def edit
     @routine = Routine.find(params[:id])
   end
 
   def update
     @routine = Routine.find(params[:id])
-
     if @routine.update(routine_params)
     # 更新に成功したときの処理
       flash[:notice]="更新完了しました！"
-      redirect_to routine_path(@routine.id)
+      redirect_to admin_customer_path(@routine.customer_id)
     else
       render :edit
     end

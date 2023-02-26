@@ -18,8 +18,11 @@
     <div class="container">
       <header>
         <div class="logo">
-          <img src="/sazanka03.jpg">
-          <b><%= link_to 'Sasanqua' ,root_path %></b>
+          <b>
+            <%= link_to root_path do %>
+              <img src="/sazanka03.jpg">&ensp;Sasanqua
+            <% end %>
+          </b>
         </div>
         <!-- ハンバーガーメニュー部分 -->
         <div class="nav">
@@ -50,14 +53,12 @@
           <nav class="nav_content">
             <ul class="nav_list">
               <li class="nav_item"><%= link_to 'About' ,about_path %></li>
-              <li class="nav_item"><%= link_to 'Sign up' ,new_customer_registration_path,class:"under-line" %></li>
-              <li class="nav_item">
               <% if request.fullpath.include? "/admin" %>
-                <%= link_to 'Log in', new_admin_session_path, class:"under-line" %>
+                <li class="nav_item"><%= link_to 'Log in', new_admin_session_path, class:"under-line" %></li>
               <% else %>
-                <%= link_to 'Log in', new_customer_session_path, class:"under-line" %>
+                <li class="nav_item"><%= link_to 'Sign up' ,new_customer_registration_path,class:"under-line" %></li>
+                <li class="nav_item"><%= link_to 'Log in', new_customer_session_path, class:"under-line" %></li>
               <% end %>
-              </li>
             </ul>
           </nav>
           <% end %>
@@ -85,7 +86,7 @@
             <% end %>
             </li>
             <li class="nav_item_footer">
-              <a href="#"><i class="fa-solid fa-envelope"></i></a>
+              <a href="https://ysmynkk206.studio.site/" target = "_blank"><i class="fa-regular fa-address-card"></i></a>
             </li>
           </ul>
         </nav>

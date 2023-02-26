@@ -11,7 +11,7 @@
       <div>
         <p class="edit-label"><b><%= f.label :'ニックネーム' %></b></p>
         <div>
-          <%= f.text_field :nickname, autofocus: true, autocomplete: "last_name", placeholder: "ジョン・タイター", class: "form-control " %>
+          <%= f.text_field :nickname, autofocus: true, autocomplete: "last_name", placeholder: "ジョン・タイター", class: "form-control" %>
         </div>
       </div>
       <!--メールアドレス-->
@@ -21,19 +21,12 @@
           <%= f.email_field :email, autocomplete: "email", class: "form-control" %>
         </div>
       </div>
-      <!--ステータス-->
-      <div>
-        <p class="edit-label"><b><%= f.label :会員ステータス %></b></p>
-        <p class="edit-label">
-          <label><%= f.radio_button :is_deleted, false %>有効</label>
-          <label class="radio_button_content"><%= f.radio_button :is_deleted, true %>退会</label>
-        </p>
-      </div>
       <!--ボタン-->
       <div class="btns">
         <%= f.submit'変更', class: "update-btn" %>
         <%= link_to '戻る' , admin_customer_path(@customer.id), class: "update-btn" %>
       </div>
+      <%= link_to "アカウント削除する", withdraw_path(current_customer), method: :patch, "data-confirm" => "本当に削除しますか？", class:"text-danger" %>
       <% end %>
     </div>
   </div>

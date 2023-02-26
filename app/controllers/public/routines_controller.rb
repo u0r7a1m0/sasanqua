@@ -63,7 +63,6 @@ class Public::RoutinesController < ApplicationController
     routine_id = params["routine_id"]
     routine = Routine.find(routine_id)
     heat_map = Hash.new
-    # byebug
     if routine.task.sub_tasks.present?
     #   # sub task
         today = Time.current.beginning_of_day
@@ -119,6 +118,12 @@ class Public::RoutinesController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def destroy
+    @routine = Routine.find(params[:id])
+    @routine.destroy
+    redirect_to my_page_path
   end
 
   def like

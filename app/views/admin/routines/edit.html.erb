@@ -8,7 +8,7 @@
     </div>
     <div>
       <p><span><%= f.label :'目標' %></span></p>
-      <p><%= f.text_field :target %></p>
+      <p><%= f.text_field :target, class: "form-control3" %></p>
     </div>
     <!--期間-->
     <div>
@@ -36,5 +36,5 @@
     </div>
     <% end %>
   </div>
-  <%= link_to "ルーティンを削除", admin_routine_path, method: :delete, "data-confirm" => "本当にルーティンを削除しますか？", class:'text-danger' %>
+  <p><%= link_to "ルーティンを削除", admin_routine_path, method: :delete, "data-confirm" => "本当にルーティンを削除しますか？", class: 'text-danger' %></p>
 </div>

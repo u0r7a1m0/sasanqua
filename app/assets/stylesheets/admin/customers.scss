@@ -14,7 +14,7 @@
 }
 // マイページ
 .admin_my-page-wrapper{
-  width: 100%;
+  width: 90%;
   margin: 0 auto;
 }
 .admin_my-page-contents{
@@ -55,9 +55,6 @@
     text-decoration: none;
   }
 }
-
-
-
 @media screen and (max-width: 992px) {
   .admin_my-page-left{
     width: 100%;
@@ -78,6 +75,10 @@
     border-top: 1px solid #E0DADA;
     margin-top: 2vh;
     padding-top: 2vh;
+  }
+  .admin-customer-wrapper{
+    width: 100%;
+    margin: 0 auto;
   }
 }
 // アドミン・会員一覧画面
@@ -172,8 +173,6 @@
   display: flex;
   justify-content: space-around;
 }
-
-
 .item-content{
   width: 249px;
   height: 180px;
@@ -295,3 +294,9 @@
     margin-top:3vh;
   }
 
+@media screen and (max-width: 992px) {
+  .admin-customer-edit-contents{
+    width: 80%;
+    margin: 0 auto;
+  }
+}

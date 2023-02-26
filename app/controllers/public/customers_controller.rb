@@ -36,6 +36,7 @@ class Public::CustomersController < ApplicationController
       redirect_to my_page_path
     else
       render 'edit'
+      flash[:alert]="更新できませんでした。"
     end
   end
   def withdraw
@@ -50,7 +51,7 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:customer_id, :profile_image, :nickname, :is_deleted, :created_at, :updated_at)
+    params.require(:customer).permit(:customer_id, :email, :profile_image, :nickname, :is_deleted, :created_at, :updated_at)
   end
   def routine_params
     params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,

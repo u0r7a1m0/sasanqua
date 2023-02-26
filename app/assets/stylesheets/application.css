@@ -97,7 +97,7 @@ header {
   width: 60px;  /* 縦横を同じ値にする */
   height: 60px;  /* 縦横を同じ値にする */
   position: relative;
-  top:10%;
+  top:30%;
 }
 .logo a{
   height: 10vh;
@@ -242,6 +242,17 @@ header {
   -moz-appearance: none;
   margin-bottom:10px;
 }
+.form-control3{
+  height: 2.4em;
+  width: 60%;
+  padding: 0 16px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 0 1px #ccc inset;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 .form-control:focus {
   outline: 0;
   box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
@@ -286,13 +297,13 @@ header {
   width:90%;
   margin: 0 auto;
   }
+  .form-control3{
+  width: 100%;
+  }
 }
-
-
-
 /*全体共通*/
   /*ボタン関連*/
-.edit-btn, .update-btn, .withdraw-btn{
+.edit-btn, .update-btn{
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
   border: solid 1px gray;
@@ -303,6 +314,22 @@ header {
   border-radius: 100px;
   color: gray;
   text-decoration: none;
+}
+.withdraw-btn{
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
+  border: solid 1px red!important;
+  font-weight: bold;
+  font-size: 11px;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+  border-radius: 100px;
+  color: red!important;
+  text-decoration: none;
+  margin-left: 5vw;
+}
+.withdraw-btn:hover{
+  background-color: #F9C9C0!important;
 }
 .prof-edit-btn{
   text-decoration: none;
@@ -355,13 +382,14 @@ header {
   flex-wrap: wrap;
   margin: 0 auto;
   margin-top: 3vh;
+  margin-left: 3vw;
 }
 .item-contents, .item-contents2{
   width: 100%;
   margin: 0 auto;
 }
 .status_tag_routine{
-  z-index: 100;
+  z-index: 98;
   position:relative;
   left: 70%;
   top: 30%;
@@ -541,4 +569,15 @@ header {
 
 .last a:hover, .first a:hover, .waves-effect2 a:hover, .waves-effect2 a:hover, .active a:hover{
    opacity: 0.5;
+}
+
+/*エラー関連*/
+.alert_messages{
+  font-size: 14px!important;
+  color: red;
+  font-weight: bold;
+}
+.alert_messages_li{
+  font-size: 12px!important;
+  color: red;
 }

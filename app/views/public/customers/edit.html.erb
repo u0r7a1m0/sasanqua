@@ -1,5 +1,17 @@
 <div class="public-customer-edit-wrapper">
   <h5>■会員情報編集</h5>
+  <p class="alert_messages">
+    
+  <% if @customer.errors.any? %>
+  <%= @customer.errors.count %>件のエラーが発生しました
+  <ul class="alert_messages_li">
+    <% @customer.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  </p>
+  
+<% end %>
   <div class="customer-edit-form">
     <%= form_with model: @customer ,url: information_path(current_customer.id) do |f| %>
     <div>
@@ -13,8 +25,8 @@
     </div>
     <!--メールアドレス-->
     <div>
-      <p><%= f.label :メールアドレス %></p>
-      <p><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %></p>
+      <p><%= f.label :'メールアドレス' %></p>
+      <p><%= f.email_field :email, class: "form-control" %></p>
     </div>
     <!--ボタン-->
     <div class="btns">
