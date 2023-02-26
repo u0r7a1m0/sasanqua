@@ -80,8 +80,6 @@
     padding-top: 2vh;
   }
 }
-
-
 // アドミン・会員一覧画面
 .admin-customer-wrapper{
   width: 80%;
@@ -108,6 +106,15 @@
   box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
   padding: 1vw;
 }
+.item-content3{
+  width: 199px;
+  height: 130px;
+  background-color: white;
+  position:absolute;
+  bottom: 0;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  padding: 1vw;
+}
 .item-content3 img{
   position:absolute;
   bottom: 90%;
@@ -115,6 +122,9 @@
   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
   width: 60px;  /* 縦横を同じ値にする */
   height: 60px;  /* 縦横を同じ値にする */
+}
+.item-contents3:hover{
+  box-shadow: 0 10px 50px 0 rgba(100, 100, 100, .5);
 }
 .item-content3 p{
   font-size: 12px;

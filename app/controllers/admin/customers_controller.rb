@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all.order("created_at DESC").page(params[:page]).per(12)
+    @customers = Customer.all.order("created_at DESC").page(params[:page]).per(8)
   end
 
   def show
@@ -38,6 +38,5 @@ class Admin::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:customer_id, :profile_image, :nickname, :is_deleted, :created_at, :updated_at)
   end
-
 end
 

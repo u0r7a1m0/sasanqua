@@ -4,21 +4,21 @@
     
   <% @customers.each do |customer| %>
   <%= link_to admin_customer_path(customer.id) do %>
-  <div class="item-contents3">
-    <div class="item-content3">
-      <p><b>ニックネーム</b><br><%= customer.nickname %></p></li>
-      <% if customer.profile_image.attached? %>
-        <div style="text-align: center;" class="profile-icon"><%= image_tag customer.profile_image, size: "50x50" %></div>
-      <% else %>
-        <div style="text-align: center;" class="profile-icon"><%= image_tag 'no_image', size: "50x50" %></div>
-      <% end %>
-      <p><b>登録日</b><br><%= l customer.created_at %></p></li>
+    <div class="item-contents3">
+      <div class="item-content3">
+        <p><b>ニックネーム</b><br><%= customer.nickname %></p>
+        <% if customer.profile_image.attached? %>
+          <div style="text-align: center;" class="profile-icon"><%= image_tag customer.profile_image, size: "50x50" %></div>
+        <% else %>
+          <div style="text-align: center;" class="profile-icon"><%= image_tag 'no_image', size: "50x50" %></div>
+        <% end %>
+        <p><b>登録日</b><br><%= l customer.created_at %></p>
+      </div>
     </div>
-  </div>
   <% end %>
   <% end %>
   </div>
-    <div class="pagenate_content">
+  <div class="pagenate_content">
     <%= paginate @customers %>
   </div>
 </div>

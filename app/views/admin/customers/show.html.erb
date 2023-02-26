@@ -1,29 +1,23 @@
 <div class="my-page-wrapper">
   <h5>■<%= @customer.nickname %>&ensp;さんのマイページ</h5>
-
   <div class="my-page-contents">
     <!--プロフィー部分-->
     <div class="my-page-left">
       <div class="profile-contents">
         <% if @customer.profile_image.attached? %>
-            <div style="text-align: center;"><%= image_tag @customer.profile_image, size: "100x00" %></div>
-          <% else %>
-            <div style="text-align: center;"><%= image_tag 'no_image', size: "100x100" %></div>
-          <% end %>
+        <div style="text-align: center;"><%= image_tag @customer.profile_image, size: "100x00" %></div>
+        <% else %>
+        <div style="text-align: center;"><%= image_tag 'no_image', size: "100x100" %></div>
+        <% end %>
         <p><%= link_to "プロフィールを編集" ,edit_admin_customer_path, class:"prof-edit-btn" %></p>
       </div>
     </div>
 
-    <div class="my-page-right"><!-- my-page-right start -->
-      <!--ルーティン一覧部分-->
+    <div class="my-page-right">
       <div>
         <div class="my-page-right-txt">
-          <h5>
-            ■Routine一覧
-          </h5>
-
+          <h5>■Routine一覧</h5>
         </div>
-
         <div class="item-contents_all">
           <% @current_routines.each do |routine| %>
           <%= link_to edit_admin_routine_path(routine.id) do %>
@@ -43,9 +37,7 @@
                 <li class="sub_task_list">
                   <p>
                   <% routine.task.sub_tasks.each do | sub_task| %>
-                    <span class="subtask_line">
-                      <%= sub_task.name %>
-                    </span>
+                    <span class="subtask_line"><%= sub_task.name %></span>
                   <% end %>
                   </p>
                 </li>
@@ -63,7 +55,6 @@
                   <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
                 </li>
               </ul>
-
               <%= image_tag "/level_#{routine.level}.jpg" %>
             </div>
           </div>
@@ -71,16 +62,13 @@
           <% end %>
         </div>
       </div>
-    <div class="pagenate_content">
-      <%= paginate @routines %>
-    </div>
-
+      <div class="pagenate_content">
+        <%= paginate @routines %>
+      </div>
       <!--バックナンバー-->
       <div>
         <div class="my-page-right-txt">
-          <h5>
-            ■バックナンバー一覧
-          </h5>
+          <h5>■バックナンバー一覧</h5>
         </div>
         <div class="item-contents_all">
           <% @backnumber_routines.each do |routine| %>
@@ -92,20 +80,15 @@
                 <span class="item-lock"><i class="fa-solid fa-lock"></i></span>
               <% end %>
             </div>
-
             <p class="create_at_tag"><%= l routine.created_at %></p>
-
             <div class="item-content">
               <ul>
                 <li><b>目標</b><br><p><%= routine.target %></p></li>
                 <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
-
                 <li class="sub_task_list">
                   <p>
                   <% routine.task.sub_tasks.each do | sub_task| %>
-                    <span class="subtask_line">
-                      <%= sub_task.name %>
-                    </span>
+                    <span class="subtask_line"><%= sub_task.name %></span>
                   <% end %>
                   </p>
                 </li>
@@ -123,16 +106,15 @@
                   <span class="item-content-title"><b>期間</b>:<%= routine.period.period_i18n %></span>
                 </li>
               </ul>
-
               <%= image_tag "/level_#{routine.level}.jpg" %>
             </div>
           </div>
           <% end %>
         </div>
       </div>
-          <div class="pagenate_content">
-      <%= paginate @routines %>
+      <div class="pagenate_content">
+        <%= paginate @routines %>
+      </div>
     </div>
-    </div><!-- my-page-right start -->
   </div>
 </div>

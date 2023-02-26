@@ -1,11 +1,7 @@
 <div class="public-routine-edit-wrapper">
-
   <h5>■Adminルーティン情報編集</h5>
-
   <div class="routine-edit-form">
     <%= form_with model: @routine ,url: admin_routine_path(@routine.id) do |f| %>
-
-    <!--モチベーション画像-->
     <div>
       <p><span><%= f.label :'モチベーションアップ画像' %></span></p>
       <p><%= f.file_field :routine_image, placeholder: "", accept: "image/*" %></p>
@@ -13,7 +9,6 @@
     <div>
       <p><span><%= f.label :'目標' %></span></p>
       <p><%= f.text_field :target %></p>
-
     </div>
     <!--期間-->
     <div>
@@ -21,7 +16,7 @@
       <%= f.fields_for :period do |period| %>
         <p>
           <%= period.collection_radio_buttons :period, Period.periods.map{|k, v| [k, I18n.t("enums.period.period.#{k}")] }, :first , :last do |b|  %>
-          <p><%= b.radio_button + b.label %></p>
+            <%= b.radio_button + b.label %><br>
           <% end %>
         </p>
       <% end %>
@@ -34,16 +29,12 @@
         <label class="radio_button_content"><%= f.radio_button :public_status, false %>非公開</label>
       </p>
     </div>
-
-
     <!--ボタン-->
     <div class="btns">
       <%= f.submit '変更' ,class:'update-btn' %>
       <%= link_to '戻る' ,admin_root_path ,class: "update-btn" %>
     </div>
     <% end %>
-
   </div>
-    <%= link_to "ルーティンを削除", admin_routine_path, method: :delete, "data-confirm" => "本当にルーティンを削除しますか？", class:'text-danger' %>
-
+  <%= link_to "ルーティンを削除", admin_routine_path, method: :delete, "data-confirm" => "本当にルーティンを削除しますか？", class:'text-danger' %>
 </div>

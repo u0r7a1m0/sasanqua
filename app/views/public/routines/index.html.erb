@@ -1,15 +1,14 @@
 <div class="routine-contents">
   <div class="routine_search">
-    
-  <h5>■ルーティン一覧</h5>
-  <div>
-  <%= search_form_for @q, url: routines_path do |f| %>
-    <%= f.search_field :target_or_task_name_or_task_sub_tasks_name_cont, class: 'form-control2', placeholder: '検索ワード' %>
-    <button type="submit" class="search_btn">
-  <i class="fas fa-search"></i> 
-</button>
-  <% end %>
-  </div>
+    <h5>■ルーティン一覧</h5>
+    <div>
+    <%= search_form_for @q, url: routines_path do |f| %>
+      <%= f.search_field :target_or_task_name_or_task_sub_tasks_name_cont, class: 'form-control2', placeholder: '検索ワード' %>
+      <button type="submit" class="search_btn">
+        <i class="fas fa-search"></i> 
+      </button>
+    <% end %>
+    </div>
   </div>
   <div class="item-contents_all">
     <% @current_routines.each do |routine| %>
@@ -24,18 +23,18 @@
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
           <li class="sub_task_list">
             <p>
-              <% routine.task.sub_tasks.each do | sub_task| %>
+            <% routine.task.sub_tasks.each do | sub_task| %>
               <span class="subtask_line"><%= sub_task.name %></span>
-              <% end %>
-              </p>
+            <% end %>
+            </p>
           </li>
           <li class="time-list">
             <span class="item-content-title"><b>時間</b>:
-              <% if routine.implementation_time.accurate_time.present? %>
+            <% if routine.implementation_time.accurate_time.present? %>
               <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
-              <% else %>
+            <% else %>
               <%= routine.implementation_time.approximate_time %>
-              <% end %>
+            <% end %>
             </span>
           </li>
           <li>
@@ -44,47 +43,41 @@
           </li>
         </ul>
         <%= image_tag "/level_#{routine.level}.jpg" %>
-
       </div>
     </div>
     <% end %>
   </div>
-    <div class="pagenate_content">
-    <!--バックナンバーのみに変更したい-->
+  <div class="pagenate_content">
     <%= paginate @current_routines %>
   </div>
 </div>
-
 <div class="routine-contents">
   <h5>■バックナンバー一覧</h5>
   <div class="item-contents_all">
-    <% @backnumber_routines.each do |routine| %>
+  <% @backnumber_routines.each do |routine| %>
     <div class="item-old-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
-
       <div class="item-content">
-
         <div class="like_content">
           <%= render "public/bookmarks/bookmarks", routine: routine %>
         </div>
-        
         <ul>
           <li><b>目標</b><br><p><%= routine.target %></p></li>
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
           <li class="sub_task_list">
             <p>
-              <% routine.task.sub_tasks.each do | sub_task| %>
+            <% routine.task.sub_tasks.each do | sub_task| %>
               <span class="subtask_line"><%= sub_task.name %></span>
-              <% end %>
-              </p>
+            <% end %>
+            </p>
           </li>
           <li class="time-list">
             <span class="item-content-title"><b>時間</b>:
-              <% if routine.implementation_time.accurate_time.present? %>
+            <% if routine.implementation_time.accurate_time.present? %>
               <%= routine.implementation_time.accurate_time.strftime('%H:%M') if routine.implementation_time.accurate_time %>
-              <% else %>
+            <% else %>
               <%= routine.implementation_time.approximate_time %>
-              <% end %>
+            <% end %>
             </span>
           </li>
           <li>
@@ -93,12 +86,11 @@
           </li>
         </ul>
         <%= image_tag "/level_#{routine.level}.jpg" %>
-
       </div>
     </div>
-    <% end %>
+  <% end %>
   </div>
-    <div class="pagenate_content">
+  <div class="pagenate_content">
     <%= paginate @backnumber_routines %>
   </div>
 </div>

@@ -1,10 +1,9 @@
 <!--会員用ログインページ-->
 <div class="new-customer-contents">
   <h3>■Log in</h3>
-
   <div class="form-wrapper">
-    <%= form_with model: @customer ,url: customer_session_path do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
+  <%= form_with model: @customer ,url: customer_session_path do |f| %>
+  <%= render "public/shared/error_messages", resource: resource %>
     <!--メールアドレス-->
     <div>
       <%= f.label :"メールアドレス" %>
@@ -12,7 +11,6 @@
     <div>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %>
     </div>
-
     <!--パスワード-->
     <div>
       <%= f.label :"パスワード" %>
@@ -21,7 +19,6 @@
       <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
     </div>
     <div class="submit-btn">
-      <%#= f.submit "ログイン" ,:class=>"input_btn" %>
       <button type="submit" class="input_btn">
         ログイン
       </button>

@@ -453,13 +453,8 @@ header {
   position:relative;
   left: 10%;
   top: 2%;
-
 }
-
-
-
 /*フラッシュメッセージ*/
-
 .flash-window {
   font-size: 14px;
   width: 100%;
@@ -528,7 +523,6 @@ header {
 .waves-effect2 a{
   padding: 20px 10px;
   border-radius: 50%;
-  /*// background-color: #D4D6D8;*/
   color: gray;
   margin: 20px;
 }

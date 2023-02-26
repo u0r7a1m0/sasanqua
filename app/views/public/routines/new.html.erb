@@ -8,7 +8,6 @@
     <p class="sub-text"><i class="fa-solid fa-camera-retro"></i><span>こういう人になりたい！ここに行きたい！</span>など参考画像があればアップしてみてください！<br/>毎日、目にしてモチベーションを上げましょう！</p>
       <%= f.file_field :routine_image, placeholder: "", accept: "image/*" %>
   </div>
-
   <!--ルーティンここから-->
   <div class="routine-content">
     <h3>■What do you routineize?</h3>
@@ -38,12 +37,10 @@
           <div id="sub_task-forms"></div>
         </div>
       </div>
-    </div>
     <% end %>
-
+    </div>
   </div>
-
-  <!--cocoonフォーム上限作りたいやつ！-->
+  <!--cocoonフォーム上限-->
   <script>
   $(function() {
     $('#sub-tasks').on('cocoon:after-insert', function() {
@@ -70,7 +67,6 @@
     }
   })
   </script>
-
   <!--いつ？-->
   <div class="routine-content">
     <h3>■When?</h3>
@@ -82,7 +78,6 @@
           <%= implementation_time.radio_button :accurate_time, true, checked: true, id: 'accurate_time_radio_button' %>
           <%= implementation_time.label :accurate_time, "時刻を設定", for: 'accurate_time_radio_button' %>
           <!--10分おきに分数設定-->
-          <%#= implementation_time.time_field :accurate_time, id: 'accurate_time_select', step: 600, class: 'short-text display-block'%>
           <%= implementation_time.time_field :accurate_time, id: 'accurate_time_select', step: "1800",list: "data-list", class: 'short-text display-block'%>
           <datalist id="data-list">
             <option value="00:00"></option>
@@ -93,21 +88,19 @@
             <option value="18:00"></option>
             <option value="21:00"></option>
           </datalist>
-
           <div id="error_message_accurate_time"></div>
         </p>
       </div>
       <div>
         <p>
-          <%= implementation_time.radio_button :approximate_time, true, id: 'approximate_time_radio_button' %>
-          <%= implementation_time.label :approximate_time, "ざっくり時間", for: 'approximate_time_radio_button' %>
-          <%= implementation_time.text_field :approximate_time, placeholder: "何時でもOK、食事後など", class: "short-text display-none", id: 'routine_approximate_time' %>
+        <%= implementation_time.radio_button :approximate_time, true, id: 'approximate_time_radio_button' %>
+        <%= implementation_time.label :approximate_time, "ざっくり時間", for: 'approximate_time_radio_button' %>
+        <%= implementation_time.text_field :approximate_time, placeholder: "何時でもOK、食事後など", class: "short-text display-none", id: 'routine_approximate_time' %>
         </p>
       </div>
       <% end %>
     </div>
   </div>
-
   <script>
     // 時刻を設定をクリック(選択)したとき
     $('#accurate_time_radio_button').click(function() {
@@ -115,7 +108,6 @@
       $('#accurate_time_select').removeClass('display-none').addClass('display-block'); // id: accurate_time_selectを表示する
       $('#routine_approximate_time').removeClass('display-block').addClass('display-none'); // id: routine_approximate_timeを非表示にする
     });
-
     // ざっくり時間をクリック(選択)したとき
     $('#approximate_time_radio_button').click(function() {
       $('#accurate_time_radio_button').prop('checked', false); // routine[accurate_time]のラジオボタンをoffにする
@@ -123,7 +115,7 @@
       $('#routine_approximate_time').removeClass('display-none').addClass('display-block'); // id: routine_approximate_timeを表示する
     });
   </script>
-
+  
   <!--頻度ここから-->
   <div class="routine-content">
     <h3>■How often?</h3>
@@ -133,18 +125,14 @@
       <div>
         <p>
           <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
-            <div><p><%= b.radio_button + b.label %></p></div>
+            <%= b.radio_button + b.label %><br>
           <% end %>
-          <!--<p class="sub-text"><span>ルーティンリセット時間</span></p>-->
-          <!--<p class="text-small">※未設定の場合、5:00にリセットされます。</p>-->
-          <!--時間のみ設定-->
           <% frequency.time_field :reset_time, step: "1800",list: "data-list", class: 'short-text'  %>
         </p>
       </div>
       <% end %>
     </div>
   </div>
-
   <!--期間ここから-->
   <div class="routine-content">
     <h3>■How long is the period?</h3>
@@ -154,14 +142,13 @@
       <div>
         <p>
           <%= period.collection_radio_buttons :period, Period.periods.map{|k, v| [k, I18n.t("enums.period.period.#{k}")] }, :first , :last do |b|  %>
-          <div><p><%= b.radio_button + b.label %></p></div>
+            <%= b.radio_button + b.label %><br>
           <% end %>
         </p>
       </div>
       <% end %>
     </div>
   </div>
-
   <!--公開設定-->
   <div class="routine-content">
     <h3>■公開設定</h3>
@@ -174,13 +161,11 @@
       </p>
     </div>
   </div>
-
   <!--ボタンたち-->
   <div class="routine-btns">
     <%= button_tag "ルーティンを登録",type:"button", onclick:"check_submit();",:class=>"input_btn" %>
     <%= link_to "後で設定" ,my_page_path ,class:"after-btn" %>
   </div>
-
 </div>
 <% end %>
 

@@ -1,11 +1,9 @@
   <!--会員用　新規会員登録ページ-->
 <div class="new-customer-contents">
   <h3>■Sign up</h3>
-
   <div class="form-wrapper">
-      <%= form_with model: @customer ,url: customer_registration_path do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
-
+    <%= form_with model: @customer ,url: customer_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
     <!--ニックネーム-->
     <div>
       <%= f.label :'ニックネーム' %>
@@ -13,7 +11,6 @@
     <div>
       <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: "ジョン・タイター",class:'form-control' %>
     </div>
-
     <!--メールアドレス-->
     <div>
       <%= f.label :メールアドレス %>
@@ -21,7 +18,6 @@
     <div>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" ,class:'form-control' %>
     </div>
-
     <!--パスワード-->
     <div>
       <%= f.label :'パスワード' %>
@@ -31,7 +27,6 @@
     <div>
       <%= f.password_field :password, autocomplete: "new_password" ,class:'form-control' %>
     </div>
-
     <!--確認用パスワード-->
     <div>
       <%= f.label :'パスワード(確認用)' %>
@@ -39,11 +34,10 @@
     <div>
       <%= f.password_field :password_confirmation, autocomplete: "encrypted_password" ,class:'form-control' %>
     </div>
-
     <div class="submit-btn">
       <%= f.submit "会員登録する" ,:class=>"input_btn" %>
     </div>
-      <% end %>
+    <% end %>
   </div>
   <div class="bottom-text">
     <p>既に登録がお済みの方</p>

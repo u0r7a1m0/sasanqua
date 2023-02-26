@@ -1,14 +1,11 @@
 <div class="routine-contents">
-
   <h5>■ルーティン一覧</h5>
   <div class="item-contents_all">
-
     <% @current_routines.each do |routine| %>
     <%= link_to edit_admin_routine_path(routine.id) do %>
     <div class="item-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
       <div class="item-content">
-
         <ul>
           <li><b>目標</b><br><p><%= routine.target %></p></li>
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
@@ -17,7 +14,7 @@
               <% routine.task.sub_tasks.each do | sub_task| %>
               <span class="subtask_line"><%= sub_task.name %></span>
               <% end %>
-              </p>
+            </p>
           </li>
           <li class="time-list">
             <span class="item-content-title"><b>時間</b>:
@@ -34,7 +31,6 @@
           </li>
         </ul>
         <%= image_tag "/level_#{routine.level}.jpg" %>
-
       </div>
     </div>
     <% end %>
@@ -45,20 +41,16 @@
   </div>
 </div>
 
-
 <div class="routine-contents">
   <h5>■バックナンバー一覧</h5>
   <div class="item-contents_all">
     <% @backnumber_routines.each do |routine| %>
-
     <div class="item-old-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
-
       <div class="item-content">
-
-      <div class="like_content">
-        <%= render "public/bookmarks/bookmarks", routine: routine %>
-      </div>
+        <div class="like_content">
+          <%= render "public/bookmarks/bookmarks", routine: routine %>
+        </div>
         <ul>
           <li><b>目標</b><br><p><%= routine.target %></p></li>
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
@@ -84,7 +76,6 @@
           </li>
         </ul>
         <%= image_tag "/level_#{routine.level}.jpg" %>
-
       </div>
     </div>
     <% end %>

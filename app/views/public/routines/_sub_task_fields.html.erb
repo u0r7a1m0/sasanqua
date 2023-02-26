@@ -2,10 +2,8 @@
 <div class="nested-fields">
   <div class="field">
     <%= sub_task.text_field :name, class: "short-text" %>
-
     <%= link_to_remove_association sub_task, class: 'sub_task-trush' do %>
       <i class="fa-solid fa-trash"></i>
     <% end %>
-
   </div>
 </div>
