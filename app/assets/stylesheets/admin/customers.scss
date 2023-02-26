@@ -83,22 +83,43 @@
 
 
 // アドミン・会員一覧画面
-.admin-customer-contents{
-  width: 100%;
+.admin-customer-wrapper{
+  width: 80%;
   margin: 0 auto;
-  p{
-    font-size: 15px;
-    text-align: center;
-  }
-  td{
-    padding:1vw;
-  }
-  img{
-    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-    width: 50px;  /* 縦横を同じ値にする */
-    height: 50px;  /* 縦横を同じ値にする */
-    margin-bottom: 1vh;
-  }
+}
+.item-contents3{
+  width: 200px;
+  height: 200px;
+  background-image: url("/header_01.jpg");
+  background-position: left;
+  position: relative;
+  margin-right: 1vw;
+  margin-left: 1vw;
+  margin-bottom: 3vh;
+  display: flex;
+  justify-content: space-around;
+}
+.item-content3{
+  width: 199px;
+  height: 130px;
+  background-color: white;
+  position:absolute;
+  bottom: 0;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+  padding: 1vw;
+}
+.item-content3 img{
+  position:absolute;
+  bottom: 90%;
+  right: 35%;
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width: 60px;  /* 縦横を同じ値にする */
+  height: 60px;  /* 縦横を同じ値にする */
+}
+.item-content3 p{
+  font-size: 12px;
+  margin-top: 2vh;
+  text-align: center;
 }
 @media screen and (max-width: 768px) {
   .admin-customer-contents{
@@ -106,8 +127,6 @@
   margin: 0 auto;
   }
 }
-
-
 /*ルーティンアイテムボックス共通*/
 .item-contents_all{
   display: flex;

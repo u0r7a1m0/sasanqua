@@ -396,8 +396,6 @@ header {
   display: flex;
   justify-content: space-around;
 }
-
-
 .item-content{
   width: 249px;
   height: 180px;

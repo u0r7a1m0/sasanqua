@@ -1,9 +1,16 @@
 <div class="routine-contents">
+  <div class="routine_search">
+    
   <h5>■ルーティン一覧</h5>
+  <div>
   <%= search_form_for @q, url: routines_path do |f| %>
-    <%= f.search_field :target_or_task_name_or_task_sub_tasks_name_cont, class: 'form-control', placeholder: '検索ワード' %>
-    <%= f.submit 'search' %>
+    <%= f.search_field :target_or_task_name_or_task_sub_tasks_name_cont, class: 'form-control2', placeholder: '検索ワード' %>
+    <button type="submit" class="search_btn">
+  <i class="fas fa-search"></i> 
+</button>
   <% end %>
+  </div>
+  </div>
   <div class="item-contents_all">
     <% @current_routines.each do |routine| %>
     <div class="item-contents">
