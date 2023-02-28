@@ -26,7 +26,7 @@
         <%= f.submit'変更', class: "update-btn" %>
         <%= link_to '戻る' , admin_customer_path(@customer.id), class: "update-btn" %>
       </div>
-      <%= link_to "アカウント削除する", withdraw_path(current_customer), method: :patch, "data-confirm" => "本当に削除しますか？", class:"text-danger" %>
+      <%= link_to "アカウント削除する", admin_customer_path(@customer.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"text-danger" %>
       <% end %>
     </div>
   </div>

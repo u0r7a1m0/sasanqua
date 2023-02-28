@@ -15,6 +15,7 @@ class Routine < ApplicationRecord
   accepts_nested_attributes_for :period, allow_destroy: true, update_only: true
 
   validates :target, {length:{maximum:20} }
+  validates :target, presence: true
   def self.ransackable_associations(auth_object = nil)
     ["bookmarks", "customer", "frequency", "implementation_time", "level_icon_attachment", "level_icon_blob", "period", "routine_image_attachment", "routine_image_blob", "task"]
   end

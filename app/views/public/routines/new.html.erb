@@ -1,5 +1,16 @@
-<%= form_with model: @routine,url: routines_path, html:{name:"routine"} do |f| %>
 <div class="routine-new-wrapper">
+<%= form_with model: @routine,url: routines_path, html:{name:"routine"} do |f| %>
+
+  <!--<p class="alert_messages">-->
+  <!--  <%# if @routine.errors.any? %>-->
+  <!--  <%#= @routine.errors.count %>件のエラーが発生しました-->
+  <!--  <ul class="alert_messages_li">-->
+  <!--    <%# @routine.errors.full_messages.each do |message| %>-->
+  <!--      <li><%#= message %></li>-->
+  <!--    <%# end %>-->
+  <!--  </ul>-->
+  <!--</p>-->
+  
   <!--目標ここから-->
   <div class="routine-content">
     <h3>■What is your goal?</h3>

@@ -33,6 +33,14 @@ class Admin::CustomersController < ApplicationController
       render :edit
     end
   end
+  def destroy
+    @customer = Customer.find(params[:id])
+		#is_deletedカラムにフラグを立てる(defaultはfalse)
+    @customer.destroy
+    #ログアウトさせる
+    flash[:notice] = "会員の削除が完了いたしました。"
+    redirect_to admin_customers_path
+  end
 
   private
   def customer_params

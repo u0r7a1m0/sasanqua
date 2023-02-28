@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     # 顧客用
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions',
-    omniauth_callbacks: "omniauth_callbacks"
+    sessions: 'public/sessions'
   }
   devise_scope :customer do
     get '/customers', to: 'public/registrations#new'

@@ -508,7 +508,6 @@ header {
 .pagenation-content{
   text-align: center;
 }
-
 /*一覧*/
 .subtask_line{
   border-right: 1px solid gray;
@@ -520,8 +519,6 @@ header {
 .subtask_line:first-child{
   padding-left: 0;
 }
-
-
 /*ページネーション*/
 .pagenate_content{
   text-align:center;
@@ -566,11 +563,9 @@ header {
   width: 20px;
   height: 15px;
 }
-
 .last a:hover, .first a:hover, .waves-effect2 a:hover, .waves-effect2 a:hover, .active a:hover{
    opacity: 0.5;
 }
-
 /*エラー関連*/
 .alert_messages{
   font-size: 14px!important;
