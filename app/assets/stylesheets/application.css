@@ -497,13 +497,11 @@ header {
 .flash-error{
   color: red;
 }
-
 .flash-text li{
   font-size: 10px;
   font-weight: bold;
   color: red;
 }
-
 /*ページネーション*/
 .pagenation-content{
   text-align: center;

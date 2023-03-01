@@ -1,15 +1,16 @@
 <div class="routine-new-wrapper">
 <%= form_with model: @routine,url: routines_path, html:{name:"routine"} do |f| %>
 
-  <!--<p class="alert_messages">-->
-  <!--  <%# if @routine.errors.any? %>-->
-  <!--  <%#= @routine.errors.count %>件のエラーが発生しました-->
-  <!--  <ul class="alert_messages_li">-->
-  <!--    <%# @routine.errors.full_messages.each do |message| %>-->
-  <!--      <li><%#= message %></li>-->
-  <!--    <%# end %>-->
-  <!--  </ul>-->
-  <!--</p>-->
+  <p class="alert_messages">
+    <% if @routine.errors.any? %>
+    <%= @routine.errors.count %>件のエラーが発生しました
+    <ul class="alert_messages_li">
+      <% @routine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </p>
   
   <!--目標ここから-->
   <div class="routine-content">
@@ -99,7 +100,7 @@
             <option value="18:00"></option>
             <option value="21:00"></option>
           </datalist>
-          <div id="error_message_accurate_time"></div>
+          <div id="error_message_accurate_time" class="alert_messages_li"></div>
         </p>
       </div>
       <div>
@@ -131,18 +132,14 @@
   <div class="routine-content">
     <h3>■How often?</h3>
     <p class="sub-text"><span>頻度は？</span></p>
-    <div>
       <%= f.fields_for :frequency do |frequency| %>
-      <div>
-        <p>
-          <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
-            <%= b.radio_button + b.label %><br>
-          <% end %>
-          <% frequency.time_field :reset_time, step: "1800",list: "data-list", class: 'short-text'  %>
-        </p>
-      </div>
-      <% end %>
-    </div>
+      <p>
+        <%= frequency.collection_radio_buttons :frequency, Frequency.frequencies.map{|k, v| [k, I18n.t("enums.frequency.frequency.#{k}")] }, :first , :last do |b|  %>
+          <%= b.radio_button + b.label(class: "label-font") %><br>
+        <% end %>
+        <% frequency.time_field :reset_time, step: "1800",list: "data-list", class: 'short-text'  %>
+      </p>
+    <% end %>
   </div>
   <!--期間ここから-->
   <div class="routine-content">
@@ -153,7 +150,7 @@
       <div>
         <p>
           <%= period.collection_radio_buttons :period, Period.periods.map{|k, v| [k, I18n.t("enums.period.period.#{k}")] }, :first , :last do |b|  %>
-            <%= b.radio_button + b.label %><br>
+            <%= b.radio_button + b.label(class: "label-font")  %><br>
           <% end %>
         </p>
       </div>

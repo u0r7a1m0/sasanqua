@@ -20,7 +20,8 @@ class Public::RoutinesController < ApplicationController
     redirect_to my_page_path
     else
     # 投稿が失敗した場合
-    redirect_to new_routine_path
+    # redirect_to new_routine_path
+    render "new"
     end
   end
 
