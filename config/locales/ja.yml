@@ -6,6 +6,27 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      routine: ルーティン
+      task: メインタスク
+      sub_task: サブタスク
+      frequency: 頻度
+      implementation_time: 実施時間
+      periods: 期間
+    attributes:
+      routine:
+        target: 目標
+      task:
+        name: タスク名
+      sub_task:
+        name: サブタスク名
+      frequency:
+        frequency: 頻度
+      implementation_time:
+        accurate_time: 時刻設定
+        approximate_time: ざっくり時間
+      period:
+        period: 期間
   enums:
     period:
       period:
