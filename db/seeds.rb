@@ -5,32 +5,59 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create!(
-  email: 'nagano@cake',
-  password: 'bookers',
-)
-Customer.create!(
- email: "ai@com",
- password: "bookers",
- nickname: "愛",
-)
-Customer.create!(
- email: "naho@com",
- password: "bookers",
- nickname: "なほ",
-)
-Customer.create!(
- email: "momo@com",
- password: "bookers",
- nickname: "momo",
-)
-Customer.create!(
- email: "kei@com",
- password: "bookers",
- nickname: "Kay",
-)
-Customer.create!(
- email: "sou@com",
- password: "bookers",
- nickname: "ソウ",
-)
+
+admins = [
+ {email: 'nagano@cake', password: 'bookers'},
+]
+admins.each do |admin|
+ admin_data = Admin.find_by(email: admin[:email])
+ if admin_data.nil?
+  Admin.create(email: admin[:email], password: admin[:password])
+ end
+end
+
+customers = [
+ {email: 'ai@com', password: 'bookers', nickname: "愛"},
+ {email: 'naho@com', password: 'bookers', nickname: "なほ"},
+ {email: 'momo@com', password: 'bookers', nickname: "momo"},
+ {email: 'kei@com', password: 'bookers', nickname: "Kay"},
+ {email: 'sou@com', password: 'bookers', nickname: "ソウ"},
+]
+customers.each do |customer|
+ customer_data = Customer.find_by(email: customer[:email])
+ if customer_data.nil?
+  Customer.create(email: customer[:email], password: customer[:password], nickname: customer[:nickname])
+ end
+end
+
+# routine_customer = Customer.find_by(email: 'naho@com')
+
+# Admin.create!(
+#   email: 'nagano@cake',
+#   password: 'bookers',
+# )
+# Customer.create!(
+#  email: "ai@com",
+#  password: "bookers",
+#  nickname: "愛",
+# )
+# Customer.create!(
+#  email: "naho@com",
+#  password: "bookers",
+#  nickname: "なほ",
+# )
+# Customer.create!(
+#  email: "momo@com",
+#  password: "bookers",
+#  nickname: "momo",
+# )
+# Customer.create!(
+#  email: "kei@com",
+#  password: "bookers",
+#  nickname: "Kay",
+# )
+# Customer.create!(
+#  email: "sou@com",
+#  password: "bookers",
+#  nickname: "ソウ",
+# )

@@ -41,11 +41,11 @@
                               </button>
                               <% end %>
           <p class="text-small">例：ルーティンが「筋トレ」で「腹筋」「腕立て」「ランニング1時間」などのメニューを追加したい場合、<br />フォームを「＋」で追加し、サブタスクを入力してみてください！</p>
-          <% (1..2).each do |i| %>
+          <%# (1..2).each do |i| %>
             <%= task.fields_for :sub_tasks do |sub_task| %>
               <%= render 'sub_task_fields', sub_task: sub_task %>
             <% end %>
-          <% end %>
+          <%# end %>
           <div id="sub_task-forms"></div>
         </div>
       </div>
@@ -87,7 +87,7 @@
       <%= f.fields_for :implementation_time do |implementation_time| %>
       <div>
         <p>
-          <%= implementation_time.radio_button :accurate_time, true, checked: true, id: 'accurate_time_radio_button' %>
+          <%= implementation_time.radio_button :implementation_time_radio, 'accurate_time', checked: true, id: 'accurate_time_radio_button' %>
           <%= implementation_time.label :accurate_time, "時刻を設定", for: 'accurate_time_radio_button' %>
           <!--10分おきに分数設定-->
           <%= implementation_time.time_field :accurate_time, id: 'accurate_time_select', step: "1800",list: "data-list", class: 'short-text display-block'%>
@@ -105,7 +105,7 @@
       </div>
       <div>
         <p>
-        <%= implementation_time.radio_button :approximate_time, true, id: 'approximate_time_radio_button' %>
+        <%= implementation_time.radio_button :implementation_time_radio, 'approximate_time', id: 'approximate_time_radio_button' %>
         <%= implementation_time.label :approximate_time, "ざっくり時間", for: 'approximate_time_radio_button' %>
         <%= implementation_time.text_field :approximate_time, placeholder: "何時でもOK、食事後など", class: "short-text display-none", id: 'routine_approximate_time' %>
         </p>
@@ -114,15 +114,25 @@
     </div>
   </div>
   <script>
+    if ($('input:radio[name="routine[implementation_time_attributes][implementation_time_radio]"]:checked').val() === 'accurate_time') {
+      console.log('HELLO!')
+      $('#accurate_time_select').removeClass('display-none').addClass('display-block'); // id: accurate_time_selectを表示する
+      $('#routine_approximate_time').removeClass('display-block').addClass('display-none'); // id: routine_approximate_timeを非表示にする
+    } else {
+      $('#accurate_time_select').removeClass('display-block').addClass('display-none'); // id: accurate_time_selectを非表示にする
+      $('#routine_approximate_time').removeClass('display-none').addClass('display-block'); // id: routine_approximate_timeを表示する
+    }
+  
     // 時刻を設定をクリック(選択)したとき
     $('#accurate_time_radio_button').click(function() {
-      $('#approximate_time_radio_button').prop('checked', false); // routine[approximate_time]のラジオボタンをoffにする
+      
+      // $('#approximate_time_radio_button').prop('checked', false); // routine[approximate_time]のラジオボタンをoffにする
       $('#accurate_time_select').removeClass('display-none').addClass('display-block'); // id: accurate_time_selectを表示する
       $('#routine_approximate_time').removeClass('display-block').addClass('display-none'); // id: routine_approximate_timeを非表示にする
     });
     // ざっくり時間をクリック(選択)したとき
     $('#approximate_time_radio_button').click(function() {
-      $('#accurate_time_radio_button').prop('checked', false); // routine[accurate_time]のラジオボタンをoffにする
+      // $('#accurate_time_radio_button').prop('checked', false); // routine[accurate_time]のラジオボタンをoffにする
       $('#accurate_time_select').removeClass('display-block').addClass('display-none'); // id: accurate_time_selectを非表示にする
       $('#routine_approximate_time').removeClass('display-none').addClass('display-block'); // id: routine_approximate_timeを表示する
     });
@@ -171,30 +181,30 @@
   </div>
   <!--ボタンたち-->
   <div class="routine-btns">
-    <%= button_tag "ルーティンを登録",type:"button", onclick:"check_submit();",:class=>"input_btn" %>
-    <%= link_to "後で設定" ,my_page_path ,class:"after-btn" %>
+    <%= button_tag "ルーティンを登録", type: "submit", class: "input_btn" %>
+    <%= link_to "後で設定", my_page_path, class:"after-btn" %>
   </div>
 </div>
 <% end %>
 
 <script>
-  function check_submit()
-  {
-    if ($("#accurate_time_radio_button").prop('checked')) {
-      var time = document.getElementById("accurate_time_select");
-      if (time.value != "") {
-        document.routine.submit();
-      } else {
-        $("#error_message_accurate_time").html("時刻を入力してください。")
-      }
-    }
-    if ($("#approximate_time_radio_button").prop('checked')) {
-      var time = document.getElementById("routine_approximate_time");
-      if (time.value != "") {
-        document.routine.submit();
-      } else {
-        $("#error_message_accurate_time").html("「ざっくり時間」のフォームを入力してください。")
-      }
-    }
-  }
+  // function check_submit()
+  // {
+  //   if ($("#accurate_time_radio_button").prop('checked')) {
+  //     var time = document.getElementById("accurate_time_select");
+  //     if (time.value != "") {
+  //       document.routine.submit();
+  //     } else {
+  //       $("#error_message_accurate_time").html("時刻を入力してください。")
+  //     }
+  //   }
+  //   if ($("#approximate_time_radio_button").prop('checked')) {
+  //     var time = document.getElementById("routine_approximate_time");
+  //     if (time.value != "") {
+  //       document.routine.submit();
+  //     } else {
+  //       $("#error_message_accurate_time").html("「ざっくり時間」のフォームを入力してください。")
+  //     }
+  //   }
+  // }
 </script>

@@ -16,9 +16,13 @@ ja:
     attributes:
       routine:
         target: 目標
+        task: タスク
+        accurate_time: 時刻
+        approximate_time: ざっくり時間
       task:
         name: タスク名
-      sub_task:
+        sub_task_rule: サブタスク
+      task/sub_tasks:
         name: サブタスク名
       frequency:
         frequency: 頻度

@@ -9,6 +9,7 @@ class Routine < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
 
   belongs_to :customer
+  
   accepts_nested_attributes_for :task, allow_destroy: true , update_only: true # fields_for（後述）に必要
   accepts_nested_attributes_for :implementation_time, allow_destroy: true, update_only: true
   accepts_nested_attributes_for :frequency, allow_destroy: true, update_only: true
@@ -16,6 +17,20 @@ class Routine < ApplicationRecord
 
   validates :target, {length:{maximum:20} }
   validates :target, presence: true
+  validate :time_radio_select # きっちり/ざっくり時間設定のバリデーション
+  
+  # きっちり/ざっくり時間設定のバリデーション
+  #   ラジオボタンの状態で入力値が正しく入力されているかのバリデーション
+  #   TODO: implementation_timeで仮想カラムを指定している。
+  def time_radio_select
+    case self.implementation_time.implementation_time_radio
+    when 'accurate_time' then # 時刻を設定
+      errors.add(:accurate_time, 'が設定されていません。') if self.implementation_time.accurate_time.blank?
+    when 'approximate_time' then # ざっくり時間
+      errors.add(:approximate_time, 'が設定されていません。') if self.implementation_time.approximate_time.blank?
+    end
+  end
+  
   def self.ransackable_associations(auth_object = nil)
     ["bookmarks", "customer", "frequency", "implementation_time", "level_icon_attachment", "level_icon_blob", "period", "routine_image_attachment", "routine_image_blob", "task"]
   end

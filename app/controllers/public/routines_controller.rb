@@ -3,8 +3,10 @@ class Public::RoutinesController < ApplicationController
 
   def new
     @routine = Routine.new
-    task = @routine.build_task
-    task.sub_tasks.build
+    @routine.build_task
+    @routine.task.sub_tasks.build
+    @routine.task.sub_tasks.build
+    
     @routine.build_implementation_time
     @routine.build_frequency
     @routine.build_period
@@ -12,16 +14,34 @@ class Public::RoutinesController < ApplicationController
 
   def create
     @routine = Routine.new(routine_params)
+    
+    # きっちり/ざっくり時間の判定
+    if @routine.implementation_time.implementation_time_radio == 'accurate_time'
+      @routine.implementation_time.approximate_time = nil # きっちり時間の場合approximate_timeがnilになる
+    else
+      @routine.implementation_time.accurate_time = nil # ざっくり時間の場合accurate_timeがnilになる
+    end
+    
     @routine.customer_id = current_customer.id
     # binding.pry
     if @routine.save
-    # 投稿成功した場合
-    flash[:notice]="登録完了しました！"
-    redirect_to my_page_path
+      # 投稿成功した場合
+      flash[:notice]="登録完了しました！"
+      redirect_to my_page_path
     else
-    # 投稿が失敗した場合
-    # redirect_to new_routine_path
-    render "new"
+
+      case @routine.task.sub_tasks.size
+      when 0 then
+        @routine.task.sub_tasks.build
+        @routine.task.sub_tasks.build
+      when 1 then
+        @routine.task.sub_tasks.build
+      else
+      end
+      
+      # 投稿が失敗した場合
+      # redirect_to new_routine_path
+      render "new"
     end
   end
 
@@ -138,7 +158,7 @@ class Public::RoutinesController < ApplicationController
   def routine_params
     params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
                                     task_attributes: [:routine_id, :frequency_id, :name, sub_tasks_attributes: %i(name frequency_id _destroy) ],
-                                    implementation_time_attributes: [:accurate_time, :approximate_time, :routine_id],
+                                    implementation_time_attributes: [:implementation_time_radio, :accurate_time, :approximate_time, :routine_id],
                                     frequency_attributes: [:routine_id, :frequency, :reset_time],
                                     period_attributes: [:routine_id, :period]
                                     )
