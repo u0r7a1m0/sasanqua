@@ -31,33 +31,14 @@ customers.each do |customer|
 end
 
 # routine_customer = Customer.find_by(email: 'naho@com')
+# routines = [
+#  {target: 'モテたい！', customer_id: routine_customer.id, created_at: "",  }
+# ]
 
-# Admin.create!(
-#   email: 'nagano@cake',
-#   password: 'bookers',
-# )
-# Customer.create!(
-#  email: "ai@com",
-#  password: "bookers",
-#  nickname: "愛",
-# )
-# Customer.create!(
-#  email: "naho@com",
-#  password: "bookers",
-#  nickname: "なほ",
-# )
-# Customer.create!(
-#  email: "momo@com",
-#  password: "bookers",
-#  nickname: "momo",
-# )
-# Customer.create!(
-#  email: "kei@com",
-#  password: "bookers",
-#  nickname: "Kay",
-# )
-# Customer.create!(
-#  email: "sou@com",
-#  password: "bookers",
-#  nickname: "ソウ",
-# )
+
+    # params.require(:routine).permit(:target, :routine_image, :public_status, :customer_id,
+    #                                 task_attributes: [:routine_id, :frequency_id, :name, sub_tasks_attributes: %i(name frequency_id _destroy) ],
+    #                                 implementation_time_attributes: [:implementation_time_radio, :accurate_time, :approximate_time, :routine_id],
+    #                                 frequency_attributes: [:routine_id, :frequency, :reset_time],
+    #                                 period_attributes: [:routine_id, :period]
+    #                                 )

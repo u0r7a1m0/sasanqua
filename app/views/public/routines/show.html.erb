@@ -40,28 +40,38 @@
         </div>
       </div>
       <div class="routine_checkbox_content">
+        <%# "デバッグ用チェックボックスのチェックに該当するcommitの日付を検索する範囲" %>
+        <%#= @routine.created_at %>
+        <%#= @routine.before_frequency_range %>
         <!--サブタスクがある場合-->
       <% if @routine.task.sub_tasks.present? %>
         <%= form_tag routine_sub_task_commits_path(@routine.id) do %>
-          <% for n in 1..@loop_count do %>
+          <% (1..@loop_count).each do |n| %>
           <p class="check_box_text">
+            <%# "サブタスクに紐づくcommitをサブタスク毎に2時配列で取得" %>
+            <%#= @routine.task.sub_tasks.map{ |o| o.sub_task_commits.pluck(:id, :created_at)} %>
             <%= collection_check_boxes "sub_task_#{n}", SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
-              <%= b.label {b.check_box(checked: b.object.sub_task_commits.where(sub_task_id: b.object.id, times: n, created_at: @today..@routine.next_day).present?) + b.text} %><br>
+              <%= b.label {b.check_box(checked: b.object.sub_task_commits.where(sub_task_id: b.object.id, times: n, created_at: @routine.before_frequency_range).present?) + b.text} %><br>
             <% end %>
           </p>
           <% end %>
-          <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
+          <%#= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
+          <%= submit_tag "更新", :class=>"update-btn2" %><br>
+
         <% end %>
       <!--サブタスクがない場合-->
       <% else %>
         <%= form_tag routine_task_commits_path(@routine.id) do %>
-          <% for n in 1..@loop_count do %>
+          <% (1..@loop_count).each do |n| %>
           <p class="check_box_text">
-            <%= check_box "task", "task_#{n}", checked: @routine.task.task_commits.where(task_id: @routine.task.id ,times: n, created_at: @today..@routine.next_day).present? %>
+            <%# "タスクに紐づくcommitを配列で取得" %>
+            <%#= @routine.task.task_commits.pluck(:id, :created_at) %>
+            <%= check_box "task", "task_#{n}", checked: @routine.task.task_commits.where(task_id: @routine.task.id ,times: n, created_at: @routine.before_frequency_range).present? %>
             <%= label @routine.task.name, @routine.task.name %> <br>
           </p>
           <% end %>
-          <%= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
+          <%#= submit_tag "更新", :class=>"update-btn2", "data-confirm" => "本当に更新しますか？※変更できません。"  %><br>
+          <%= submit_tag "更新", :class=>"update-btn2" %><br>
         <% end %>
       <% end %>
       </div>

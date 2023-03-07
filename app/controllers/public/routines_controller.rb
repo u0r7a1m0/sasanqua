@@ -23,13 +23,11 @@ class Public::RoutinesController < ApplicationController
     end
     
     @routine.customer_id = current_customer.id
-    # binding.pry
     if @routine.save
       # 投稿成功した場合
       flash[:notice]="登録完了しました！"
       redirect_to my_page_path
     else
-
       case @routine.task.sub_tasks.size
       when 0 then
         @routine.task.sub_tasks.build
@@ -38,9 +36,7 @@ class Public::RoutinesController < ApplicationController
         @routine.task.sub_tasks.build
       else
       end
-      
       # 投稿が失敗した場合
-      # redirect_to new_routine_path
       render "new"
     end
   end
@@ -71,13 +67,8 @@ class Public::RoutinesController < ApplicationController
   def show
     @routine = Routine.find(params[:id])
     @today =  Date.today.to_datetime + Rational("5/24")
-    if @routine.frequency.frequency == "oneday_twice"
-      @loop_count = 2
-    elsif @routine.frequency.frequency == "oneday_third"
-      @loop_count = 3
-    else
-      @loop_count = 1
-    end
+    set_loop_count
+    set_offset_date
   end
   
   def heatmap
@@ -171,5 +162,25 @@ class Public::RoutinesController < ApplicationController
 
   def redirect_root
     redirect_to root_path unless customer_signed_in?
+  end
+  
+  def set_loop_count
+    if @routine.frequency.frequency == "oneday_twice"
+      @loop_count = 2
+    elsif @routine.frequency.frequency == "oneday_third"
+      @loop_count = 3
+    else
+      @loop_count = 1
+    end
+  end
+  
+  def set_offset_date
+    if @routine.frequency.frequency == "twoday_once"
+      @offset_date = 1
+    elsif @routine.frequency.frequency == "threeday_once"
+      @offset_date = 2
+    else
+      @offset_date = 0
+    end
   end
 end

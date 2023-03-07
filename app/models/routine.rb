@@ -37,7 +37,8 @@ class Routine < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "customer_id", "id", "public_status", "target", "updated_at"]
   end
-  def  next_day
+  
+  def next_day
     r = Rational("5/24")
     if frequency.frequency == "twoday_once"
       Date.today.to_datetime + 2 + r
@@ -45,6 +46,33 @@ class Routine < ApplicationRecord
       Date.today.to_datetime + 3 + r
     else
       Date.today.to_datetime + 1 + r
+    end
+  end
+  
+  def before_frequency_range
+    target_time = Time.zone.now.beginning_of_day.since(5.hour)
+    if frequency.frequency == "twoday_once"
+      set_time = target_time.ago(2.day)
+    elsif frequency.frequency == "threeday_once"
+      set_time = target_time.ago(3.day)
+    else
+      set_time = target_time.ago(1.day)
+    end
+    set_time.ago(correct_frequency.day)..target_time.ago(correct_frequency.day)
+  end
+  
+  def correct_frequency
+    if created_at.hour < 5
+      base = created_at.beginning_of_day.since(5.hour)
+    else
+      base = created_at.beginning_of_day.tomorrow.since(5.hour)
+    end
+    if frequency.frequency == "twoday_once"
+      ((Time.zone.now.to_date - base.to_date) % 2).to_i
+    elsif frequency.frequency == "threeday_once"
+      ((Time.zone.now.to_date - base.to_date) % 3).to_i
+    else
+      0
     end
   end
 
