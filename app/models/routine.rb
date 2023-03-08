@@ -51,14 +51,16 @@ class Routine < ApplicationRecord
   
   def before_frequency_range
     target_time = Time.zone.now.beginning_of_day.since(5.hour)
+    last_time = Time.zone.now.beginning_of_day.tomorrow.since(5.hour)
+    last_time_2 = Time.zone.now.beginning_of_day.next_day(2).since(5.hour)
+    last_time_3 = Time.zone.now.beginning_of_day.next_day(3).since(5.hour)
     if frequency.frequency == "twoday_once"
-      set_time = target_time.ago(2.day)
+      target_time..last_time_2
     elsif frequency.frequency == "threeday_once"
-      set_time = target_time.ago(3.day)
+      target_time..last_time_3
     else
-      set_time = target_time.ago(1.day)
+      target_time.ago(correct_frequency.day)..last_time.ago(correct_frequency.day)
     end
-    set_time.ago(correct_frequency.day)..target_time.ago(correct_frequency.day)
   end
   
   def correct_frequency

@@ -51,6 +51,7 @@
             <%# "サブタスクに紐づくcommitをサブタスク毎に2時配列で取得" %>
             <%#= @routine.task.sub_tasks.map{ |o| o.sub_task_commits.pluck(:id, :created_at)} %>
             <%= collection_check_boxes "sub_task_#{n}", SubTask , @routine.task.sub_tasks, :id, :name do |b| %>
+            <%# binding.pry %>
               <%= b.label {b.check_box(checked: b.object.sub_task_commits.where(sub_task_id: b.object.id, times: n, created_at: @routine.before_frequency_range).present?) + b.text} %><br>
             <% end %>
           </p>
@@ -66,6 +67,7 @@
           <p class="check_box_text">
             <%# "タスクに紐づくcommitを配列で取得" %>
             <%#= @routine.task.task_commits.pluck(:id, :created_at) %>
+            <%# binding.pry %>
             <%= check_box "task", "task_#{n}", checked: @routine.task.task_commits.where(task_id: @routine.task.id ,times: n, created_at: @routine.before_frequency_range).present? %>
             <%= label @routine.task.name, @routine.task.name %> <br>
           </p>
