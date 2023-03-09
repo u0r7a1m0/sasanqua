@@ -63,8 +63,10 @@ gem "enum_help"
 gem 'rails-i18n'
 
 gem 'cocoon'
-
+gem 'omniauth-line'
+gem 'omniauth-rails_csrf_protection'
 gem 'dotenv-rails'
+gem 'line-bot-api'
 group :production do
   gem 'mysql2'
 end
