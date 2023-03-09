@@ -7,7 +7,7 @@
         <% if @customer.profile_image.attached? %>
           <div style="text-align: center;"><%= image_tag @customer.profile_image, size: "100x00" %></div>
         <% else %>
-          <div style="text-align: center;"><%= image_tag 'no_image', size: "100x100" %></div>
+          <div style="text-align: center;"><%= image_tag 'no_image.png', size: "100x100" %></div>
         <% end %>
         <p><%= link_to "プロフィールを編集" ,customers_edit_path, class:"prof-edit-btn" %></p>
         <p>

@@ -10,7 +10,7 @@
         <% if customer.profile_image.attached? %>
           <div style="text-align: center;" class="profile-icon"><%= image_tag customer.profile_image, size: "50x50" %></div>
         <% else %>
-          <div style="text-align: center;" class="profile-icon"><%= image_tag 'no_image', size: "50x50" %></div>
+          <div style="text-align: center;" class="profile-icon"><%= image_tag 'no_image.png', size: "50x50" %></div>
         <% end %>
         <p><b>登録日</b><br><%= l customer.created_at %></p>
       </div>
