@@ -141,7 +141,6 @@ class Public::RoutinesController < ApplicationController
   def like
     bookmarks = Bookmark.where(customer_id: current_customer.id).pluck(:routine_id)
     @routines = Routine.find(bookmarks)
-    # @routines = Routine.all.order("created_at DESC").page(params[:page]).per(12)
   end
 
   private

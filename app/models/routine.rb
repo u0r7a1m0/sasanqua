@@ -85,7 +85,6 @@ class Routine < ApplicationRecord
   # レベルアイコン
   def level
     if period.period == "one_year" or period.period == "everyday"
-      # 10
       if frequency.frequency == "twoday_once" #2日に1回
       # byebug
         if task.sub_tasks.present?
