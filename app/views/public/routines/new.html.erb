@@ -115,7 +115,6 @@
   </div>
   <script>
     if ($('input:radio[name="routine[implementation_time_attributes][implementation_time_radio]"]:checked').val() === 'accurate_time') {
-      console.log('HELLO!')
       $('#accurate_time_select').removeClass('display-none').addClass('display-block'); // id: accurate_time_selectを表示する
       $('#routine_approximate_time').removeClass('display-block').addClass('display-none'); // id: routine_approximate_timeを非表示にする
     } else {
@@ -186,25 +185,3 @@
   </div>
 </div>
 <% end %>
-
-<script>
-  // function check_submit()
-  // {
-  //   if ($("#accurate_time_radio_button").prop('checked')) {
-  //     var time = document.getElementById("accurate_time_select");
-  //     if (time.value != "") {
-  //       document.routine.submit();
-  //     } else {
-  //       $("#error_message_accurate_time").html("時刻を入力してください。")
-  //     }
-  //   }
-  //   if ($("#approximate_time_radio_button").prop('checked')) {
-  //     var time = document.getElementById("routine_approximate_time");
-  //     if (time.value != "") {
-  //       document.routine.submit();
-  //     } else {
-  //       $("#error_message_accurate_time").html("「ざっくり時間」のフォームを入力してください。")
-  //     }
-  //   }
-  // }
-</script>
