@@ -43,7 +43,7 @@ class Public::RoutinesController < ApplicationController
 
   def index
     @q = Routine.ransack(params[:q])
-    @routines = @q.result.where(public_status:true).order("created_at DESC").all
+    @routines = @q.result.where(public_status:true).order("created_at DESC").all.distinct
     @current_routines_array = []
     @current_routines = []
     @backnumber_routines_array = []
@@ -60,8 +60,9 @@ class Public::RoutinesController < ApplicationController
         @backnumber_routines = Kaminari.paginate_array(@backnumber_routines_array).page(params[:page])
       end
     end
-        @current_routines = Kaminari.paginate_array(@current_routines_array).page(params[:page])
-        @backnumber_routines = Kaminari.paginate_array(@backnumber_routines_array).page(params[:page])
+    @current_routines = Kaminari.paginate_array(@current_routines_array).page(params[:page])
+    @backnumber_routines = Kaminari.paginate_array(@backnumber_routines_array).page(params[:page])
+    
   end
 
   def show

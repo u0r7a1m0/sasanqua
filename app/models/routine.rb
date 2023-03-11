@@ -50,25 +50,20 @@ class Routine < ApplicationRecord
   end
   
   def before_frequency_range
+    # 最初のcommiの範囲であればcreated_atからのrangeを返す
+    start_at = correct_range_start_at(created_at)
+    return start_at..start_at.since(frequency_day) if first_commit_range?
+
+    # 今日からcorrect_frequencyを引いたものを範囲の始まりにする
     target_time = Time.zone.now.beginning_of_day.since(5.hour)
-    last_time = Time.zone.now.beginning_of_day.tomorrow.since(5.hour)
-    last_time_2 = Time.zone.now.beginning_of_day.next_day(2).since(5.hour)
-    last_time_3 = Time.zone.now.beginning_of_day.next_day(3).since(5.hour)
-    if frequency.frequency == "twoday_once"
-      target_time..last_time_2
-    elsif frequency.frequency == "threeday_once"
-      target_time..last_time_3
-    else
-      target_time.ago(correct_frequency.day)..last_time.ago(correct_frequency.day)
-    end
+    condition_start_at = target_time.ago(correct_frequency.day)
+    condition_end_at = condition_start_at + frequency_day
+    condition_start_at..condition_end_at
   end
   
+  # 今日から作成日を引いた日数の余り
   def correct_frequency
-    if created_at.hour < 5
-      base = created_at.beginning_of_day.since(5.hour)
-    else
-      base = created_at.beginning_of_day.tomorrow.since(5.hour)
-    end
+    base = correct_range_start_at(created_at)
     if frequency.frequency == "twoday_once"
       ((Time.zone.now.to_date - base.to_date) % 2).to_i
     elsif frequency.frequency == "threeday_once"
@@ -76,6 +71,33 @@ class Routine < ApplicationRecord
     else
       0
     end
+  end
+  
+  # commitの最初のチェック範囲かどうかを確認する
+  def first_commit_range?
+      day_diff = (Time.zone.now.beginning_of_day.since(5.hour).to_date - correct_range_start_at(created_at).to_date).to_i
+      if frequency.frequency == "twoday_once"
+      day_diff < 2
+    elsif frequency.frequency == "threeday_once"
+      day_diff < 3
+    else
+      day_diff < 1
+    end
+  end
+  
+  def frequency_day
+    if frequency.frequency == "twoday_once"
+      2.day
+    elsif frequency.frequency == "threeday_once"
+      3.day
+    else
+      1.day
+    end
+  end
+  
+  # 5時よりも前であれば前日の5時を始まりにする,そうでなければ当日の5時を始まりにする
+  def correct_range_start_at(start_at)
+    start_at.hour < 5 ? start_at.beginning_of_day.ago(1).since(5.hour) : start_at.beginning_of_day.since(5.hour)
   end
 
   def bookmarked_by?(customer)
