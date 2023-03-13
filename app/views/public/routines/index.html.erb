@@ -15,9 +15,6 @@
     <div class="item-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
       <div class="item-content">
-        <div class="like_content">
-          <%= render "public/bookmarks/bookmarks", routine: routine %>
-        </div>
         <ul>
           <li><b>目標</b><br><p><%= routine.target %></p></li>
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
@@ -43,6 +40,9 @@
           </li>
         </ul>
         <%= image_tag "/level_#{routine.level}.jpg" %>
+      </div>
+      <div class="like_content">
+        <%= render "public/bookmarks/bookmarks", routine: routine %>
       </div>
     </div>
     <% end %>
@@ -55,12 +55,9 @@
   <h5>■バックナンバー一覧</h5>
   <div class="item-contents_all">
   <% @backnumber_routines.each do |routine| %>
-    <div class="item-old-contents">
+    <div class="item-contents item-old-contents">
       <p class="profile_name_2"><%= routine.customer.nickname%></p>
       <div class="item-content">
-        <div class="like_content">
-          <%= render "public/bookmarks/bookmarks", routine: routine %>
-        </div>
         <ul>
           <li><b>目標</b><br><p><%= routine.target %></p></li>
           <li><b>ルーティン</b><br><p><%= routine.task.name %></p></li>
@@ -87,7 +84,11 @@
         </ul>
         <%= image_tag "/level_#{routine.level}.jpg" %>
       </div>
+      <div class="like_content">
+        <%= render "public/bookmarks/bookmarks", routine: routine %>
+      </div>
     </div>
+    
   <% end %>
   </div>
   <div class="pagenate_content">

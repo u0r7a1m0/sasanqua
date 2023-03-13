@@ -14,20 +14,6 @@ class Public::SubTaskCommitsController < ApplicationController
       return
     end
 
-    #今チェックしている項目があるかどうか
-    # ない -> 元の画面にもどる
-
-    # 頻度毎に分けて確認
-    #    ->  今日のコミット(SubTaskCommit)としてクリエイトされているかどうか
-    #         ある ->
-    #             更にチェックされている -> なにもしない
-    #             更にチェックされていないもの -> コミットを削除する  // いったん保留
-    #         ない -> サブタスクコミットをクリエイトをする SubTaskCommit.create()
-
-    ####################
-    # @routine.task.sub_tasks.sub_task_commit = SubTaskCommit.new(routine_params)
-    #if　①.チェックされたデータがあるかどうか
-
     if sub_task_1.present?
       today = Date.today.to_datetime + Rational("5/24")
       next_day = Date.today.to_datetime + 1 + Rational("5/24")

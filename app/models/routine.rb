@@ -75,8 +75,8 @@ class Routine < ApplicationRecord
   
   # commitの最初のチェック範囲かどうかを確認する
   def first_commit_range?
-      day_diff = (Time.zone.now.beginning_of_day.since(5.hour).to_date - correct_range_start_at(created_at).to_date).to_i
-      if frequency.frequency == "twoday_once"
+    day_diff = (Time.zone.now.beginning_of_day.since(5.hour).to_date - correct_range_start_at(created_at).to_date).to_i
+    if frequency.frequency == "twoday_once"
       day_diff < 2
     elsif frequency.frequency == "threeday_once"
       day_diff < 3
