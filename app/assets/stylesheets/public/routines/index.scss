@@ -51,7 +51,7 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 .routine_image_form{
   margin-top: 20px;
@@ -386,5 +386,8 @@
   }
   .routine_search >.form-control2{
     margin-left: 5%;
+  }
+  .new-form-control{
+  width: 100%;
   }
 }
