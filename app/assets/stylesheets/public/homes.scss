@@ -38,6 +38,18 @@
 .bottom-contents>p a:hover{
   color:#79B39E;
 }
+@media screen and (max-width:768px){
+  .top-contents>h1{
+    font-size: 20px;
+  }
+  .top-contents>h5{
+    font-size: 15px;
+    font-weight: lighter;
+  }
+  .bottom-contents>div{
+    font-size: 15px;
+  }
+}
 
 // プライバシーポリシーページ
 .privacy-wrapper{
@@ -86,6 +98,20 @@
     text-align:center;
   }
 }
+@media screen and (max-width:500px){
+  .about-wrapper{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .about-text{
+    font-size: 12px;
+  }
+  .level-icon-contents img{
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  }
+}
 
 // サンクスページ
 .thanks_wrapper{
@@ -128,4 +154,18 @@
   border-radius: 0;
   object-fit: cover;
   margin: 1.5vw;
+}
+
+@media screen and (max-width:500px){
+  .thanks_wrapper{
+    width: 100%;
+  }
+  .thanks_content>img{
+    width: 70px;
+    height: 70px;
+  }
+  .haleta_image>img{
+    width: 60px;
+    height: 150px;
+  }
 }
