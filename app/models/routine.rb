@@ -18,7 +18,6 @@ class Routine < ApplicationRecord
   validates :target, {length:{maximum:20} }
   validates :target, presence: true
   validate :time_radio_select # きっちり/ざっくり時間設定のバリデーション
-  
   # きっちり/ざっくり時間設定のバリデーション
   #   ラジオボタンの状態で入力値が正しく入力されているかのバリデーション
   #   TODO: implementation_timeで仮想カラムを指定している。
@@ -51,13 +50,21 @@ class Routine < ApplicationRecord
   
   def before_frequency_range
     # 最初のcommiの範囲であればcreated_atからのrangeを返す
+    
     start_at = correct_range_start_at(created_at)
     return start_at..start_at.since(frequency_day) if first_commit_range?
 
     # 今日からcorrect_frequencyを引いたものを範囲の始まりにする
-    target_time = Time.zone.now.beginning_of_day.since(5.hour)
-    condition_start_at = target_time.ago(correct_frequency.day)
+    
+    target_time = correct_range_start_at(Time.zone.now)
+    if Time.zone.now.hour < 5
+       condition_start_at = target_time.ago(correct_frequency.day) - 1.day
+    else
+      condition_start_at = target_time.ago(correct_frequency.day)
+    end
     condition_end_at = condition_start_at + frequency_day
+   # binding.pry
+    #2:00にタスクじっこう
     condition_start_at..condition_end_at
   end
   
