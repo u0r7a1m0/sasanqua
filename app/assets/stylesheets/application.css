@@ -111,7 +111,7 @@ header {
   text-decoration: none;
   color: gray;
 }
-@media screen and (min-width: 2560px) {
+@media screen and (max-width: 2560px) {
   .outer{
     width: 70%;
     height: 11rem;
@@ -123,8 +123,8 @@ header {
 
 @media screen and (max-width: 1440px) {
   .outer{
-    width: 70%;
-    height: 6.2rem;
+    width: 60%;
+    height: 5.5rem;
   }
   .logo img{
     height: 50px;
