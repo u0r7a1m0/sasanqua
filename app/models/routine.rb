@@ -119,7 +119,7 @@ class Routine < ApplicationRecord
         if task.sub_tasks.present?
           task_count = task.sub_tasks.count
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*task_count
-          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -133,7 +133,7 @@ class Routine < ApplicationRecord
             end
         else
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/2)*1
-          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -150,7 +150,7 @@ class Routine < ApplicationRecord
         if task.sub_tasks.present?
           task_count = task.sub_tasks.count
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*task_count
-          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -164,7 +164,7 @@ class Routine < ApplicationRecord
             end
         else
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]/3)*1
-          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -181,7 +181,7 @@ class Routine < ApplicationRecord
         if task.sub_tasks.present?
           task_count = task.sub_tasks.count
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*task_count
-          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -195,7 +195,7 @@ class Routine < ApplicationRecord
             end
         else
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*3)*1
-          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -212,7 +212,7 @@ class Routine < ApplicationRecord
         if task.sub_tasks.present?
           task_count = task.sub_tasks.count
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*task_count
-          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -226,7 +226,7 @@ class Routine < ApplicationRecord
             end
         else
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym]*2)*1
-          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -243,7 +243,7 @@ class Routine < ApplicationRecord
         if task.sub_tasks.present?
           task_count = task.sub_tasks.count
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*task_count
-          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
+          commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
@@ -257,7 +257,7 @@ class Routine < ApplicationRecord
             end
         else
           total = (Period::DAY_COUNT_TABLE[period.period.to_sym])*1
-          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
+          commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_month, Time.current.end_of_month).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
               ret = (num*100).ceil(-1).digits[1]
