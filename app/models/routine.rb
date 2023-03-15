@@ -122,7 +122,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -131,7 +136,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -143,7 +153,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -152,7 +167,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -164,7 +184,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -173,7 +198,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -185,7 +215,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -194,7 +229,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -206,7 +246,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -215,8 +260,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              # 修正箇所(3/15)
-              (num*100).ceil(-1)/10.to_i
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -230,7 +279,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -239,7 +293,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -251,7 +310,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -260,7 +324,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -272,7 +341,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -281,7 +355,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -294,7 +373,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -303,7 +387,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -316,7 +405,12 @@ class Routine < ApplicationRecord
           commit_count = task.sub_tasks.map{|t| t.sub_task_commits.count}.sum
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
@@ -325,7 +419,12 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              ret = (num*100).ceil(-1).digits[1]
+              if ret == 0
+                return 10
+              else
+                return ret
+              end
             else
               1
             end
