@@ -315,6 +315,7 @@ header {
   color: gray;
   text-decoration: none;
 }
+
 .withdraw-btn{
   padding: 10px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.21);
@@ -365,6 +366,9 @@ header {
 }
 .update-btn{
   margin-right: 2vw;
+}
+.change_btn{
+  margin-right: 1vw;
 }
 
 
@@ -572,27 +576,3 @@ header {
   font-size: 12px!important;
   color: red;
 }
-
-/*@media screen and (max-width: 599px) {*/
-/*  .logo {*/
-/*    font-size: 20px;*/
-/*    margin-top: 15px;*/
-/*    margin-right: auto;*/
-/*  }*/
-/*  .logo img{*/
-    /*width: 40px;*/
-    /*height: 40px;*/
-/*    margin-bottom: 10px;*/
-/*  }*/
-/*}*/
-@media screen and (max-width: 1000px) {
-  .logo {
-    font-size: 20px;
-    margin-bottom: 100px;
-    margin-right: auto;
-  }
-  .logo img{
-    width: 50px;  /* 縦横を同じ値にする */
-    height: 50px;  /* 縦横を同じ値にする */
-    margin-top: 55px;
-  }}

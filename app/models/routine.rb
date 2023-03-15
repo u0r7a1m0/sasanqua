@@ -215,7 +215,8 @@ class Routine < ApplicationRecord
           commit_count = task.task_commits.where("created_at BETWEEN ? AND ?", Time.current.beginning_of_day, Time.current).count
           num = (commit_count.to_f/total.to_f)
             if !num.zero?
-              (num*100).ceil(-1).digits[1]
+              # 修正箇所(3/15)
+              (num*100).ceil(-1)/10.to_i
             else
               1
             end
@@ -332,4 +333,5 @@ class Routine < ApplicationRecord
       end
     end
   end
+  
 end
