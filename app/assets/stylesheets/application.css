@@ -127,7 +127,7 @@ header {
     height: 6.2rem;
   }
   .logo img{
-    height: 80px;
+    height: 50px;
   }
 }
 @media screen and (max-width: 1240px) {
