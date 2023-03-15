@@ -132,7 +132,7 @@ header {
 }
 @media screen and (max-width: 1240px) {
   .outer{
-    width: 60%;
+    width: 50%;
     height: 4.5rem;
   }
   .logo img{
